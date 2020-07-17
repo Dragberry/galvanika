@@ -19130,14 +19130,13 @@ grid 2.3 mm</description>
 <rectangle x1="1.397" y1="-0.381" x2="3.175" y2="0" layer="51"/>
 </package>
 <package name="R0904N">
-<pad name="1" x="-2.5" y="0" drill="1" diameter="1.778"/>
-<pad name="2" x="0" y="0" drill="1" diameter="1.778"/>
-<pad name="3" x="2.5" y="0" drill="1" diameter="1.778"/>
+<pad name="1" x="-2.5" y="0" drill="1" diameter="2.1844"/>
+<pad name="2" x="0" y="0" drill="1" diameter="2.1844"/>
+<pad name="3" x="2.5" y="0" drill="1" diameter="2.1844"/>
 <wire x1="-4.85" y1="0" x2="4.85" y2="0" width="0.127" layer="21"/>
 <wire x1="4.85" y1="0" x2="4.85" y2="12.5" width="0.127" layer="21"/>
-<wire x1="4.85" y1="12.5" x2="4.75" y2="12.5" width="0.127" layer="21"/>
 <wire x1="-4.85" y1="0" x2="-4.85" y2="12.5" width="0.127" layer="21"/>
-<wire x1="-4.85" y1="12.5" x2="4.75" y2="12.5" width="0.127" layer="21"/>
+<wire x1="-4.85" y1="12.5" x2="4.85" y2="12.5" width="0.127" layer="21"/>
 <circle x="0" y="6.25" radius="4.3732125" width="0.127" layer="21"/>
 <text x="-3.81" y="15.24" size="1.27" layer="25">&gt;NAME</text>
 <text x="-3.81" y="12.7" size="1.27" layer="27">&gt;VALUE</text>
@@ -19175,6 +19174,14 @@ grid 2.3 mm</description>
 <wire x1="15.24" y1="6.35" x2="10.16" y2="6.35" width="1.27" layer="21"/>
 <text x="-3.81" y="8.89" size="1.27" layer="25">&gt;NAME</text>
 <text x="-3.81" y="5.08" size="1.27" layer="27">&gt;VALUE</text>
+<pad name="P$1" x="-15.24" y="3.81" drill="0.8" diameter="1.778"/>
+<pad name="P$2" x="-15.24" y="1.27" drill="0.8" diameter="1.778"/>
+<pad name="P$3" x="-15.24" y="-1.27" drill="0.8" diameter="1.778"/>
+<pad name="P$4" x="-15.24" y="-3.81" drill="0.8" diameter="1.778"/>
+<pad name="P$5" x="15.24" y="3.81" drill="0.8" diameter="1.778"/>
+<pad name="P$6" x="15.24" y="1.27" drill="0.8" diameter="1.778"/>
+<pad name="P$7" x="15.24" y="-1.27" drill="0.8" diameter="1.778"/>
+<pad name="P$8" x="15.24" y="-3.81" drill="0.8" diameter="1.778"/>
 </package>
 <package name="CL3641B">
 <pad name="E" x="-6.35" y="-5.08" drill="0.6" diameter="1.27"/>
@@ -41030,7 +41037,7 @@ Based on the following sources:
 <part name="R19" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="10K"/>
 <part name="R20" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="100K"/>
 <part name="IC2" library="linear" library_urn="urn:adsk.eagle:library:262" deviceset="78*" device="DT" package3d_urn="urn:adsk.eagle:package:16415/2" technology="05"/>
-<part name="C5" library="rcl" deviceset="C-EU" device="050-025X075" package3d_urn="urn:adsk.eagle:package:23637/1" value="2.2uF"/>
+<part name="C5" library="rcl" deviceset="C-EU" device="025-025X050" package3d_urn="urn:adsk.eagle:package:23629/2" value="2.2uF"/>
 <part name="C6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="CPOL-EU" device="E2.5-5" package3d_urn="urn:adsk.eagle:package:23344/1" value="0.1uF"/>
 <part name="P+3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="DZ1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LB10" device="" package3d_urn="urn:adsk.eagle:package:15791/1"/>
