@@ -1,0 +1,106 @@
+Partlist
+
+Exported from galvanika-board-1.0.brd at 15.7.20 01.31
+
+EAGLE Version 9.4.2 Copyright (c) 1988-2019 Autodesk, Inc.
+
+Assembly variant: 
+
+Part     Value               Package        Library   Position (mm)         Orientation
+
+C1       0.1uF               C1206          rcl       (57.9 95.5)           MR0
+C2       1uF                 E5-4           rcl       (83.96 81.2)          R0
+C3       1uF                 E5-4           rcl       (16.26363125 81.7)    R180
+C4       0.1uF               C1206          rcl       (42.1 95.5)           MR180
+C5       2.2uF               C050-025X075   rcl       (23.56 47.5)          R0
+C6       0.1uF               E2,5-5         rcl       (41.5 48)             R180
+C7       22p                 C025-025X050   rcl       (41.5 35.7)           R180
+C8       100n                C025-025X050   rcl       (41.5 38.5)           R180
+C9       22p                 C025-025X050   rcl       (41.4 20.6)           R0
+C10      100n                C025-025X050   rcl       (58.1 31.3)           R90
+C11      47uF                E2-4           rcl       (41.5 42.1)           R180
+C12      100n                C025-025X050   rcl       (58.2 26.2)           R270
+C13      0.1uF               C1206          rcl       (32.9 46.5)           MR90
+D1       1N5400              DO201-15       diode     (78.5 73.6)           R90
+D2       1N5400              DO201-15       diode     (21.3 70.8)           R90
+DA1      LM338TO220-SK29-38S TO220-SK29-38S dragberry (84 91.8)             R180
+DA2      LM338TO220-SK29-38S TO220-SK29-38S dragberry (16 91.7)             R180
+DZ1      LB10                LB10           led       (18.8 40)             R0
+F1       1.85A               MF-R           dragberry (64.2 2.1)            R0
+HG1      CL3641B             CL3641B        dragberry (79.6 39)             R0
+IC1      LM358D              SO08           linear    (50 72.4)             MR90
+IC2      7805DT              TO252          linear    (36.8 54.3)           MR270
+IC3      74HCT595D           SO16           74xx-eu   (85.6 19.8)           MR180
+IC4      74HCT595D           SO16           74xx-eu   (64.4 42.2)           MR180
+IC5      74HCT595D           SO16           74xx-eu   (18.1 22.7)           MR180
+IC6      ATMEGA48/88/168-PU  DIL28-3        atmega8   (50.2 33.4)           R270
+IC7      74HC595D            SO16           74xx-eu   (30.3 22.6)           MR270
+JP1                          1X06           pinhead   (69.7 17.6)           R90
+L1       120mH               0207/10        rcl       (50.4 34.7)           R270
+LED1                         LED3MM         led       (64.5 90.9)           R270
+LED2                         LED3MM         led       (35.5 90.9)           R270
+Q1       20MHz               HC49/S         crystal   (41.3 27.6)           R90
+R1       20K                 0207/10        rcl       (93.17 76.32)         R0
+R2       20K                 0207/10        rcl       (11 72.83)            R180
+R3       2k                  0207/10        rcl       (11 57.8)             R180
+R4       200                 R1206          rcl       (91.5 10.4)           MR180
+R5       2K                  R1206          rcl       (69.6 95.5)           MR0
+R6       330                 0207/10        rcl       (57.1 87)             R270
+R7       10K                 R0904N         dragberry (87.5 7.9)            R270
+R8       330                 0207/10        rcl       (42.7 87.1)           R90
+R9       0.1                 0411/12        rcl       (28.6 71.1)           R90
+R10      0.1                 0411/12        rcl       (71.6 71.1)           R90
+R11      200                 0207/10        rcl       (11 76.3)             R0
+R12      2K                  R1206          rcl       (30.4 95.5)           MR180
+R13      20K                 0207/10        rcl       (93.2 69.4)           R0
+R14      20K                 0207/10        rcl       (11 63.9)             R180
+R15      10K                 R0904N         dragberry (12.5 7.9)            R90
+R16                          SQP-5W-2       dragberry (49.9 78.2)           R0
+R17      100K                R1206          rcl       (56.4 72.3)           MR90
+R18      10K                 R1206          rcl       (55 76.9)             MR0
+R19      10K                 R1206          rcl       (45 76.9)             MR0
+R20      100K                R1206          rcl       (43.6 72.3)           MR270
+R21                          R1206          rcl       (7.3 31.6)            MR90
+R22                          R1206          rcl       (9.84444375 31.6)     MR90
+R23                          R1206          rcl       (12.3888875 31.6)     MR270
+R24                          R1206          rcl       (14.93333125 31.6)    MR270
+R25                          R1206          rcl       (17.477775 31.6)      MR270
+R26                          R1206          rcl       (20.02221875 31.6)    MR270
+R27                          R1206          rcl       (22.5666625 31.6)     MR270
+R28                          R1206          rcl       (25.11110625 31.6)    MR270
+R29                          R1206          rcl       (27.65555 31.6)       MR270
+R30                          R1206          rcl       (30.19999375 31.6)    MR90
+R31                          R1206          rcl       (79.7 38)             MR0
+R32                          R1206          rcl       (87.4 41.1)           MR0
+R33                          R1206          rcl       (80.9 29.9)           MR90
+R34                          R1206          rcl       (75.8 30)             MR90
+R35                          R1206          rcl       (73.2 30)             MR90
+R36                          R1206          rcl       (79.7 41)             MR0
+R37                          R1206          rcl       (83.4 29.9)           MR90
+R38                          R1206          rcl       (78.4 30)             MR90
+R39                          R1206          rcl       (64 58)               MR180
+R40                          R1206          rcl       (61.7 52.2)           MR90
+R41                          R1206          rcl       (64.9 51.3)           MR90
+R42                          R1206          rcl       (68.5 50)             MR90
+R43                          0207/7         rcl       (76.1 56.11)          R90
+R44                          0207/7         rcl       (81.6 56.11)          R90
+R45                          0207/7         rcl       (86.5 56.11)          R90
+R46                          0207/7         rcl       (70.5 56.11)          R90
+R47      10K                 0207/10        rcl       (51.2 55.6)           R180
+R48                          R0904N         dragberry (34.2 8)              R90
+R49      10K                 0207/10        rcl       (78.2 11.62)          MR90
+SA1                          SS12D00        dragberry (35.5 39.7)           R90
+SA2                          SS12D00        dragberry (73.8 6.8)            R270
+VT1      IRF4905             TO220-V        dragberry (93.3 81.2)           R0
+VT2      2N2222              TO92           dragberry (26.53639375 61.1)    R0
+VT3      2N2222              TO92           dragberry (10.750028125 52.8)   R0
+VT4      2N2222              TO92           dragberry (10.749971875 68.5)   R180
+VT5      IRF4905             TO220-V        dragberry (6.7 81.3)            R180
+VT6      BD139               TO126AV        dragberry (71.7 80)             R180
+VT7      BD139               TO126AV        dragberry (28.6 82.54)          R0
+VT8      S8550               TO92           dragberry (78.63333125 49.5)    R270
+VT9      S8550               TO92           dragberry (83.9666625 49.5)     R270
+VT10     S8550               TO92           dragberry (89.29999375 49.5)    R270
+VT11     S8550               TO92           dragberry (73.3 49.5)           R270
+XS1      KLS2-2              KLS2-2         dragberry (50 4.2)              R0
+XS2      KLS2-2              KLS2-2         dragberry (50 94.9)             R0

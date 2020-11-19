@@ -41000,9 +41000,9 @@ Source: http://www.alphapotentiometers.net/html/16mm_pot_2.html</description>
 </class>
 </classes>
 <parts>
-<part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="20K"/>
-<part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="20K"/>
-<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="2k"/>
+<part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100K"/>
+<part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100K"/>
+<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="10k"/>
 <part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="0.1uF"/>
 <part name="LED1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:15797/1"/>
 <part name="C2" library="rcl" deviceset="CPOL-EU" device="E5-4" package3d_urn="urn:adsk.eagle:package:23370/1" value="1uF"/>
@@ -41011,11 +41011,11 @@ Source: http://www.alphapotentiometers.net/html/16mm_pot_2.html</description>
 <part name="R9" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0411/12" package3d_urn="urn:adsk.eagle:package:23578/1" value="0.1"/>
 <part name="R10" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0411/12" package3d_urn="urn:adsk.eagle:package:23578/1" value="0.1"/>
 <part name="C3" library="rcl" deviceset="CPOL-EU" device="E5-4" package3d_urn="urn:adsk.eagle:package:23370/1" value="1uF"/>
-<part name="R11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="200"/>
+<part name="R11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="240"/>
 <part name="LED2" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:15797/1"/>
 <part name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="0.1uF"/>
-<part name="R13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="20K"/>
-<part name="R14" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="20K"/>
+<part name="R13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
+<part name="R14" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="10k"/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="VT1" library="dragberry" deviceset="IRF4905" device="" package3d_urn="urn:adsk.eagle:package:29490/1"/>
@@ -41092,8 +41092,8 @@ Source: http://www.alphapotentiometers.net/html/16mm_pot_2.html</description>
 <part name="VT6" library="dragberry" deviceset="IRF1404" device="" package3d_urn="urn:adsk.eagle:package:29490/1"/>
 <part name="VT7" library="dragberry" deviceset="IRF1404" device="" package3d_urn="urn:adsk.eagle:package:29490/1"/>
 <part name="R5" library="rcl" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2"/>
-<part name="R7" library="pot" library_urn="urn:adsk.eagle:library:331" deviceset="3RP/1610N" device="" package3d_urn="urn:adsk.eagle:package:22726/1"/>
-<part name="R15" library="pot" library_urn="urn:adsk.eagle:library:331" deviceset="3RP/1610N" device="" package3d_urn="urn:adsk.eagle:package:22726/1"/>
+<part name="R7" library="pot" library_urn="urn:adsk.eagle:library:331" deviceset="3RP/1610N" device="" package3d_urn="urn:adsk.eagle:package:22726/1" value="2k"/>
+<part name="R15" library="pot" library_urn="urn:adsk.eagle:library:331" deviceset="3RP/1610N" device="" package3d_urn="urn:adsk.eagle:package:22726/1" value="2k"/>
 <part name="SA5" library="dragberry" deviceset="KCD11-101-H" device=""/>
 <part name="R46" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
 <part name="R43" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
@@ -41103,7 +41103,7 @@ Source: http://www.alphapotentiometers.net/html/16mm_pot_2.html</description>
 <part name="SA2" library="dragberry" deviceset="SS12D00" device="DIP"/>
 <part name="SA3" library="dragberry" deviceset="SS12D00" device="DIP"/>
 <part name="SA4" library="dragberry" deviceset="SS12D00" device="DIP"/>
-<part name="R4" library="rcl" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2"/>
+<part name="R4" library="rcl" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="240"/>
 <part name="C5" library="rcl" deviceset="C-EU" device="025-025X050" package3d_urn="urn:adsk.eagle:package:23629/2" value="2.2uF"/>
 <part name="R50" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
 <part name="R51" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
@@ -41528,8 +41528,8 @@ Source: http://www.alphapotentiometers.net/html/16mm_pot_2.html</description>
 <attribute name="VALUE" x="67.31" y="19.05" size="1.778" layer="96" rot="MR90"/>
 </instance>
 <instance part="R15" gate="G$1" x="147.32" y="20.32" smashed="yes">
-<attribute name="NAME" x="143.891" y="16.51" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="143.51" y="16.51" size="1.778" layer="96" rot="R90"/>
+<attribute name="NAME" x="143.891" y="19.05" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="151.13" y="16.51" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="SA5" gate="G$1" x="40.64" y="119.38" smashed="yes" rot="R270">
 <attribute name="NAME" x="38.735" y="125.73" size="1.778" layer="95"/>
