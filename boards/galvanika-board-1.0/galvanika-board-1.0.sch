@@ -19177,9 +19177,9 @@ grid 2.54 mm</description>
 <text x="19" y="-3" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
 </package>
 <package name="SS12D00">
-<pad name="1$O" x="-2.5" y="0" drill="0.6" diameter="1.778"/>
-<pad name="1$P" x="0" y="0" drill="0.6" diameter="1.778"/>
-<pad name="1$S" x="2.5" y="0" drill="0.6" diameter="1.778"/>
+<pad name="1$O" x="-2.5" y="0" drill="0.8" diameter="2.1844"/>
+<pad name="1$P" x="0" y="0" drill="0.8" diameter="2.1844"/>
+<pad name="1$S" x="2.5" y="0" drill="0.8" diameter="2.1844"/>
 <wire x1="-4.2" y1="1.9" x2="4.2" y2="1.9" width="0.127" layer="21"/>
 <wire x1="4.2" y1="1.9" x2="4.2" y2="-1.9" width="0.127" layer="21"/>
 <wire x1="4.2" y1="-1.9" x2="-4.2" y2="-1.9" width="0.127" layer="21"/>
