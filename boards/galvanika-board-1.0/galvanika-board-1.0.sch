@@ -42540,7 +42540,7 @@ Source: http://www.alphapotentiometers.net/html/16mm_pot_2.html</description>
 <wire x1="-58.26" y1="134.62" x2="-60.96" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$24" class="0">
+<net name="MISO" class="0">
 <segment>
 <pinref part="IC6" gate="1" pin="PB4(MISO/PCINT4)"/>
 <wire x1="-149.86" y1="68.58" x2="-149.86" y2="83.82" width="0.1524" layer="91"/>
@@ -42819,7 +42819,7 @@ Source: http://www.alphapotentiometers.net/html/16mm_pot_2.html</description>
 <wire x1="33.02" y1="116.84" x2="35.56" y2="116.84" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$66" class="0">
+<net name="MOSI" class="0">
 <segment>
 <pinref part="IC6" gate="1" pin="PB3(MOSI/OC2A/PCINT3)"/>
 <wire x1="-142.24" y1="86.36" x2="-157.48" y2="86.36" width="0.1524" layer="91"/>
