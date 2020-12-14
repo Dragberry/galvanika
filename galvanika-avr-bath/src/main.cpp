@@ -129,6 +129,10 @@ ISR(ADC_vect)
     {
     case DUTY_CYCLE:
         reverse = ADC / 100;
+        if (reverse == 0)
+        {
+            reverse_progress = 0;
+        }
         display.set_scale(reverse);
         if (check_bit(PORTB, PB1))
         {
@@ -206,25 +210,28 @@ ISR(TIMER2_COMP_vect)
     {
         if (direct_progress == direct)
         {
-            if (reverse != 0 && reverse_progress == 0)
+            if (reverse > 0)
             {
-                // change direction to reverse
-                if (mode != Mode::M_DIRECT && mode != Mode::M_REVERSE)
+                if (reverse_progress == 0)
                 {
-                    cbi(PORTB, PB1);
-                    adc_channel = IDLE;
+                    // change direction to reverse
+                    if (mode != Mode::M_DIRECT && mode != Mode::M_REVERSE)
+                    {
+                        cbi(PORTB, PB1);
+                        adc_channel = IDLE;
+                    }
                 }
-            }
-            reverse_progress++;
-            if (reverse_progress > reverse)
-            {
-                reverse_progress = 0;
-                direct_progress = 0;
-                // change directions to direct
-                if (mode != Mode::M_DIRECT && mode != Mode::M_REVERSE)
+                reverse_progress++;
+                if (reverse_progress > reverse)
                 {
-                    sbi(PORTB, PB1);
-                    adc_channel = IDLE;
+                    reverse_progress = 0;
+                    direct_progress = 0;
+                    // change directions to direct
+                    if (mode != Mode::M_DIRECT && mode != Mode::M_REVERSE)
+                    {
+                        sbi(PORTB, PB1);
+                        adc_channel = IDLE;
+                    }
                 }
             }
         }

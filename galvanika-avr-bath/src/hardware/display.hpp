@@ -37,6 +37,8 @@ private:
     uint8_t *current_values = direct_values;
     uint8_t current_digit = 0;
 
+    bool direct_only = false;
+
 public:
     Display()
     {
@@ -100,6 +102,10 @@ public:
                 }
                 current_values = reverse_values;
             }
+            else if (direct_only)
+            {
+                current_values = direct_values;
+            }
             else
             {
                 if (time % (HALF_SECOND * 16) == 0)
@@ -156,6 +162,7 @@ public:
 
     void set_scale(uint8_t scale)
     {
+        direct_only = (scale == 0);
         static uint16_t mask = 0b1111111111;
         uint16_t value = mask >> (10 - scale);
         set_scale_value(value);
