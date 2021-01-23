@@ -34118,8 +34118,8 @@ In this library the device names are the same as the pin names of the symbols, t
 </class>
 </classes>
 <parts>
-<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100K"/>
-<part name="R6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100K"/>
+<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="3.3K"/>
+<part name="R6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="680K"/>
 <part name="R9" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="10k"/>
 <part name="LED1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:15797/1"/>
 <part name="C3" library="rcl" deviceset="CPOL-EU" device="E5-4" package3d_urn="urn:adsk.eagle:package:23370/1" value="1uF"/>
@@ -34130,7 +34130,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="C4" library="rcl" deviceset="CPOL-EU" device="E5-4" package3d_urn="urn:adsk.eagle:package:23370/1" value="1uF"/>
 <part name="R13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="240"/>
 <part name="LED2" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:15797/1"/>
-<part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
+<part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="3.3K"/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="VT3" library="dragberry" deviceset="2N2222" device="" package3d_urn="urn:adsk.eagle:package:28523/2"/>
@@ -34167,19 +34167,19 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="R11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="240"/>
 <part name="C1" library="rcl" deviceset="C-EU" device="025-025X050" package3d_urn="urn:adsk.eagle:package:23629/2" value="2.2uF"/>
 <part name="SA11" library="dragberry" deviceset="KLS7-6X6" device=""/>
-<part name="R47" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
-<part name="C9" library="rcl" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2"/>
-<part name="R51" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
-<part name="R22" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
-<part name="R23" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
+<part name="R47" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="4.7k"/>
+<part name="C9" library="rcl" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="1u"/>
+<part name="R51" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="100"/>
+<part name="R22" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="3.3k"/>
+<part name="R23" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="3.3k"/>
 <part name="DD1" library="BluePill" deviceset="BLUE_PILL" device=""/>
 <part name="D1" library="tango" deviceset="1N4001" device=""/>
 <part name="D3" library="tango" deviceset="1N4001" device=""/>
 <part name="D2" library="tango" deviceset="1N4001" device=""/>
-<part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
-<part name="R7" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
-<part name="R30" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100K"/>
-<part name="R33" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100K"/>
+<part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="680k"/>
+<part name="R7" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="680k"/>
+<part name="R30" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="3.3k"/>
+<part name="R33" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="680K"/>
 <part name="R36" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="10k"/>
 <part name="LED3" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:15797/1"/>
 <part name="C7" library="rcl" deviceset="CPOL-EU" device="E5-4" package3d_urn="urn:adsk.eagle:package:23370/1" value="1uF"/>
@@ -34190,7 +34190,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="C8" library="rcl" deviceset="CPOL-EU" device="E5-4" package3d_urn="urn:adsk.eagle:package:23370/1" value="1uF"/>
 <part name="R40" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="240"/>
 <part name="LED4" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:15797/1"/>
-<part name="R31" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
+<part name="R31" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="3.3k"/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="VT8" library="dragberry" deviceset="AOD403" device=""/>
 <part name="VT10" library="dragberry" deviceset="2N2222" device="" package3d_urn="urn:adsk.eagle:package:28523/2"/>
@@ -34221,26 +34221,26 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="SA8" library="dragberry" deviceset="SS12D00" device="DIP"/>
 <part name="SA10" library="dragberry" deviceset="SS12D00" device="DIP"/>
 <part name="R38" library="rcl" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="240"/>
-<part name="R52" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
-<part name="R53" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
+<part name="R52" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="3.3k"/>
+<part name="R53" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="3.3k"/>
 <part name="D6" library="tango" deviceset="1N4001" device=""/>
 <part name="D8" library="tango" deviceset="1N4001" device=""/>
 <part name="D7" library="tango" deviceset="1N4001" device=""/>
-<part name="R32" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
-<part name="R34" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
-<part name="R60" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100K"/>
-<part name="R63" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100K"/>
+<part name="R32" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="680k"/>
+<part name="R34" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="680k"/>
+<part name="R60" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="3.3k"/>
+<part name="R63" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="680K"/>
 <part name="R66" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="10k"/>
 <part name="LED5" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:15797/1"/>
 <part name="C11" library="rcl" deviceset="CPOL-EU" device="E5-4" package3d_urn="urn:adsk.eagle:package:23370/1" value="1uF"/>
 <part name="R77" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="330"/>
 <part name="R75" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="330"/>
-<part name="R82" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0411/12" package3d_urn="urn:adsk.eagle:package:23578/1" value="0.1"/>
+<part name="R82" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0411/12" package3d_urn="urn:adsk.eagle:package:23578/1" value="3.3k"/>
 <part name="R81" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0411/12" package3d_urn="urn:adsk.eagle:package:23578/1" value="0.1"/>
 <part name="C12" library="rcl" deviceset="CPOL-EU" device="E5-4" package3d_urn="urn:adsk.eagle:package:23370/1" value="1uF"/>
 <part name="R70" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="240"/>
 <part name="LED6" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:15797/1"/>
-<part name="R61" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
+<part name="R61" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="3.3k"/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="VT15" library="dragberry" deviceset="AOD403" device=""/>
 <part name="VT17" library="dragberry" deviceset="2N2222" device="" package3d_urn="urn:adsk.eagle:package:28523/2"/>
@@ -34271,25 +34271,25 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="SA13" library="dragberry" deviceset="SS12D00" device="DIP"/>
 <part name="SA15" library="dragberry" deviceset="SS12D00" device="DIP"/>
 <part name="R68" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="240"/>
-<part name="R79" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
-<part name="R80" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
+<part name="R79" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="3.3k"/>
+<part name="R80" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="51k"/>
 <part name="D11" library="tango" deviceset="1N4001" device=""/>
 <part name="D13" library="tango" deviceset="1N4001" device=""/>
 <part name="D12" library="tango" deviceset="1N4001" device=""/>
-<part name="R62" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
-<part name="R64" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="100k"/>
+<part name="R62" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="680k"/>
+<part name="R64" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="680k"/>
 <part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="R19" library="dragberry" deviceset="R0904N" device=""/>
 <part name="SA6" library="dragberry" deviceset="KLS7-6X6" device=""/>
-<part name="R17" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
-<part name="C5" library="rcl" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2"/>
-<part name="R21" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
+<part name="R17" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="4.7k"/>
+<part name="C5" library="rcl" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="1u"/>
+<part name="R21" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="100"/>
 <part name="P+12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="R76" library="dragberry" deviceset="R0904N" device=""/>
 <part name="SA16" library="dragberry" deviceset="KLS7-6X6" device=""/>
-<part name="R74" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
-<part name="C13" library="rcl" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2"/>
-<part name="R78" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
+<part name="R74" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="4.7k"/>
+<part name="C13" library="rcl" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="1u"/>
+<part name="R78" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="100"/>
 <part name="SUPPLY1" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+12V" device=""/>
 <part name="SUPPLY3" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+12V" device=""/>
 <part name="SUPPLY4" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+12V" device=""/>
@@ -34309,9 +34309,9 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="VT2" library="dragberry" deviceset="AOD403" device=""/>
 <part name="VT6" library="dragberry" deviceset="LR2905" device=""/>
 <part name="VT7" library="dragberry" deviceset="LR2905" device=""/>
-<part name="R42" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
-<part name="R43" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
-<part name="R44" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
+<part name="R42" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="1k"/>
+<part name="R43" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="1k"/>
+<part name="R44" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="1k"/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="DA1" library="dragberry" deviceset="LM338" device="TO220-SK29-38S"/>
 <part name="R1" library="rcl" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2"/>
@@ -34321,6 +34321,9 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="XS5" library="dragberry" deviceset="CWF-2" device=""/>
 <part name="XS7" library="dragberry" deviceset="CWF-2" device=""/>
 <part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X7" device="" package3d_urn="urn:adsk.eagle:package:22477/2"/>
+<part name="R87" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="510"/>
+<part name="R88" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="510"/>
+<part name="R89" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="510"/>
 </parts>
 <sheets>
 <sheet>
@@ -35076,16 +35079,16 @@ In this library the device names are the same as the pin names of the symbols, t
 <attribute name="NAME" x="-92.9386" y="-166.37" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-88.138" y="-166.37" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="R43" gate="G$1" x="-86.36" y="-162.56" smashed="yes" rot="R90">
-<attribute name="NAME" x="-87.8586" y="-166.37" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="-83.058" y="-166.37" size="1.778" layer="96" rot="R90"/>
+<instance part="R43" gate="G$1" x="-86.36" y="-170.18" smashed="yes" rot="R90">
+<attribute name="NAME" x="-87.8586" y="-173.99" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="-83.058" y="-173.99" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R44" gate="G$1" x="-81.28" y="-162.56" smashed="yes" rot="R90">
 <attribute name="NAME" x="-82.7786" y="-166.37" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-77.978" y="-166.37" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="GND3" gate="1" x="-86.36" y="-175.26" smashed="yes">
-<attribute name="VALUE" x="-88.9" y="-177.8" size="1.778" layer="96"/>
+<instance part="GND3" gate="1" x="-86.36" y="-185.42" smashed="yes">
+<attribute name="VALUE" x="-88.9" y="-187.96" size="1.778" layer="96"/>
 </instance>
 <instance part="DA1" gate="G$1" x="91.44" y="152.4" smashed="yes">
 <attribute name="NAME" x="83.82" y="158.115" size="1.778" layer="95"/>
@@ -35118,6 +35121,18 @@ In this library the device names are the same as the pin names of the symbols, t
 <instance part="JP1" gate="A" x="-231.14" y="-124.46" smashed="yes" rot="R180">
 <attribute name="NAME" x="-224.79" y="-135.255" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-224.79" y="-111.76" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R87" gate="G$1" x="-40.64" y="-2.54" smashed="yes">
+<attribute name="NAME" x="-44.45" y="-1.0414" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-44.45" y="-5.842" size="1.778" layer="96"/>
+</instance>
+<instance part="R88" gate="G$1" x="-40.64" y="-152.4" smashed="yes">
+<attribute name="NAME" x="-44.45" y="-150.9014" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-44.45" y="-155.702" size="1.778" layer="96"/>
+</instance>
+<instance part="R89" gate="G$1" x="-40.64" y="-350.52" smashed="yes">
+<attribute name="NAME" x="-44.45" y="-349.0214" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-44.45" y="-353.822" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -35685,12 +35700,14 @@ In this library the device names are the same as the pin names of the symbols, t
 <segment>
 <pinref part="R42" gate="G$1" pin="1"/>
 <pinref part="R43" gate="G$1" pin="1"/>
-<wire x1="-91.44" y1="-167.64" x2="-86.36" y2="-167.64" width="0.1524" layer="91"/>
 <pinref part="R44" gate="G$1" pin="1"/>
-<wire x1="-86.36" y1="-167.64" x2="-81.28" y2="-167.64" width="0.1524" layer="91"/>
-<junction x="-86.36" y="-167.64"/>
+<junction x="-86.36" y="-175.26"/>
 <pinref part="GND3" gate="1" pin="GND"/>
-<wire x1="-86.36" y1="-167.64" x2="-86.36" y2="-172.72" width="0.1524" layer="91"/>
+<wire x1="-86.36" y1="-175.26" x2="-86.36" y2="-182.88" width="0.1524" layer="91"/>
+<wire x1="-91.44" y1="-167.64" x2="-91.44" y2="-175.26" width="0.1524" layer="91"/>
+<wire x1="-91.44" y1="-175.26" x2="-86.36" y2="-175.26" width="0.1524" layer="91"/>
+<wire x1="-86.36" y1="-175.26" x2="-81.28" y2="-175.26" width="0.1524" layer="91"/>
+<wire x1="-81.28" y1="-175.26" x2="-81.28" y2="-167.64" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$26" class="0">
@@ -35951,14 +35968,8 @@ In this library the device names are the same as the pin names of the symbols, t
 <segment>
 <wire x1="-60.96" y1="-2.54" x2="-60.96" y2="-149.86" width="0.1524" layer="91"/>
 <wire x1="-60.96" y1="-149.86" x2="-106.68" y2="-149.86" width="0.1524" layer="91"/>
-<pinref part="R17" gate="G$1" pin="2"/>
-<pinref part="SA6" gate="G$1" pin="1"/>
-<wire x1="-27.94" y1="-7.62" x2="-30.48" y2="-7.62" width="0.1524" layer="91"/>
-<wire x1="-30.48" y1="-7.62" x2="-35.56" y2="-7.62" width="0.1524" layer="91"/>
-<pinref part="C5" gate="G$1" pin="1"/>
-<junction x="-30.48" y="-7.62"/>
-<wire x1="-30.48" y1="-7.62" x2="-30.48" y2="-2.54" width="0.1524" layer="91"/>
-<wire x1="-30.48" y1="-2.54" x2="-60.96" y2="-2.54" width="0.1524" layer="91"/>
+<wire x1="-45.72" y1="-2.54" x2="-60.96" y2="-2.54" width="0.1524" layer="91"/>
+<pinref part="R87" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="DD1" gate="G$1" pin="PB5"/>
@@ -35992,8 +36003,8 @@ In this library the device names are the same as the pin names of the symbols, t
 <wire x1="-48.26" y1="-119.38" x2="-106.68" y2="-119.38" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="DD1" gate="G$1" pin="PC13"/>
-<wire x1="-157.48" y1="-162.56" x2="-177.8" y2="-162.56" width="0.1524" layer="91"/>
+<pinref part="DD1" gate="G$1" pin="PB13"/>
+<wire x1="-223.52" y1="-119.38" x2="-218.44" y2="-119.38" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -36355,8 +36366,8 @@ In this library the device names are the same as the pin names of the symbols, t
 <wire x1="-2.54" y1="-121.92" x2="-106.68" y2="-121.92" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="DD1" gate="G$1" pin="PC14"/>
-<wire x1="-157.48" y1="-160.02" x2="-177.8" y2="-160.02" width="0.1524" layer="91"/>
+<pinref part="DD1" gate="G$1" pin="PB14"/>
+<wire x1="-223.52" y1="-121.92" x2="-218.44" y2="-121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$46" class="0">
@@ -36406,7 +36417,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <wire x1="-68.58" y1="-142.24" x2="-86.36" y2="-142.24" width="0.1524" layer="91"/>
 <pinref part="R43" gate="G$1" pin="2"/>
 <wire x1="-86.36" y1="-142.24" x2="-111.76" y2="-142.24" width="0.1524" layer="91"/>
-<wire x1="-86.36" y1="-157.48" x2="-86.36" y2="-142.24" width="0.1524" layer="91"/>
+<wire x1="-86.36" y1="-165.1" x2="-86.36" y2="-142.24" width="0.1524" layer="91"/>
 <junction x="-86.36" y="-142.24"/>
 <wire x1="-86.36" y1="-142.24" x2="-86.36" y2="-132.08" width="0.1524" layer="91"/>
 </segment>
@@ -36720,8 +36731,8 @@ In this library the device names are the same as the pin names of the symbols, t
 <wire x1="-66.04" y1="-124.46" x2="-106.68" y2="-124.46" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="DD1" gate="G$1" pin="PC15"/>
-<wire x1="-157.48" y1="-157.48" x2="-177.8" y2="-157.48" width="0.1524" layer="91"/>
+<pinref part="DD1" gate="G$1" pin="PB12"/>
+<wire x1="-223.52" y1="-116.84" x2="-218.44" y2="-116.84" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$78" class="0">
@@ -36782,14 +36793,8 @@ In this library the device names are the same as the pin names of the symbols, t
 </net>
 <net name="MODE-CTRL-B" class="0">
 <segment>
-<wire x1="-30.48" y1="-152.4" x2="-106.68" y2="-152.4" width="0.1524" layer="91"/>
-<pinref part="R47" gate="G$1" pin="2"/>
-<pinref part="SA11" gate="G$1" pin="1"/>
-<wire x1="-27.94" y1="-170.18" x2="-30.48" y2="-170.18" width="0.1524" layer="91"/>
-<wire x1="-30.48" y1="-170.18" x2="-35.56" y2="-170.18" width="0.1524" layer="91"/>
-<pinref part="C9" gate="G$1" pin="1"/>
-<junction x="-30.48" y="-170.18"/>
-<wire x1="-30.48" y1="-152.4" x2="-30.48" y2="-170.18" width="0.1524" layer="91"/>
+<wire x1="-45.72" y1="-152.4" x2="-106.68" y2="-152.4" width="0.1524" layer="91"/>
+<pinref part="R88" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="DD1" gate="G$1" pin="PB4"/>
@@ -36805,16 +36810,10 @@ In this library the device names are the same as the pin names of the symbols, t
 </net>
 <net name="MODE-CTRL-C" class="0">
 <segment>
-<pinref part="SA16" gate="G$1" pin="1"/>
-<pinref part="R74" gate="G$1" pin="2"/>
-<wire x1="-27.94" y1="-355.6" x2="-30.48" y2="-355.6" width="0.1524" layer="91"/>
-<wire x1="-30.48" y1="-355.6" x2="-35.56" y2="-355.6" width="0.1524" layer="91"/>
-<pinref part="C13" gate="G$1" pin="1"/>
-<junction x="-30.48" y="-355.6"/>
-<wire x1="-30.48" y1="-355.6" x2="-30.48" y2="-350.52" width="0.1524" layer="91"/>
-<wire x1="-30.48" y1="-350.52" x2="-60.96" y2="-350.52" width="0.1524" layer="91"/>
 <wire x1="-60.96" y1="-350.52" x2="-60.96" y2="-154.94" width="0.1524" layer="91"/>
 <wire x1="-60.96" y1="-154.94" x2="-106.68" y2="-154.94" width="0.1524" layer="91"/>
+<wire x1="-45.72" y1="-350.52" x2="-60.96" y2="-350.52" width="0.1524" layer="91"/>
+<pinref part="R89" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="DD1" gate="G$1" pin="PB3"/>
@@ -36986,27 +36985,6 @@ In this library the device names are the same as the pin names of the symbols, t
 <wire x1="-251.46" y1="-149.86" x2="-218.44" y2="-149.86" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$17" class="0">
-<segment>
-<pinref part="DD1" gate="G$1" pin="PB12"/>
-<pinref part="JP1" gate="A" pin="7"/>
-<wire x1="-218.44" y1="-116.84" x2="-228.6" y2="-116.84" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$28" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="6"/>
-<pinref part="DD1" gate="G$1" pin="PB13"/>
-<wire x1="-228.6" y1="-119.38" x2="-218.44" y2="-119.38" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$32" class="0">
-<segment>
-<pinref part="DD1" gate="G$1" pin="PB14"/>
-<pinref part="JP1" gate="A" pin="5"/>
-<wire x1="-218.44" y1="-121.92" x2="-228.6" y2="-121.92" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$35" class="0">
 <segment>
 <pinref part="DD1" gate="G$1" pin="PB15"/>
@@ -37033,6 +37011,45 @@ In this library the device names are the same as the pin names of the symbols, t
 <pinref part="JP1" gate="A" pin="1"/>
 <pinref part="DD1" gate="G$1" pin="PA10"/>
 <wire x1="-228.6" y1="-132.08" x2="-218.44" y2="-132.08" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$17" class="0">
+<segment>
+<pinref part="R17" gate="G$1" pin="2"/>
+<pinref part="SA6" gate="G$1" pin="1"/>
+<wire x1="-27.94" y1="-7.62" x2="-30.48" y2="-7.62" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="-7.62" x2="-35.56" y2="-7.62" width="0.1524" layer="91"/>
+<pinref part="C5" gate="G$1" pin="1"/>
+<junction x="-30.48" y="-7.62"/>
+<wire x1="-30.48" y1="-7.62" x2="-30.48" y2="-2.54" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="-2.54" x2="-35.56" y2="-2.54" width="0.1524" layer="91"/>
+<pinref part="R87" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="N$28" class="0">
+<segment>
+<pinref part="R47" gate="G$1" pin="2"/>
+<pinref part="SA11" gate="G$1" pin="1"/>
+<wire x1="-27.94" y1="-170.18" x2="-30.48" y2="-170.18" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="-170.18" x2="-35.56" y2="-170.18" width="0.1524" layer="91"/>
+<pinref part="C9" gate="G$1" pin="1"/>
+<junction x="-30.48" y="-170.18"/>
+<wire x1="-30.48" y1="-152.4" x2="-30.48" y2="-170.18" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="-152.4" x2="-35.56" y2="-152.4" width="0.1524" layer="91"/>
+<pinref part="R88" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="N$32" class="0">
+<segment>
+<pinref part="R74" gate="G$1" pin="2"/>
+<pinref part="SA16" gate="G$1" pin="1"/>
+<wire x1="-27.94" y1="-355.6" x2="-30.48" y2="-355.6" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="-355.6" x2="-35.56" y2="-355.6" width="0.1524" layer="91"/>
+<pinref part="C13" gate="G$1" pin="1"/>
+<junction x="-30.48" y="-355.6"/>
+<wire x1="-30.48" y1="-355.6" x2="-30.48" y2="-350.52" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="-350.52" x2="-35.56" y2="-350.52" width="0.1524" layer="91"/>
+<pinref part="R89" gate="G$1" pin="2"/>
 </segment>
 </net>
 </nets>
