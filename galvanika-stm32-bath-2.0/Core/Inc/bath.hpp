@@ -10,6 +10,9 @@ static constexpr uint16_t MODES[MODES_SIZE][2] = {
 };
 
 class Bath {
+private:
+  const char name;
+
 public:
   const uint32_t adc_channel_reverse_duration;
   const uint32_t adc_channel_current_direct;
@@ -24,7 +27,6 @@ public:
   bool enabled;
 
 private:
-  const char name;
   uint32_t current_direct_raw;
   float current_direct;
   uint32_t current_reverse_raw;
@@ -43,8 +45,25 @@ private:
   char current_string[20];
   char mode_string[8];
 
+  float (* adjust_current)(float);
+  float (* adjust_reverse)(float);
+
 public:
-  Bath(char name, uint8_t y_position, uint32_t adc_duration, uint32_t adc_direct, uint32_t adc_reverse, volatile uint32_t *pwm_port, uint32_t pwm_pin, uint32_t mode_pin, uint32_t power_pin, uint32_t branch_pin) :
+  Bath(
+      char name,
+      uint8_t y_position,
+      uint32_t adc_duration,
+      uint32_t adc_direct,
+      uint32_t adc_reverse,
+      volatile uint32_t *pwm_port,
+      uint32_t pwm_pin,
+      uint32_t mode_pin,
+      uint32_t power_pin,
+      uint32_t branch_pin,
+      float (* adjust_current)(float),
+      float (* adjust_reverse)(float)
+      ) :
+  name(name),
   adc_channel_reverse_duration(adc_duration),
   adc_channel_current_direct(adc_direct),
   adc_channel_current_reverse(adc_reverse),
@@ -54,7 +73,8 @@ public:
   power_pin(power_pin),
   branch_pin(branch_pin),
   y_position(y_position),
-  name(name) {
+  adjust_current(adjust_current),
+  adjust_reverse(adjust_reverse) {
     this->current_direct_raw = 0;
     this->current_direct = 0.0;
     this->current_reverse_raw = 0;
@@ -81,10 +101,10 @@ public:
 
   void build() {
     reverse_duration = (uint8_t) (reverse_duration_raw * 11 / 4096);
-    current_direct = ((float) current_direct_raw) * 0.000264485;
-    current_reverse = ((float) current_reverse_raw) * -0.000264485;
+    current_direct = adjust_current(((float) current_direct_raw) * 0.000264485);
+    current_reverse = -adjust_reverse(((float) current_reverse_raw) * 0.000264485);
     if (enabled) {
-      snprintf(current_string, 19, "%c:%+1.2f / %1.2f", name, current_direct, current_reverse);
+      snprintf(current_string, 19, "%c: %+1.3f/%1.3f", name, current_direct, current_reverse);
       uint16_t mode_duration = MODES[mode][1];
       uint16_t mode_duration_normalized = mode_duration  < 1000 ? mode_duration : mode_duration / 1000;
       const char* mode_duration_unit = mode_duration < 1000 ? "ms" : "s";
