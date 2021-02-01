@@ -131,18 +131,18 @@
 <library name="dragberry">
 <packages>
 <package name="CL3641B">
-<pad name="E" x="-6.35" y="-5.08" drill="0.6" diameter="1.27"/>
-<pad name="D" x="-3.81" y="-5.08" drill="0.6" diameter="1.27"/>
-<pad name="DP" x="-1.27" y="-5.08" drill="0.6" diameter="1.27" rot="R90"/>
-<pad name="C" x="1.27" y="-5.08" drill="0.6" diameter="1.27" rot="R90"/>
-<pad name="G" x="3.81" y="-5.08" drill="0.6" diameter="1.27" rot="R90"/>
-<pad name="A4" x="6.35" y="-5.08" drill="0.6" diameter="1.27" rot="R90"/>
-<pad name="B" x="6.35" y="5.08" drill="0.6" diameter="1.27" rot="R90"/>
-<pad name="A3" x="3.81" y="5.08" drill="0.6" diameter="1.27" rot="R90"/>
-<pad name="A2" x="1.27" y="5.08" drill="0.6" diameter="1.27" rot="R90"/>
-<pad name="F" x="-1.27" y="5.08" drill="0.6" diameter="1.27" rot="R90"/>
-<pad name="A" x="-3.81" y="5.08" drill="0.6" diameter="1.27" rot="R90"/>
-<pad name="A1" x="-6.35" y="5.08" drill="0.6" diameter="1.27" rot="R90"/>
+<pad name="E" x="-6.35" y="-5.08" drill="0.8" diameter="1.778"/>
+<pad name="D" x="-3.81" y="-5.08" drill="0.8" diameter="1.778"/>
+<pad name="DP" x="-1.27" y="-5.08" drill="0.8" diameter="1.778" rot="R90"/>
+<pad name="C" x="1.27" y="-5.08" drill="0.8" diameter="1.778" rot="R90"/>
+<pad name="G" x="3.81" y="-5.08" drill="0.8" diameter="1.778" rot="R90"/>
+<pad name="A4" x="6.35" y="-5.08" drill="0.8" diameter="1.778" rot="R90"/>
+<pad name="B" x="6.35" y="5.08" drill="0.8" diameter="1.778" rot="R90"/>
+<pad name="A3" x="3.81" y="5.08" drill="0.8" diameter="1.778" rot="R90"/>
+<pad name="A2" x="1.27" y="5.08" drill="0.8" diameter="1.778" rot="R90"/>
+<pad name="F" x="-1.27" y="5.08" drill="0.8" diameter="1.778" rot="R90"/>
+<pad name="A" x="-3.81" y="5.08" drill="0.8" diameter="1.778" rot="R90"/>
+<pad name="A1" x="-6.35" y="5.08" drill="0.8" diameter="1.778" rot="R90"/>
 <wire x1="-15" y1="-7" x2="15" y2="-7" width="0.127" layer="21"/>
 <wire x1="15" y1="-7" x2="15" y2="7" width="0.127" layer="21"/>
 <wire x1="15" y1="7" x2="-15" y2="7" width="0.127" layer="21"/>
