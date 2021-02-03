@@ -2,15 +2,34 @@
 #include <avr/interrupt.h>
 #include "avr/hardware/spi.hpp"
 #include "avr/hardware/uart.hpp"
+#include "hardware/segment7x4.hpp"
 
 static volatile uint16_t time_ms = 0;
 
+Segment8x7 display;
+
+void init_buttons() {
+    // State change interruption
+   cbi(DDRD, PD2);
+   sbi(PORTD, PD2);
+   sbi(MCUCR, ISC01);
+   cbi(MCUCR, ISC00);
+   sbi(GICR, INT0);
+
+   cbi(DDRD, PD3);
+   sbi(PORTD, PD3);
+   sbi(MCUCR, ISC11);
+   cbi(MCUCR, ISC10);
+   sbi(GICR, INT1);
+
+}
+
 void init_adc() {
-    // channel 5
+    // channel 0
     cbi(ADMUX, MUX3);
-    sbi(ADMUX, MUX2);
+    cbi(ADMUX, MUX2);
     cbi(ADMUX, MUX1);
-    sbi(ADMUX, MUX0);
+    cbi(ADMUX, MUX0);
 
     cbi(ADMUX, REFS1);
     sbi(ADMUX, REFS0);
@@ -62,27 +81,6 @@ void init_sensors() {
     sbi(TIMSK, OCIE2);
 }
 
-int main() {
-    init_pwm();
-    init_adc();
-    init_sensors();
-    UART::init(25);
-//    SPI::init();
-    sei();
-
-
-//    sbi(DDRB, PB1);
-//    cbi(PORTB, PB1);
-
-    while(true);
-}
-
-ISR(ADC_vect) {
-    uint8_t value = (uint8_t)(ADC >> 8);
-    outb(OCR1AL, value);
-//    UART::send(value);
-}
-
 void start_pump() {
     sbi(TCCR1B, CS12);
     cbi(TCCR1B, CS11);
@@ -103,18 +101,61 @@ void stop_pump() {
     sbi(PORTB, PB1);
 }
 
+int main() {
+    display.init();
+    init_buttons();
+    init_pwm();
+    init_adc();
+    init_sensors();
+
+    start_pump();
+    sei();
+
+    while(true);
+}
+
+volatile uint8_t mode = 0;
+
+ISR(ADC_vect) {
+    uint8_t value = (uint8_t)(ADC >> 8);
+    outb(OCR1AL, value);
+    display.set_mode(mode);
+    display.set_value(value);
+}
+
+
 ISR(TIMER2_COMP_vect) {
     time_ms++;
-    if (time_ms % 250 == 0) {
-        if (check_bit(PIND, PD5) && check_bit(PIND, PD5)) {
-            stop_pump();
-        } else {
-            start_pump();
-        }
-    }
+//    if (time_ms % 250 == 0) {
+//        if (check_bit(PIND, PD5) && check_bit(PIND, PD5)) {
+//            stop_pump();
+//        } else {
+//            start_pump();
+//        }
+//    }
     if (time_ms == 50000)
     {
         time_ms = 0;
     }
+}
+
+ISR(TIMER0_OVF_vect)
+{
+    display.show();
+}
+
+ISR(INT0_vect)
+{
+    stop_pump();
+}
+
+ISR(INT1_vect)
+{
+    mode++;
+    if (mode == 16)
+    {
+        mode = 0;
+    }
+    display.set_mode(mode);
 }
 
