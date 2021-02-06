@@ -9,7 +9,7 @@
 class Segment8x7
 {
 private:
-    static const uint8_t BUFFER_SIZE = 4;
+    static const uint8_t BUFFER_SIZE = 8;
 
     static const uint8_t DIGITS[10];
 

@@ -22,6 +22,8 @@ private:
     uint8_t data1 = 0;
     uint8_t data2 = 0;
 
+    bool enabled = true;
+
 public:
     void init()
     {
@@ -43,7 +45,14 @@ public:
             current_digit = 0;
         }
         SPI::reset();
-        SPI::send_byte(data1);
+        if (!enabled && current_digit == 0)
+        {
+            SPI::send_byte(0xFF);
+        }
+        else
+        {
+            SPI::send_byte(data1);
+        }
         SPI::send_byte(data2);
         SPI::latch();
     }
@@ -63,13 +72,23 @@ public:
         data[3] = DIGITS[mode % 16] & DOT_MASK;
     }
 
-    void set_value(uint8_t value)
+    void set_value(uint8_t value, uint8_t base = 10)
     {
-        data[0] = DIGITS[value % 10];
-        value /= 10;
-        data[1] = DIGITS[value % 10];
-        value /= 10;
-        data[2] = DIGITS[value % 10];
+        data[0] = DIGITS[value % base];
+        value /= base;
+        data[1] = DIGITS[value % base];
+        value /= base;
+        data[2] = DIGITS[value % base];
+    }
+
+    void blink()
+    {
+        enabled = !enabled;
+    }
+
+    void set_enabled(bool enabled)
+    {
+       this->enabled = enabled;
     }
 
 };

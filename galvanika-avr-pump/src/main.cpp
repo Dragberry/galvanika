@@ -2,29 +2,32 @@
 #include <avr/interrupt.h>
 #include "avr/hardware/spi.hpp"
 #include "avr/hardware/uart.hpp"
+#include "hardware/pump.hpp"
 #include "hardware/segment7x4.hpp"
 
 static volatile uint16_t time_ms = 0;
 
-Segment8x7 display;
+Pump pump;
 
-void init_buttons() {
+void init_buttons()
+{
     // State change interruption
-   cbi(DDRD, PD2);
-   sbi(PORTD, PD2);
-   sbi(MCUCR, ISC01);
-   cbi(MCUCR, ISC00);
-   sbi(GICR, INT0);
+    cbi(DDRD, PD2);
+    sbi(PORTD, PD2);
+    cbi(MCUCR, ISC01);
+    sbi(MCUCR, ISC00);
+    sbi(GICR, INT0);
 
-   cbi(DDRD, PD3);
-   sbi(PORTD, PD3);
-   sbi(MCUCR, ISC11);
-   cbi(MCUCR, ISC10);
-   sbi(GICR, INT1);
+    cbi(DDRD, PD3);
+    sbi(PORTD, PD3);
+    cbi(MCUCR, ISC11);
+    sbi(MCUCR, ISC10);
+    sbi(GICR, INT1);
 
 }
 
-void init_adc() {
+void init_adc()
+{
     // channel 0
     cbi(ADMUX, MUX3);
     cbi(ADMUX, MUX2);
@@ -46,26 +49,8 @@ void init_adc() {
     sbi(ADCSRA, ADSC);
 }
 
-void init_pwm() {
-    sbi(DDRB, PB1);
-
-    sbi(TCCR1B, CS12);
-    cbi(TCCR1B, CS11);
-    sbi(TCCR1B, CS10);
-
-    // Fast PWM 8-bit
-    cbi(TCCR1B, WGM13);
-    sbi(TCCR1B, WGM12);
-    cbi(TCCR1A, WGM11);
-    sbi(TCCR1A, WGM10);
-
-    sbi(TCCR1A, COM1A1);
-    cbi(TCCR1A, COM1A0);
-
-    outb(OCR1AL, 127);
-}
-
-void init_sensors() {
+void init_sensors()
+{
     cbi(DDRD, PD5);
     cbi(DDRD, PD7);
     sbi(DDRD, PD6);
@@ -81,59 +66,79 @@ void init_sensors() {
     sbi(TIMSK, OCIE2);
 }
 
-void start_pump() {
-    sbi(TCCR1B, CS12);
-    cbi(TCCR1B, CS11);
-    sbi(TCCR1B, CS10);
-
-    sbi(TCCR1A, COM1A1);
-    cbi(TCCR1A, COM1A0);
-}
-
-void stop_pump() {
-    cbi(TCCR1B, CS12);
-    cbi(TCCR1B, CS11);
-    cbi(TCCR1B, CS10);
-
-    cbi(TCCR1A, COM1A1);
-    cbi(TCCR1A, COM1A0);
-
-    sbi(PORTB, PB1);
-}
-
-int main() {
-    display.init();
+int main()
+{
+    pump.init();
     init_buttons();
-    init_pwm();
     init_adc();
     init_sensors();
 
-    start_pump();
     sei();
 
-    while(true);
+    while (true)
+        ;
 }
 
 volatile uint8_t mode = 0;
 
-ISR(ADC_vect) {
-    uint8_t value = (uint8_t)(ADC >> 8);
-    outb(OCR1AL, value);
-    display.set_mode(mode);
-    display.set_value(value);
+ISR(ADC_vect)
+{
+    pump.on_adc((uint8_t) (ADC >> 8));
 }
 
+class ButtonState
+{
+private:
+    volatile uint8_t *port;
+    uint8_t pin;
+    bool pressed;
+    uint16_t time;
 
-ISR(TIMER2_COMP_vect) {
-    time_ms++;
-//    if (time_ms % 250 == 0) {
-//        if (check_bit(PIND, PD5) && check_bit(PIND, PD5)) {
-//            stop_pump();
-//        } else {
-//            start_pump();
-//        }
-//    }
-    if (time_ms == 50000)
+public:
+    ButtonState(volatile uint8_t *port, uint8_t pin) :
+            port(port), pin(pin)
+    {
+        pressed = false;
+        time = 0;
+    }
+
+    void increment_time()
+    {
+        time++;
+    }
+
+    template <typename OnClick, typename OnLongClick>
+    void on_state_changed(OnClick&& on_click, OnLongClick&& on_long_click)
+    {
+        pressed = !(*port & (1 << pin));
+        if (pressed)
+        {
+            time = 0;
+        }
+        else
+        {
+            if (time >= 1000)
+            {
+                on_long_click();
+            }
+            else
+            {
+                on_click();
+            }
+        }
+    }
+
+};
+
+ButtonState button_0 = ButtonState(&PIND, PD2);
+ButtonState button_1 = ButtonState(&PIND, PD3);
+
+ISR(TIMER2_COMP_vect)
+{
+    pump.increment_time();
+    button_0.increment_time();
+    button_1.increment_time();
+    if (++time_ms == 50000)
     {
         time_ms = 0;
     }
@@ -141,21 +146,34 @@ ISR(TIMER2_COMP_vect) {
 
 ISR(TIMER0_OVF_vect)
 {
-    display.show();
+    pump.show();
 }
 
 ISR(INT0_vect)
 {
-    stop_pump();
+    button_0.on_state_changed(
+            [&]() -> void
+            {
+                pump.on_button_0_click();
+            },
+            [&]() -> void
+            {
+                pump.on_button_0_long_click();
+            }
+    );
 }
 
 ISR(INT1_vect)
 {
-    mode++;
-    if (mode == 16)
-    {
-        mode = 0;
-    }
-    display.set_mode(mode);
+    button_1.on_state_changed(
+            [&]() -> void
+            {
+                pump.on_button_1_click();
+            },
+            [&]() -> void
+            {
+                pump.on_button_1_long_click();
+            }
+    );
 }
 
