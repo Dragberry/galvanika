@@ -1,6 +1,7 @@
 #ifndef PUMP_HPP_
 #define PUMP_HPP_
 
+#include <avr/eeprom.h>
 #include "segment7x4.hpp"
 
 enum Mode
@@ -19,6 +20,139 @@ enum AutoSettingsMode
 };
 
 
+class AutoPumpState
+{
+private:
+    static const uint8_t EEMEM STORED_AUTO_DURATION;
+    static const uint8_t EEMEM STORED_AUTO_VALUE;
+public:
+    uint8_t duration = 12;
+    uint8_t value = 127;
+    uint8_t duration_progress = 0;
+
+    enum AutoPumpStatus
+    {
+        DISABLED, READY, START, PUMP, STOP, FILTER
+    } state = DISABLED;
+
+    void ready()
+    {
+        state = READY;
+    }
+
+    void load()
+    {
+        duration = eeprom_read_byte(&STORED_AUTO_DURATION);
+        value = eeprom_read_byte(&STORED_AUTO_VALUE);
+        ready();
+    }
+
+    void save_value()
+    {
+        eeprom_update_byte((uint8_t*) &STORED_AUTO_VALUE, value);
+    }
+
+    void save_duration()
+    {
+        eeprom_update_byte((uint8_t*) &STORED_AUTO_DURATION, duration);
+    }
+
+    void activate_sensors()
+    {
+        sbi(PORTB, PB0);
+        sbi(PORTD, PD5);
+    }
+
+    void deactivate_sensors()
+    {
+        cbi(PORTB, PB0);
+        cbi(PORTD, PD5);
+    }
+
+
+    AutoPumpStatus check()
+    {
+        bool top_sensor = check_bit(PIND, PIN6);
+        bool bottom_sensor = check_bit(PIND, PIN7);
+        switch (state)
+        {
+        case DISABLED:
+            break;
+        case READY:
+            if (!top_sensor)
+            {
+                state = START;
+                duration_progress = duration;
+            }
+            else
+            {
+                state = FILTER;
+                duration_progress = 0;
+            }
+            break;
+        case START:
+            state = PUMP;
+            duration_progress = duration;
+            break;
+        case PUMP:
+            if (top_sensor || (bottom_sensor && duration_progress == 0))
+            {
+                state = STOP;
+            }
+            else if (!bottom_sensor && duration_progress == 0)
+            {
+                state = DISABLED;
+            }
+            break;
+        case STOP:
+            state = FILTER;
+            duration_progress = 0;
+            break;
+        case FILTER:
+            if (!bottom_sensor)
+            {
+                state = START;
+            }
+            break;
+        default:
+            break;
+        }
+        return state;
+    }
+
+    void do_progress()
+    {
+        switch (state)
+        {
+        case FILTER:
+            duration_progress++;
+            break;
+        case PUMP:
+            if (duration_progress > 0)
+            {
+                duration_progress--;
+            }
+            break;
+        default:
+            break;
+        }
+    }
+
+    template <typename ValueSetter>
+    void display_value(ValueSetter&& set_value)
+    {
+        switch (state)
+        {
+        case DISABLED:
+            set_value(0x0FF, 16);
+            break;
+        default:
+            set_value(duration_progress, 10);
+            break;
+        }
+    }
+};
+
 class Pump
 {
 private:
@@ -28,14 +162,25 @@ private:
 
     AutoMode auto_mode = IN_PROGRESS;
     AutoSettingsMode auto_settings_mode = SET_DURATION;
-    uint8_t auto_duration = 0;
-    uint8_t auto_duration_progress = 0;
-    uint8_t auto_value = 0xFF;
 
+    AutoPumpState auto_pump_state;
 
 public:
     void init()
     {
+        // Sensor bottom output
+        sbi(DDRB, PB0);
+        cbi(PORTB, PB0);
+        // Sensor bottom input
+        cbi(DDRD, PD7);
+        cbi(PORTD, PD7);
+        // Sensor top output
+        sbi(DDRD, PD5);
+        cbi(PORTD, PD5);
+        // Sensor top input
+        cbi(DDRD, PD6);
+        cbi(PORTD, PD6);
+
         sbi(DDRB, PB1);
         sbi(PORTB, PB1);
 
@@ -57,7 +202,7 @@ public:
         sbi(TCCR1A, COM1A1);
         cbi(TCCR1A, COM1A0);
 
-        outb(OCR1AL, auto_value);
+        outb(OCR1AL, auto_pump_state.value);
     }
 
     void stop()
@@ -91,17 +236,34 @@ public:
                 }
                 break;
             case AutoMode::IN_PROGRESS:
+                switch (time_ms % 256)
+                {
+                case 0:
+                    auto_pump_state.activate_sensors();
+                    break;
+                case 2:
+                    switch(auto_pump_state.check())
+                    {
+                    case AutoPumpState::STOP:
+                    case AutoPumpState::DISABLED:
+                        stop();
+                        break;
+                    case AutoPumpState::START:
+                        start();
+                        break;
+                    default:
+                        break;
+                    }
+                    auto_pump_state.deactivate_sensors();
+                    break;
+                }
+
                 if (time_ms % 1024 == 0)
                 {
-                    if (auto_duration_progress > 0)
-                    {
-                        auto_duration_progress--;
-                        display.set_value(auto_duration_progress);
-                    }
-                    else
-                    {
-                        stop();
-                    }
+                    auto_pump_state.do_progress();
+                    auto_pump_state.display_value(
+                            [&](uint8_t value, uint8_t base) -> void { display.set_value(value, base); }
+                    );
                 }
                 break;
             default:
@@ -122,13 +284,12 @@ public:
 
     void set_auto_mode()
     {
+        auto_pump_state.load();
         mode = AUTO;
         auto_mode = AutoMode::IN_PROGRESS;
         display.set_enabled(true);
         display.set_mode(mode);
-        auto_duration_progress = auto_duration;
-        display.set_value(auto_duration_progress);
-        start();
+        display.set_value(auto_pump_state.duration_progress);
     }
 
     void set_pump_mode()
@@ -147,6 +308,9 @@ public:
         case Mode::AUTO:
             switch (auto_mode)
             {
+            case AutoMode::IN_PROGRESS:
+                auto_pump_state.ready();
+                break;
             case AutoMode::SETTINGS:
                 switch (auto_settings_mode)
                 {
@@ -182,8 +346,10 @@ public:
                 switch (auto_settings_mode)
                 {
                 case AutoSettingsMode::SET_VALUE:
+                   auto_pump_state.save_value();
                    break;
                 case AutoSettingsMode::SET_DURATION:
+                    auto_pump_state.save_duration();
                    break;
                 default:
                     break;
@@ -259,12 +425,12 @@ public:
                 switch (auto_settings_mode)
                 {
                 case AutoSettingsMode::SET_DURATION:
-                   auto_duration = (0xff - value) / 8;
-                   display.set_value(auto_duration);
+                   auto_pump_state.duration = (0xff - value) / 8;
+                   display.set_value(auto_pump_state.duration);
                    break;
                case AutoSettingsMode::SET_VALUE:
-                   auto_value = value;
-                   display.set_value(auto_value);
+                   auto_pump_state.value = value;
+                   display.set_value(auto_pump_state.value);
                    break;
                 }
                 break;

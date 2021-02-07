@@ -35,7 +35,7 @@
                             							
                             <option id="de.innot.avreclipse.toolchain.options.toolchain.objcopy.flash.app.debug.2134251283" name="Generate HEX file for Flash memory" superClass="de.innot.avreclipse.toolchain.options.toolchain.objcopy.flash.app.debug" value="true" valueType="boolean"/>
                             							
-                            <option id="de.innot.avreclipse.toolchain.options.toolchain.objcopy.eeprom.app.debug.98867510" name="Generate HEX file for EEPROM" superClass="de.innot.avreclipse.toolchain.options.toolchain.objcopy.eeprom.app.debug"/>
+                            <option id="de.innot.avreclipse.toolchain.options.toolchain.objcopy.eeprom.app.debug.98867510" name="Generate HEX file for EEPROM" superClass="de.innot.avreclipse.toolchain.options.toolchain.objcopy.eeprom.app.debug" value="true" valueType="boolean"/>
                             							
                             <option id="de.innot.avreclipse.toolchain.options.toolchain.objdump.app.debug.1537379881" name="Generate Extended Listing (Source + generated Assembler)" superClass="de.innot.avreclipse.toolchain.options.toolchain.objdump.app.debug"/>
                             							
@@ -71,7 +71,7 @@
                                 								
                                 <option id="de.innot.avreclipse.cppcompiler.option.optimize.488958368" name="Optimization Level" superClass="de.innot.avreclipse.cppcompiler.option.optimize" useByScannerDiscovery="false" value="de.innot.avreclipse.cppcompiler.optimize.one" valueType="enumerated"/>
                                 								
-                                <option id="de.innot.avreclipse.cppcompiler.option.otherflags.988921641" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" useByScannerDiscovery="false" value="-std=gnu++14" valueType="string"/>
+                                <option id="de.innot.avreclipse.cppcompiler.option.otherflags.988921641" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" useByScannerDiscovery="false" value="-std=gnu++14" valueType="string"/>
                                 								
                                 <inputType id="de.innot.avreclipse.cppcompiler.input.1223901679" superClass="de.innot.avreclipse.cppcompiler.input"/>
                                 							

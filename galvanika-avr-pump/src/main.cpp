@@ -51,11 +51,6 @@ void init_adc()
 
 void init_sensors()
 {
-    cbi(DDRD, PD5);
-    cbi(DDRD, PD7);
-    sbi(DDRD, PD6);
-    sbi(PORTD, PD6);
-
     // 1 ms
     cbi(TCCR2, CS22);
     sbi(TCCR2, CS21);
