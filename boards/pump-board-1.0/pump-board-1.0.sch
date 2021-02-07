@@ -30106,6 +30106,8 @@ Source: http://www.alphapotentiometers.net/html/16mm_pot_2.html</description>
 <part name="R25" library="rcl" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2" value="510"/>
 <part name="C11" library="rcl" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="1u"/>
 <part name="SA2" library="dragberry" deviceset="BUTTON" device="-TACT-KLS-6X6"/>
+<part name="R26" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R1206" package3d_urn="urn:adsk.eagle:package:23540/2"/>
+<part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -30378,6 +30380,13 @@ Source: http://www.alphapotentiometers.net/html/16mm_pot_2.html</description>
 <attribute name="NAME" x="-21.59" y="53.34" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-21.59" y="46.99" size="1.778" layer="96"/>
 </instance>
+<instance part="R26" gate="G$1" x="-63.5" y="-63.5" smashed="yes" rot="R90">
+<attribute name="NAME" x="-64.9986" y="-67.31" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="-60.198" y="-67.31" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="P+4" gate="VCC" x="-63.5" y="-43.18" smashed="yes">
+<attribute name="VALUE" x="-66.04" y="-45.72" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -30592,6 +30601,11 @@ Source: http://www.alphapotentiometers.net/html/16mm_pot_2.html</description>
 <junction x="-43.18" y="63.5"/>
 <wire x1="-43.18" y1="63.5" x2="-58.42" y2="63.5" width="0.1524" layer="91"/>
 <junction x="-58.42" y="63.5"/>
+</segment>
+<segment>
+<pinref part="P+4" gate="VCC" pin="VCC"/>
+<pinref part="R26" gate="G$1" pin="2"/>
+<wire x1="-63.5" y1="-45.72" x2="-63.5" y2="-58.42" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$12" class="0">
@@ -30910,6 +30924,9 @@ Source: http://www.alphapotentiometers.net/html/16mm_pot_2.html</description>
 <pinref part="R18" gate="G$1" pin="2"/>
 <pinref part="VT5" gate="G$1" pin="B"/>
 <wire x1="-63.5" y1="-76.2" x2="-60.96" y2="-76.2" width="0.1524" layer="91"/>
+<pinref part="R26" gate="G$1" pin="1"/>
+<wire x1="-63.5" y1="-68.58" x2="-63.5" y2="-76.2" width="0.1524" layer="91"/>
+<junction x="-63.5" y="-76.2"/>
 </segment>
 </net>
 <net name="N$42" class="0">
