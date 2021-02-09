@@ -6,7 +6,12 @@
 
 enum Mode
 {
-    OFF = 0, AUTO = 0xA, PUMP = 0xb,
+    MANUAL = 0, AUTO = 0xA
+};
+
+enum ManualMode
+{
+    OFF = 0, ON = 1
 };
 
 enum AutoMode
@@ -28,7 +33,7 @@ private:
 public:
     uint8_t duration = 12;
     uint8_t value = 127;
-    uint8_t duration_progress = 0;
+    uint16_t duration_progress = 0;
 
     enum AutoPumpStatus
     {
@@ -158,8 +163,8 @@ class Pump
 private:
     uint16_t time_ms = 0;
     Segment8x7 display;
-    Mode mode = OFF;
-
+    Mode mode = Mode::MANUAL;
+    ManualMode manual_mode = ManualMode::OFF;
     AutoMode auto_mode = IN_PROGRESS;
     AutoSettingsMode auto_settings_mode = SET_DURATION;
 
@@ -190,7 +195,7 @@ public:
         sbi(TCCR1A, WGM10);
 
         display.init();
-        set_off_mode();
+        set_manual_off_mode();
     }
 
     void start()
@@ -224,9 +229,24 @@ public:
 
     void increment_time()
     {
-        if (mode == Mode::AUTO)
+        time_ms++;
+        switch (mode)
         {
-            time_ms++;
+        case Mode::MANUAL:
+            switch (manual_mode)
+            {
+            case ManualMode::ON:
+                if (time_ms % 256 == 0)
+                {
+                    display.blink();
+                }
+                break;
+            default:
+                display.set_enabled(true);
+                break;
+            }
+            break;
+        case Mode::AUTO:
             switch (auto_mode)
             {
             case AutoMode::SETTINGS:
@@ -262,24 +282,18 @@ public:
                 {
                     auto_pump_state.do_progress();
                     auto_pump_state.display_value(
-                            [&](uint8_t value, uint8_t base) -> void { display.set_value(value, base); }
+                            [&](uint16_t value, uint8_t base) -> void { display.set_value(value, base); }
                     );
                 }
                 break;
             default:
                 break;
             }
+            break;
+        default:
+            break;
         }
 
-    }
-
-    void set_off_mode()
-    {
-        stop();
-        mode = OFF;
-        display.set_enabled(true);
-        display.set_mode(mode);
-        display.set_value(0x0ff, 16);
     }
 
     void set_auto_mode()
@@ -292,9 +306,20 @@ public:
         display.set_value(auto_pump_state.duration_progress);
     }
 
-    void set_pump_mode()
+    void set_manual_off_mode()
     {
-        mode = PUMP;
+        stop();
+        mode = Mode::MANUAL;
+        manual_mode = ManualMode::OFF;
+        display.set_enabled(true);
+        display.set_mode(mode);
+        display.set_value(0x0ff, 16);
+    }
+
+    void set_manual_on_mode()
+    {
+        mode = Mode::MANUAL;
+        manual_mode = ManualMode::ON;
         display.set_enabled(true);
         display.set_mode(mode);
         display.set_value(0);
@@ -325,6 +350,19 @@ public:
                 default:
                     break;
                 }
+                break;
+            default:
+                break;
+            }
+            break;
+        case Mode::MANUAL:
+            switch(manual_mode)
+            {
+            case ManualMode::OFF:
+                set_manual_on_mode();
+                break;
+            case ManualMode::ON:
+                set_manual_off_mode();
                 break;
             default:
                 break;
@@ -368,17 +406,14 @@ public:
     {
         switch (mode)
         {
-        case OFF:
+        case MANUAL:
             set_auto_mode();
             break;
         case AUTO:
             if (auto_mode == AutoMode::IN_PROGRESS)
             {
-                set_pump_mode();
+                set_manual_off_mode();
             }
-            break;
-        case PUMP:
-            set_off_mode();
             break;
         default:
             break;
@@ -414,9 +449,17 @@ public:
     {
         switch (mode)
         {
-        case Mode::PUMP:
-            outb(OCR1AL, value);
-            display.set_value(value);
+        case Mode::MANUAL:
+            switch (manual_mode)
+            {
+            case ManualMode::ON:
+                outb(OCR1AL, value);
+                display.set_value(value);
+                break;
+            default:
+                display.set_value(0x0ff, 16);
+                break;
+            }
             break;
         case Mode::AUTO:
             switch (auto_mode)
@@ -425,7 +468,7 @@ public:
                 switch (auto_settings_mode)
                 {
                 case AutoSettingsMode::SET_DURATION:
-                   auto_pump_state.duration = (0xff - value) / 8;
+                   auto_pump_state.duration = (0xff - value) / 4;
                    display.set_value(auto_pump_state.duration);
                    break;
                case AutoSettingsMode::SET_VALUE:

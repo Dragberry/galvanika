@@ -72,7 +72,7 @@ public:
         data[3] = DIGITS[mode % 16] & DOT_MASK;
     }
 
-    void set_value(uint8_t value, uint8_t base = 10)
+    void set_value(uint16_t value, uint8_t base = 10)
     {
         data[0] = DIGITS[value % base];
         value /= base;
