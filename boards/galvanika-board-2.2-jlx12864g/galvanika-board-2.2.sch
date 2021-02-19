@@ -13608,10 +13608,10 @@ grid 2.54 mm</description>
 <pad name="P$12" x="-13.97" y="18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
 <pad name="P$7" x="-1.270015625" y="18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
 <pad name="P$6" x="1.26998125" y="18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
-<pad name="P$14" x="-9.76" y="-18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
-<pad name="P$13" x="-12.3" y="-18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
-<pad name="P$15" x="9.76" y="-18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
-<pad name="P$16" x="12.3" y="-18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
+<pad name="P$14" x="-12.26" y="-18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
+<pad name="P$13" x="-14.8" y="-18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
+<pad name="P$15" x="12.26" y="-18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
+<pad name="P$16" x="14.8" y="-18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
 <pad name="P$11" x="-11.430003125" y="18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
 <pad name="P$9" x="-6.350009375" y="18.9" drill="1.016" diameter="1.9304" shape="long" rot="R90"/>
 </package>
