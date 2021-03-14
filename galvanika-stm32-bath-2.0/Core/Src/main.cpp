@@ -19,9 +19,124 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include <main.hpp>
+#include <stdio.h>
+#include <string.h>
 #include <bath.hpp>
-#include <wd_g0906.h>
-#include "stdio.h"
+#include <flash.hpp>
+#include <baths.hpp>
+#include <displays/display.hpp>
+#include <displays/graphic_display.hpp>
+#include <displays/jlx12864_display_interface.hpp>
+#include <displays/gmg12864_display_interface.hpp>
+#include <displays/ssd1306_display_interface.hpp>
+#include <displays/SansSerif11.h>
+
+#define SCL_PIN     GPIO_PIN_6
+#define SCL_PORT    GPIOB
+
+#define SDA_PIN     GPIO_PIN_7
+#define SDA_PORT    GPIOB
+
+
+//void HAL_GPIO_WRITE_ODR(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+//{
+//  /* Check the parameters */
+//  assert_param(IS_GPIO_PIN(GPIO_Pin));
+//
+//  GPIOx->ODR |= GPIO_Pin;
+//} // Call initialization function.
+//
+//void HAL_I2C_ClearBusyFlagErrata_2_14_7(I2C_HandleTypeDef *hi2c) {
+//
+//    static uint8_t resetTried = 0;
+//    if (resetTried == 1) {
+//        return ;
+//    }
+//    GPIO_InitTypeDef GPIO_InitStruct;
+//
+//    // 1
+//    __HAL_I2C_DISABLE(hi2c);
+//
+//    // 2
+//    GPIO_InitStruct.Pin = SDA_PIN|SCL_PIN;
+//    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+//    GPIO_InitStruct.Pull = GPIO_NOPULL;
+//    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
+//    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+//
+//    HAL_GPIO_WRITE_ODR(GPIOB, SDA_PIN);
+//    HAL_GPIO_WRITE_ODR(GPIOB, SCL_PIN);
+//
+//    // 3
+//    GPIO_PinState pinState;
+//    if (HAL_GPIO_ReadPin(GPIOB, SDA_PIN) == GPIO_PIN_RESET) {
+//        for(;;){}
+//    }
+//    if (HAL_GPIO_ReadPin(GPIOB, SCL_PIN) == GPIO_PIN_RESET) {
+//        for(;;){}
+//    }
+//
+//    // 4
+//    GPIO_InitStruct.Pin = SDA_PIN;
+//    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+//
+//    HAL_GPIO_TogglePin(GPIOB, SDA_PIN);
+//
+//    // 5
+//    if (HAL_GPIO_ReadPin(GPIOB, SDA_PIN) == GPIO_PIN_SET) {
+//        for(;;){}
+//    }
+//
+//    // 6
+//    GPIO_InitStruct.Pin = SCL_PIN;
+//    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+//
+//    HAL_GPIO_TogglePin(GPIOB, SCL_PIN);
+//
+//    // 7
+//    if (HAL_GPIO_ReadPin(GPIOB, SCL_PIN) == GPIO_PIN_SET) {
+//        for(;;){}
+//    }
+//
+//    // 8
+//    GPIO_InitStruct.Pin = SDA_PIN;
+//    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+//
+//    HAL_GPIO_WRITE_ODR(GPIOB, SDA_PIN);
+//
+//    // 9
+//    if (HAL_GPIO_ReadPin(GPIOB, SDA_PIN) == GPIO_PIN_RESET) {
+//        for(;;){}
+//    }
+//
+//    // 10
+//    GPIO_InitStruct.Pin = SCL_PIN;
+//    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+//
+//    HAL_GPIO_WRITE_ODR(GPIOB, SCL_PIN);
+//
+//    // 11
+//    if (HAL_GPIO_ReadPin(GPIOB, SCL_PIN) == GPIO_PIN_RESET) {
+//        for(;;){}
+//    }
+//
+//    // 12
+//    GPIO_InitStruct.Pin = SDA_PIN|SCL_PIN;
+//    GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+//    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+//
+//   // 13
+//   hi2c->Instance->CR1 |= I2C_CR1_SWRST;
+//
+//   // 14
+//   hi2c->Instance->CR1 ^= I2C_CR1_SWRST;
+//
+//   // 15
+//   __HAL_I2C_ENABLE(hi2c);
+//
+//   resetTried = 1;
+//}
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,24 +161,90 @@ TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart1;
 
-/* USER CODE BEGIN PV */
-Bath baths[3] = {
-    Bath('C', 2, ADC_CHANNEL_4, ADC_CHANNEL_8, ADC_CHANNEL_7, &GPIOB->ODR, GPIO_ODR_ODR12_Pos, GPIO_PIN_3, GPIO_PIN_11, GPIO_PIN_11,
-        [](float value) -> float { return value * 0.9 - 0.01; },
-        [](float value) -> float { return (value + 0.0065) * 0.95; }),
-    Bath('B', 4, ADC_CHANNEL_1, ADC_CHANNEL_5, ADC_CHANNEL_6, &GPIOC->ODR, GPIO_ODR_ODR14_Pos, GPIO_PIN_4, GPIO_PIN_10, GPIO_PIN_12,
-        [](float value) -> float { return value - 0.02; },
-        [](float value) -> float { return value + 0.008; }),
-    Bath('A', 6, ADC_CHANNEL_0, ADC_CHANNEL_3, ADC_CHANNEL_2, &GPIOC->ODR, GPIO_ODR_ODR13_Pos, GPIO_PIN_5, GPIO_PIN_1, GPIO_PIN_15,
-        [](float value) -> float { return value * 0.9 - 0.006; },
-        [](float value) -> float { return value * 0.9 - 0.005; }),
-};
+//class STM32_I2C : public I2C {
+//public:
+//  void send(uint8_t address, uint8_t *data, uint8_t length) {
+//    while (true) {
+//      HAL_StatusTypeDef status = HAL_I2C_Master_Transmit(&hi2c1, (uint16_t) (address << 1), data, length, HAL_MAX_DELAY);
+//      if (status == HAL_BUSY) {
+//        HAL_I2C_ClearBusyFlagErrata_2_14_7(&hi2c1);
+//        continue;
+//      }
+//      break;
+//    }
+//  }
+//} i2c;
+//
+//SSD1306DisplayInterface ssd1306 = SSD1306DisplayInterface(&i2c, 0x3C);
 
-const uint32_t channels[9] = {
-ADC_CHANNEL_0, ADC_CHANNEL_1, ADC_CHANNEL_2,
-ADC_CHANNEL_3, ADC_CHANNEL_4, ADC_CHANNEL_5,
-ADC_CHANNEL_6, ADC_CHANNEL_7, ADC_CHANNEL_8 };
-volatile uint32_t channel = 0;
+/* USER CODE BEGIN PV */
+
+JLX12864DisplayInterface<__IO uint32_t, uint16_t> jxl12864 = JLX12864DisplayInterface<__IO uint32_t, uint16_t>(
+    {&GPIOB->BSRR, GPIO_PIN_5},
+    {&GPIOB->BSRR, GPIO_PIN_6},
+    {&GPIOB->BSRR, GPIO_PIN_7},
+    {&GPIOB->BSRR, GPIO_PIN_8},
+    {&GPIOB->BSRR, GPIO_PIN_9}
+);
+GraphicDisplay<128, 64> display = GraphicDisplay<128, 64>(&jxl12864);
+
+//STM32::Flash<Data> storage = STM32::Flash<Data>(0x800FC00, 1);
+
+Bath baths[3] = {
+    Bath(
+        'C', 2,
+        {ADC_CHANNEL_4, ADC_CHANNEL_8, ADC_CHANNEL_7},
+        {&GPIOB->ODR, GPIO_PIN_12}, // PWM
+        {&GPIOB->IDR, GPIO_PIN_15}, // BRANCH
+        {&GPIOA->IDR, GPIO_PIN_15}, // MODE
+        {&GPIOB->IDR, GPIO_PIN_11}, // POWER
+        0x800F400,
+        [](float value) -> float { return (value - 0.023) * 0.9615; },
+        [](float value) -> float { return value + 0.013; }
+    ),
+    Bath(
+        'B', 4,
+        {ADC_CHANNEL_1, ADC_CHANNEL_5, ADC_CHANNEL_6},
+        {&GPIOB->ODR, GPIO_PIN_14},
+        {&GPIOA->IDR, GPIO_PIN_11},
+        {&GPIOB->IDR, GPIO_PIN_3},
+        {&GPIOB->IDR, GPIO_PIN_10},
+        0x800F800,
+        [](float value) -> float { return value - (0.01 + (value / 15)); },
+        [](float value) -> float {
+          float a = 0;
+          if (value < 0.12) {
+            a = 0.1416 * (0.12 - value);
+          }
+          return value + a;
+        }
+    ),
+    Bath(
+        'A', 6,
+        {ADC_CHANNEL_0, ADC_CHANNEL_3, ADC_CHANNEL_2},
+        {&GPIOB->ODR, GPIO_PIN_13},
+        {&GPIOA->IDR, GPIO_PIN_12},
+        {&GPIOB->IDR, GPIO_PIN_4},
+        {&GPIOB->IDR, GPIO_PIN_1},
+        0x800FC00,
+        [](float value) -> float {
+          float a = 0.66;
+          if (value < 0.055) {
+            a = a - (0.055 - value) * 10;
+          }
+          return value * a;
+        },
+        [](float value) -> float {
+          float a = 0;
+          if (value < 0.33) {
+            a = 0.09 * (0.33 - value);
+          }
+          return value + a;
+        }
+    )
+};
+Baths<3> bs = Baths<3>(baths);
+
 
 volatile bool refresh_display = true;
 /* USER CODE END PV */
@@ -81,72 +262,26 @@ static void MX_TIM4_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-  if (htim->Instance == TIM1) { //check if the interrupt comes from TIM1
-    refresh_display= true;
-//    snprintf(trans_str, 63, "ADC %1.2f %1.2f %1.2f\n\r", channels_data[0], channels_data[1], channels_data[2]);
-//    HAL_UART_Transmit(&huart1, (uint8_t*) trans_str, strlen(trans_str), 1000);
-  } else if (htim->Instance == TIM4) {
-    for (uint8_t i = 0; i < 3; i++) {
-      baths[i].step_up(
-          [&](volatile uint32_t *pwm_port, uint32_t pwm_pin) -> void {*pwm_port |= (1 << pwm_pin);},
-          [&](volatile uint32_t *pwm_port, uint32_t pwm_pin) -> void {*pwm_port  &= ~(1 << pwm_pin);}
-      );
-    }
-  }
-}
 
-uint32_t adc_channel;
-uint32_t get_next_channel(uint8_t i) {
-  i++;
-  if (i == 3) {
-    i = 0;
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+  if (htim->Instance == TIM4) {
+    bs.step_up();
   }
-  return baths[i].adc_channel_reverse_duration;
+  if (htim->Instance == TIM1) { //check if the interrupt comes from TIM1
+    refresh_display = true;
+  }
 }
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
-  if (hadc->Instance == ADC1) //check if the interrupt comes from ACD1
-  {
-    uint32_t value = HAL_ADC_GetValue(&hadc1);
-    uint8_t i = 0;
-    while (i < 3) {
-      Bath* bath = &baths[i];
-      if (adc_channel == bath->adc_channel_current_direct) {
-        bath->set_current_direct(value);
-        adc_channel = get_next_channel(i);
-        break;
-      } else if (adc_channel == bath->adc_channel_current_reverse) {
-        bath->set_current_reverse(value);
-        adc_channel = get_next_channel(i);
-        break;
-      } else if (adc_channel == bath->adc_channel_reverse_duration) {
-        bath->set_reverse_duration(value);
-        if (bath->check_power([&](uint32_t power_pin) -> bool { return GPIOB->IDR & power_pin;})) {
-          if (bath->check_branch([&](uint32_t branch_pin) -> bool { return GPIOA->IDR & branch_pin;})) {
-            adc_channel = bath->adc_channel_current_reverse;
-          } else {
-            adc_channel = bath->adc_channel_current_direct;
-          }
-        } else {
-          adc_channel = get_next_channel(i);
-        }
-        break;
-      }
-      i++;
-    }
+  if (hadc->Instance == ADC1) {
+    bs.apply_adc(HAL_ADC_GetValue(&hadc1));
 
     ADC_ChannelConfTypeDef sConfig;
-
-    sConfig.Channel = channels[channel];
-    sConfig.Rank = 0;
-    if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
-      Error_Handler();
-    }
-
-    sConfig.Channel = adc_channel;
+    sConfig.Channel = bs.get_adc_channel();
     sConfig.Rank = ADC_REGULAR_RANK_1;
     sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+
     if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK) {
       Error_Handler();
     }
@@ -156,11 +291,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-  for (uint8_t i = 0; i < 3; i++) {
-    if (baths[i].mode_pin == GPIO_Pin) {
-      baths[i].change_scale();
-    }
-  }
+  bs.change_button_state(GPIO_Pin);
 }
 /* USER CODE END 0 */
 
@@ -184,16 +315,27 @@ int main(void) {
 
   /* Configure the system clock */
   SystemClock_Config();
+  bs.iterate([&](Bath& bath) -> void {
+    bath.load();
+  });
+
 
   /* USER CODE BEGIN SysInit */
+//  __HAL_RCC_I2C1_CLK_ENABLE();
+//  HAL_Delay(100);
+//  __HAL_RCC_I2C1_FORCE_RESET();
+//  HAL_Delay(100);
+//  __HAL_RCC_I2C1_RELEASE_RESET();
+//  HAL_Delay(100);
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART1_UART_Init();
-  MX_TIM1_Init();
+//  MX_USART1_UART_Init();
+//  MX_I2C1_Init();
   MX_ADC1_Init();
+  MX_TIM1_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim1);
@@ -203,29 +345,44 @@ int main(void) {
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-  lcd_init();
-  lcd_clear();
+  display.init([]() -> void {
+    // initialize your port to output
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9|GPIO_PIN_8|GPIO_PIN_7|GPIO_PIN_6|GPIO_PIN_5, GPIO_PIN_RESET);
+    GPIO_InitTypeDef GPIO_InitStruct;
+    GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_8|GPIO_PIN_7|GPIO_PIN_6|GPIO_PIN_5;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  });
 
   HAL_ADC_Start_IT(&hadc1);
 
-  lcd_gotoxy(0, 0);
-  lcd_putstr(" Direct / Revers");
-  while (1) {
+  uint8_t top = 0;
+  uint8_t bottom = 63;
+  display.vram_fill(false);
+  display.vram_put_str({8,  16}, &microsoftSansSerif_11ptFontInfo, "CUPRUMBERRY", PointMode::PIXEL_XOR);
+  display.vram_put_str({8,  32}, &microsoftSansSerif_11ptFontInfo, "GALVANIKA V2.2", PointMode::PIXEL_XOR);
+  display.vram_update();
+  while (top < 64) {
+    display.vram_put_line({0,  top}, {127,  top}, PointMode::PIXEL_XOR);
+    display.vram_put_line({0,  bottom}, {127,  bottom}, PointMode::PIXEL_XOR);
+    display.vram_update();
+    top++;
+    bottom--;
+  }
+
+  display.clear();
+  display.set_cursor(0, 0);
+  display.put_string("Direct / Reversed");
+  while (true) {
     /* USER CODE END WHILE */
     if (refresh_display) {
-      for (uint8_t i = 0; i < 3; i++) {
-        Bath* bath = &baths[i];
-        bath->check_power([&](uint32_t power_bit) -> bool { return GPIOB->IDR & power_bit;});
-        bath->build();
-        lcd_gotoxy(0, bath->y_position);
-        lcd_putstr(bath->get_currents_string());
-        lcd_gotoxy(0, bath->y_position+ 1);
-        lcd_putbar(10, bath->get_reverse_duration(), 5);
-        lcd_gotoxy(60, bath->y_position + 1);
-        lcd_putstr(bath->get_mode_string());
-      }
       refresh_display = false;
+      bs.iterate([&](Bath& bath) -> void {
+        bath.build();
+        bath.show(display);
+      });
     }
     /* USER CODE BEGIN 3 */
   }
@@ -271,7 +428,9 @@ void SystemClock_Config(void) {
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
     Error_Handler();
   }
+
 }
+
 
 /**
  * @brief ADC1 Initialization Function
@@ -334,7 +493,7 @@ static void MX_TIM1_Init(void) {
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 7199;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 1999;
+  htim1.Init.Period = 2131;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
@@ -436,70 +595,57 @@ static void MX_USART1_UART_Init(void) {
 static void MX_GPIO_Init(void) {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-   /* GPIO Ports Clock Enable */
-   __HAL_RCC_GPIOC_CLK_ENABLE();
-   __HAL_RCC_GPIOD_CLK_ENABLE();
-   __HAL_RCC_GPIOA_CLK_ENABLE();
-   __HAL_RCC_GPIOB_CLK_ENABLE();
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOD_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
-   /*Configure GPIO pin Output Level */
-   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13|GPIO_PIN_14, GPIO_PIN_RESET);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_5
+                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
 
-   /*Configure GPIO pin Output Level */
-   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15
-                           |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
+  /*Configure GPIO pins : PB1 PB10 PB11 PB15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_15;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-   /*Configure GPIO pins : PC13 PC14 */
-   GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14;
-   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-   GPIO_InitStruct.Pull = GPIO_NOPULL;
-   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+  /*Configure GPIO pins : PB12 PB13 PB14 PB5
+                           PB6 PB7 PB8 PB9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_5
+                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-   /*Configure GPIO pins : PB1 PB10 PB11 */
-   GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_10|GPIO_PIN_11;
-   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-   GPIO_InitStruct.Pull = GPIO_NOPULL;
-   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  /*Configure GPIO pins : PA11 PA12 */
+  GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-   /*Configure GPIO pin : PB12 */
-   GPIO_InitStruct.Pin = GPIO_PIN_12;
-   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-   GPIO_InitStruct.Pull = GPIO_NOPULL;
-   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  /*Configure GPIO pin : PA15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_15;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-   /*Configure GPIO pins : PB13 PB14 PB15 PB6
-                            PB7 PB8 PB9 */
-   GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15|GPIO_PIN_6
-                           |GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9;
-   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-   GPIO_InitStruct.Pull = GPIO_NOPULL;
-   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  /*Configure GPIO pins : PB3 PB4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-   /*Configure GPIO pins : PA11 PA12 PA15 */
-   GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_15;
-   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-   GPIO_InitStruct.Pull = GPIO_PULLUP;
-   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI3_IRQn);
 
-   /*Configure GPIO pins : PB3 PB4 PB5 */
-   GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5;
-   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-   GPIO_InitStruct.Pull = GPIO_NOPULL;
-   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
 
-   /* EXTI interrupt init*/
-   HAL_NVIC_SetPriority(EXTI3_IRQn, 0, 0);
-   HAL_NVIC_EnableIRQ(EXTI3_IRQn);
-
-   HAL_NVIC_SetPriority(EXTI4_IRQn, 0, 0);
-   HAL_NVIC_EnableIRQ(EXTI4_IRQn);
-
-   HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
-   HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
-
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 }
 
 /* USER CODE BEGIN 4 */
@@ -534,6 +680,7 @@ void assert_failed(uint8_t *file, uint32_t line)
      ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
   /* USER CODE END 6 */
 }
+
 #endif /* USE_FULL_ASSERT */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

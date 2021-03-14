@@ -1,7 +1,7 @@
+#include <displays/font5x8.hpp>
 #include <wd_g0906.h>
 #include "stm32f103xb.h"
 #include "stm32f1xx_hal.h"
-#include "lcd_generic_font.h"
 
 /* Video RAM */
 volatile unsigned char lcd_video_ram[LCD_YMAX][LCD_XMAX];
@@ -127,7 +127,7 @@ void lcd_putchar(const char c) {
 
   /* Put character image */
   for (i = 0; i < 5; i++)
-    lcd_write(DATA, lcd_font[(c * 5) + i]);
+//    lcd_write(DATA, lcd_font[(c * 5) + i]);
   /* Put whitespace */
   lcd_write(DATA, 0x00);
 }

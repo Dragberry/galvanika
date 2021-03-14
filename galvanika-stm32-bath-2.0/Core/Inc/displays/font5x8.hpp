@@ -1,12 +1,9 @@
-#ifndef __LCD_FONT_H__
-#define __LCD_FONT_H__
-	/* { */
+#ifndef __FONT_5X8_H__
+#define __FONT_5X8_H__
 
 #include <stdint.h>
 
-
-// LCD font - Height:8, Width:5
-const unsigned char lcd_font [256*5] =
+const unsigned char FONT5x8 [256*5] =
 {
 		0x00, 0x00, 0x00, 0x00, 0x00,// 00
 		0x00, 0x00, 0x5F, 0x00, 0x00,// 01
@@ -266,7 +263,4 @@ const unsigned char lcd_font [256*5] =
 		0x48, 0x54, 0x34, 0x14, 0x7C // FF
 };
 
-
-
-	/* } */
 #endif
