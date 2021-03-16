@@ -370,11 +370,12 @@ int main(void) {
     display.vram_update();
     top++;
     bottom--;
+    HAL_Delay(50);
   }
 
   display.clear();
   display.set_cursor(0, 0);
-  display.put_string("Direct / Reversed");
+  display.put_string("CuprumBerry V2.2");
   while (true) {
     /* USER CODE END WHILE */
     if (refresh_display) {
