@@ -23,8 +23,14 @@ public:
   }
 
   void init() {
+    CS.clear();
+    RST.clear();
+    SDA.set();
+    SCK.set();
+
     RST.clear();
     delay(24000);
+    RST.set();
     write_command(0xE2); // Internal reset
     write_command(0xEB); // Thermal comp. on
     write_command(0x2F); // Supply mode
@@ -34,7 +40,6 @@ public:
     write_command(0xA6); // Positive - A7, Negative - A6
     write_command(0x90); // Contrast 0x90...0x9F
     write_command(0xAF); // Enable LCD
-    RST.set();
   }
 
   void set_cursor(uint8_t x, uint8_t y) {
@@ -44,10 +49,9 @@ public:
   }
 
   void write_command(uint8_t command) {
-    register uint32_t i;
     CS.clear();
-    cbi(PORT, SDA);
-    sbi(PORT, SCK);
+    SDA.clear();
+    SCK.set();
     for (register uint8_t i = 0; i < 8; i++) {
       SCK.clear();
       if (command & 0x80) {
@@ -76,6 +80,8 @@ public:
       SCK.set();
       data <<= 1;
     }
+    SCK.clear();
+    CS.set();
   }
 
 };

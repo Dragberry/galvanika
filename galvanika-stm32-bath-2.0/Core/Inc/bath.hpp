@@ -153,14 +153,14 @@ public:
         break;
       }
       case Mode::PROGRRESS: {
-        int16_t time_seconds = sniprintf_uptime();
+        uint16_t time_seconds = sniprintf_uptime();
         data.weight = data.average_current * time_seconds * Bath::SPEED;
-        sniprintf(stats_string, 20, "  %1.3f A / %2.3f g", data.average_current, data.weight);
+        sniprintf(stats_string, 20, "%1.3fA / %2.3fg", data.average_current, data.weight);
         break;
       }
       case Mode::RESET_REQUEST: {
         sniprintf_uptime();
-        sniprintf(stats_string, 20, "Press to Reset: %d", answer_timer);
+        sniprintf(stats_string, 20, "Confirm Reset: %d", answer_timer);
         break;
       }
       default:
@@ -169,15 +169,15 @@ public:
     }
   }
 
-  int16_t sniprintf_uptime() {
-    int16_t time_seconds = data.time_ms / 1000;
-    int16_t time_minutes = time_seconds / 60;
-    int16_t time_hours = time_minutes / 60;
+  uint16_t sniprintf_uptime() {
+    uint16_t time_seconds = data.time_ms / 1000;
+    uint16_t time_minutes = time_seconds / 60;
+    uint16_t time_hours = time_minutes / 60;
 
-    int16_t seconds = time_seconds % 60;
-    int16_t minutes = time_minutes % 60;
-    int16_t hours = time_hours % 60;
-    sniprintf(time_string, 20, "%c: Uptime %03d%:%02d:%02d", name, hours, minutes, seconds);
+    uint16_t seconds = time_seconds % 60;
+    uint16_t minutes = time_minutes % 60;
+    uint16_t hours = time_hours % 60;
+    sniprintf(time_string, 20, "%c: %03d%:%02d:%02d", name, hours, minutes, seconds);
 
     return time_seconds;
   }

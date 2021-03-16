@@ -112,6 +112,9 @@ public:
   }
 
   Type average() {
+    if (size == 0) {
+      return 0;
+    }
     Type total = 0;
     iterate([&](const Type& item, uint8_t idx) -> void {
       total += item;
