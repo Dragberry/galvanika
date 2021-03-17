@@ -315,6 +315,15 @@ public:
 
     return err;
   }
+
+  GraphicState vram_put_image(const char* img) {
+    for (register uint8_t y = 0; y < interface->rows; y++) {
+      interface->set_cursor(0, y);
+      for (register uint8_t x = 0; x < interface->width; x++) {
+        vram[y][x] = img[interface->width * y + x];
+      }
+    }
+  }
 };
 
 #endif

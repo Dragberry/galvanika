@@ -153,7 +153,7 @@ public:
         break;
       }
       case Mode::PROGRRESS: {
-        uint16_t time_seconds = sniprintf_uptime();
+        uint32_t time_seconds = sniprintf_uptime();
         data.weight = data.average_current * time_seconds * Bath::SPEED;
         sniprintf(stats_string, 20, "%1.3fA / %2.3fg", data.average_current, data.weight);
         break;
@@ -169,14 +169,14 @@ public:
     }
   }
 
-  uint16_t sniprintf_uptime() {
-    uint16_t time_seconds = data.time_ms / 1000;
-    uint16_t time_minutes = time_seconds / 60;
-    uint16_t time_hours = time_minutes / 60;
+  uint32_t sniprintf_uptime() {
+    uint32_t time_seconds = data.time_ms / 1000;
+    uint32_t time_minutes = time_seconds / 60;
+    uint32_t time_hours = time_minutes / 60;
 
-    uint16_t seconds = time_seconds % 60;
-    uint16_t minutes = time_minutes % 60;
-    uint16_t hours = time_hours % 60;
+    uint32_t seconds = time_seconds % 60;
+    uint32_t minutes = time_minutes % 60;
+    uint32_t hours = time_hours % 60;
     sniprintf(time_string, 20, "%c: %03d%:%02d:%02d", name, hours, minutes, seconds);
 
     return time_seconds;
