@@ -1,0 +1,110 @@
+{% load i18n %}
+<header class="blog-header fixed-top">
+  <nav id="mainNavBarTop" class="navbar-dark bg-dark" aria-label="mainNavBarTop">
+    <div class="container">
+      <div class="row text-light">
+        <div class="col-lg-1 col-md-1 mt-3">
+          <a class="navbar-brand" href="/" title="{% translate 'На главную' %}">
+            <span class="fa fa-home fa-lg"></span>
+          </a>
+        </div>
+        <div class="col-lg-8 col-md-11 p-3 text-center">
+          <span class="h1 fst-italic text-light">
+            Ремесленная мастерская "CuprumBerry"
+          </span>
+        </div>
+        <div class="col-lg-3 col-md-11 text-end">
+          <div class="row">
+            <div class="col-12 ms-auto d-flex justify-content-end">
+              {% for social in request.socials %}
+                <a href="{{ social.action }}" title="{% translate social.name %} ">
+                  <span class="ms-2 mt-3 social-icon social-{{ social.name }}"></span>
+                </a>
+              {% endfor %}
+            </div>
+            <div class="col-12 pt-2">
+              <span>+375(29)123-45-67</span>
+            </div>
+            <div class="col-12 pt-2">
+              <span>+375(29)123-45-67</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav id="mainNavBar" class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="mainNavBar">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavBarCollapse" aria-controls="mainNavBarCollapse" aria-expanded="false" aria-label="Toggle main NavBar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse flex-column align-items-center ml-lg-2 ml-0" id="mainNavBarCollapse">
+        <ul class="navbar-nav mb-auto w-100 mt-0 ml-auto">
+          <li class="navbar-nav ms-auto justify-content-start">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/catalog">
+                  {% translate "catalog" %}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="navbar-nav ms-auto justify-content-center">
+            <ul class="navbar-nav ms-auto justify-content-center">-->
+              {% for decoration in request.decorations %}
+              <li class="nav-item">
+                <a class="nav-link" href="/products/categories/{{ decoration.id }}/{{ decoration.name }}">
+                  {% translate decoration.name %}
+                </a>
+              </li>
+              {% endfor %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBase" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {% translate request.category_base.name %}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownBase">
+                  {% for base in request.bases %}
+                    <li>
+                      <a class="dropdown-item" href="/products/categories/{{ base.id }}/{{ base.name }}">
+                        {% translate base.name %}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMetal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {% translate request.category_metal.name %}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMetal">
+                  {% for metal in request.metals %}
+                    <li>
+                      <a class="dropdown-item" href="/products/categories/{{ metal.id }}/{{ metal.name }}">
+                        {% translate metal.name %}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="navbar-nav ms-auto justify-content-end">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/delivery-and-payment">
+                  {% translate "delivery and payment" %}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contacts">
+                  {% translate "contacts" %}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

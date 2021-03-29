@@ -1,0 +1,24 @@
+.social-icon {
+    width: 32px;
+    height: 32px;
+    float: left;
+    background-size: cover;
+}
+
+.social-instagram {
+    background: url(/static/images/Instagram.png) 6% 6% no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.social-vk {
+    background: url(/static/images/VK.png) 6% 6% no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.social-viber {
+    background: url(/static/images/Viber.png) 6% 6% no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}

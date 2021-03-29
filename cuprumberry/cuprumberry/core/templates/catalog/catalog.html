@@ -1,0 +1,76 @@
+{% extends "layout/template.html" %}
+{% load i18n %}
+
+{% block title %} Каталог изделий | CuprumBerry {% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-12">
+    <h1>Каталог авторских украшений</h1>
+  </div>
+  <div class="col-12">
+    <div class="form-row d-flex justify-content-end">
+      <div class="col-6 col-sm-4 col-md-3">
+        <div class="input-group d-flex justify-content-end">
+          <div class="form-check form-check-inline list-display-type">
+            <label class="btn btn-secondary" for="displayTiles">
+              <input form="filtersForm"
+                  id="displayTiles"
+                  type="radio"
+                  name="display"
+                  value="tiles"
+                  class="form-check-input"
+                  onchange="onDisplayChanged();doFilter()"
+                  checked="checked">
+              <span class="fa fa-table"></span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline list-display-type">
+            <label class="btn" for="displayList">
+              <input form="filtersForm"
+                  id="displayList"
+                  type="radio"
+                  name="display"
+                  value="list"
+                  class="form-check-input"
+                  onchange="onDisplayChanged();doFilter()"
+                  checked="">
+              <span class="fa fa-list"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-6 col-md-5">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+                <span class="fa fa-sort fa-xs" title="Sort"></span>
+            </div>
+          </div>
+          <select name="sort" class="form-control form-control-sm" id="sorting" onchange="doFilter()">
+            <option value="Reverse">Reverse</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="form-row d-flex justify-content-end">
+      Filters
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="row">
+      {% for product, main_image in products.items %}
+        {% if True %}
+          {% include "catalog/product-tile-item.html" with product=product main_image=main_image %}
+        {% else %}
+          {% include "catalog/product-tile-item.html" with product=product main_image=main_image %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

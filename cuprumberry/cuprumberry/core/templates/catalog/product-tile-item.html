@@ -1,0 +1,45 @@
+<div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+    <div class="card bg-light">
+        <a href="/catalog/products/{{ product.id}}/{{ product.name }}">
+            <img class="img-fluid"
+                 title="{{ product.name }}"
+                 alt="{{ product.name }}"
+                 src="{{ main_image.image.url }}">
+        </a>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="font-weight-bold">
+                        <a href="/catalog/products/{{ product.id}}/{{ product.name }}">
+                            <span>{{ product.name }}</span>
+                        </a>
+                    </h3>
+                </div>
+                <div class="col-6 text-right">
+                    {% if product.actual_price %}
+                    <div>
+                        <strong>{{ product.actual_price }} BYN</strong>
+                    </div>
+                    <div>
+                        <del class="small">{{ product.price }} BYN</del>
+                    </div>
+                    {% else %}
+                    <div>
+                        <strong>{{ product.price }} BYN</strong>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-12">
+                    <hr/>
+                </div>
+                <div class="col-12 text-right">
+                    <button id="addToCartButton" type="button" onclick="console.log(product.id)"
+                            class="btn btn-success btn-sm mb-2">
+                        <span class="fa fa-cart-plus"></span>
+                        <span class="small">В корзину</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
