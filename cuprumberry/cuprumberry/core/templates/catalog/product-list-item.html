@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-9 col-md-10">
+            <h3 class="font-weight-bold">
+                <a href="/catalog/products/{{ product.id}}/{{ product.name }}">
+                    <span>{{ product.name }}</span>
+                </a>
+            </h3>
+            <div class="row">
+                <div class="col-12 col-sm-4 col-md-3">
+                    <a href="/catalog/products/{{ product.id}}/{{ product.name }}">
+                        <img class="img-fluid"
+                             title="{{ product.name }}"
+                             alt="{{ product.name }}"
+                             src="{{ main_image.image.url }}">
+                    </a>
+                </div>
+                <div class="col-12 col-sm-8 col-md-9">
+                    <div class="row">
+                        <div class="col-6 text-left">
+                            <div>
+                                <span class="fw-bold small mr-4">Код продукта: {{ product.id }}</span>
+                            </div>
+                        </div>
+                        <div class="col-12 text-right">
+                            <hr/>
+                        </div>
+                        <div class="col-12 small text-justify">
+                            <p>{{ product.short_description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-3 col-md-2 text-center">
+            {% if product.actual_price %}
+            <div>
+                <strong>{{ product.actual_price }} BYN</strong>
+            </div>
+            <div>
+                <del class="small">{{ product.price }} BYN</del>
+            </div>
+            {% else %}
+            <div>
+                <strong>{{ product.price }} BYN</strong>
+            </div>
+            {% endif %}
+            <div class="d-grid gap-2">
+                <button id="addToCartButton"
+                    type="button"
+                    onclick="console.log({{ product.id }})"
+                    class="btn btn-success btn-sm mt-2">
+                <span class="small">В корзину</span>
+            </button>
+            <button id="quickOrderButton"
+                    type="button"
+                    onclick="console.log({{ product.id }})"
+                    class="btn btn-primary btn-sm mt-2">
+                <span class="small">Быстрый заказ</span>
+            </button>
+            </div>
+        </div>
+        <div class="col-12">
+            <hr/>
+        </div>
+    </div>
+</div>

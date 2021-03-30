@@ -1,0 +1,9 @@
+<div class="row" id="productList">
+  {% for product, main_image in products.items %}
+    {% if request.session.display == 'list' %}
+      {% include "catalog/product-list-item.html" with product=product main_image=main_image %}
+    {% else %}
+      {% include "catalog/product-tile-item.html" with product=product main_image=main_image %}
+    {% endif %}
+  {% endfor %}
+</div>

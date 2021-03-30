@@ -10,11 +10,15 @@
     <h1>Каталог авторских украшений</h1>
   </div>
   <div class="col-12">
+    <hr/>
+  </div>
+  <div class="col-12">
     <div class="form-row d-flex justify-content-end">
       <div class="col-6 col-sm-4 col-md-3">
         <div class="input-group d-flex justify-content-end">
           <div class="form-check form-check-inline list-display-type">
-            <label class="btn btn-secondary" for="displayTiles">
+            <label class="btn {% if request.session.display == 'tiles' %} btn-secondary {% endif %}"
+                   for="displayTiles">
               <input form="filtersForm"
                   id="displayTiles"
                   type="radio"
@@ -22,12 +26,13 @@
                   value="tiles"
                   class="form-check-input"
                   onchange="onDisplayChanged();doFilter()"
-                  checked="checked">
+                  checked="{% if request.session.display == 'tiles' %} checked {% endif %}">
               <span class="fa fa-table"></span>
             </label>
         </div>
         <div class="form-check form-check-inline list-display-type">
-            <label class="btn" for="displayList">
+            <label class="btn {% if request.session.display == 'list' %} btn-secondary {% endif %}"
+                   for="displayList">
               <input form="filtersForm"
                   id="displayList"
                   type="radio"
@@ -35,7 +40,7 @@
                   value="list"
                   class="form-check-input"
                   onchange="onDisplayChanged();doFilter()"
-                  checked="">
+                  checked="{% if request.session.display == 'list' %} checked {% endif %}">
               <span class="fa fa-list"></span>
             </label>
           </div>
@@ -43,12 +48,14 @@
       </div>
       <div class="col-6 col-sm-6 col-md-5">
         <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-                <span class="fa fa-sort fa-xs" title="Sort"></span>
-            </div>
-          </div>
-          <select name="sort" class="form-control form-control-sm" id="sorting" onchange="doFilter()">
+          <span class="input-group-text" id="sortingLabel">
+            <span class="fa fa-sort" title="Sort"></span>
+          </span>
+          <select name="sort"
+                  class="form-control form-select form-select-sm"
+                  id="sorting"
+                  aria-describedby="sortingLabel"
+                  onchange="doFilter()">
             <option value="Reverse">Reverse</option>
           </select>
         </div>
@@ -57,19 +64,11 @@
   </div>
   <div class="col-3">
     <div class="form-row d-flex justify-content-end">
-      Filters
+      {% include "catalog/catalog-filters.html" %}
     </div>
   </div>
   <div class="col-9">
-    <div class="row">
-      {% for product, main_image in products.items %}
-        {% if True %}
-          {% include "catalog/product-tile-item.html" with product=product main_image=main_image %}
-        {% else %}
-          {% include "catalog/product-tile-item.html" with product=product main_image=main_image %}
-        {% endif %}
-      {% endfor %}
-    </div>
+    {% include "catalog/product-list.html" with products=products %}
   </div>
 </div>
 

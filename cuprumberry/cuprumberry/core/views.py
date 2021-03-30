@@ -16,15 +16,21 @@ def index(request):
 
 
 def catalog(request):
-    products: [Product] = Product.objects.order_by('-created_datetime')[:5]
+    display: str = request.GET.get('display')
+    if 'display' not in request.session:
+        request.session['display'] = 'tiles' if display is None else display
+    elif display is not None:
+        request.session['display'] = display
 
-    template = loader.get_template('catalog/catalog.html')
+    products: [Product] = Product.objects.order_by('-created_datetime')[:5]
     context = {
         'products': {
             product: ProductImage.objects.get(product=product, order=0) for product in products
         },
     }
-    return HttpResponse(template.render(context, request))
+    if request.is_ajax():
+        return render(request, 'catalog/product-list.html', context)
+    return render(request, 'catalog/catalog.html', context)
 
 
 def product_detail(request, product_id: str):
