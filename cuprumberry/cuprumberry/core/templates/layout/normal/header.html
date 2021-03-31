@@ -54,7 +54,7 @@
             <ul class="navbar-nav ms-auto justify-content-center">-->
               {% for decoration in request.decorations %}
               <li class="nav-item">
-                <a class="nav-link" href="/products/categories/{{ decoration.id }}/{{ decoration.name }}">
+                <a class="nav-link" href="/catalog/categories/{{ decoration.id }}/{{ decoration.name }}">
                   {% translate decoration.name %}
                 </a>
               </li>
@@ -66,7 +66,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownBase">
                   {% for base in request.bases %}
                     <li>
-                      <a class="dropdown-item" href="/products/categories/{{ base.id }}/{{ base.name }}">
+                      <a class="dropdown-item" href="/catalog/categories/{{ base.id }}/{{ base.name }}">
                         {% translate base.name %}
                       </a>
                     </li>
@@ -80,7 +80,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMetal">
                   {% for metal in request.metals %}
                     <li>
-                      <a class="dropdown-item" href="/products/categories/{{ metal.id }}/{{ metal.name }}">
+                      <a class="dropdown-item" href="/catalog/categories/{{ metal.id }}/{{ metal.name }}">
                         {% translate metal.name %}
                       </a>
                     </li>

@@ -16,7 +16,7 @@
     <div class="form-row d-flex justify-content-end">
       <div class="col-6 col-sm-4 col-md-3">
         <div class="input-group d-flex justify-content-end">
-          <div class="form-check form-check-inline list-display-type">
+          <div class="form-check-inline list-display-type">
             <label class="btn {% if request.session.display == 'tiles' %} btn-secondary {% endif %}"
                    for="displayTiles">
               <input form="filtersForm"
@@ -26,11 +26,11 @@
                   value="tiles"
                   class="form-check-input"
                   onchange="onDisplayChanged();doFilter()"
-                  checked="{% if request.session.display == 'tiles' %} checked {% endif %}">
+                  {% if request.session.display == 'tiles' %}checked{% endif %}>
               <span class="fa fa-table"></span>
             </label>
         </div>
-        <div class="form-check form-check-inline list-display-type">
+        <div class="form-check-inline list-display-type">
             <label class="btn {% if request.session.display == 'list' %} btn-secondary {% endif %}"
                    for="displayList">
               <input form="filtersForm"
@@ -40,7 +40,7 @@
                   value="list"
                   class="form-check-input"
                   onchange="onDisplayChanged();doFilter()"
-                  checked="{% if request.session.display == 'list' %} checked {% endif %}">
+                  {% if request.session.display == 'list' %}checked{% endif %}>
               <span class="fa fa-list"></span>
             </label>
           </div>
@@ -51,12 +51,17 @@
           <span class="input-group-text" id="sortingLabel">
             <span class="fa fa-sort" title="Sort"></span>
           </span>
-          <select name="sort"
-                  class="form-control form-select form-select-sm"
+          <select form="filtersForm"
                   id="sorting"
+                  name="sort"
+                  class="form-control form-select form-select-sm"
                   aria-describedby="sortingLabel"
                   onchange="doFilter()">
-            <option value="Reverse">Reverse</option>
+            {% for sort_name, sort_value in sorts.items %}
+              <option value="{{ sort_name }}" {% if request.session.sort.name == sort_name %}selected{% endif %}>
+                {{ sort_name }}
+              </option>
+            {% endfor %}
           </select>
         </div>
       </div>
@@ -69,6 +74,39 @@
   </div>
   <div class="col-9">
     {% include "catalog/product-list.html" with products=products %}
+  </div>
+  <div class="col-12 d-flex mb-2 justify-content-end">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item {% if page <= 1 %} disabled {% endif %}">
+          <a class="page-link" href="catalog?page=1" aria-label="First">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item {% if page <= 1 %} disabled {% endif %}">
+          <a class="page-link" href="catalog?page={{ page|add:-1 }}" aria-label="Previous">
+            <span aria-hidden="true">&lsaquo;</span>
+          </a>
+        </li>
+        {% for page_idx in pages %}
+          <li class="page-item {% if page_idx == page %} active disabled {% endif %}">
+            <a class="page-link" href="?page={{ page_idx }}">
+              {{ page_idx }}
+            </a>
+          </li>
+        {% endfor %}
+        <li class="page-item {% if page == total_pages %} disabled {% endif %}">
+          <a class="page-link" href="catalog?page={{ page|add:1 }}" aria-label="Next">
+            <span aria-hidden="true">&rsaquo;</span>
+          </a>
+        </li>
+        <li class="page-item {% if page == total_pages %} disabled {% endif %}">
+          <a class="page-link" href="catalog?page={{ total_pages }}" aria-label="Last">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
 
