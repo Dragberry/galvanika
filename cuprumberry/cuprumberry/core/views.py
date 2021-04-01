@@ -1,17 +1,17 @@
 from enum import Enum
-from typing import Optional
 
-from django.db.models import Case, When, Value
+from django.db.models import Case, When
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import loader
 from django.urls import reverse
+from django.views.generic import ListView
 
-from .models import Product, ProductOrder, ProductImage
+from .models import Product, ProductOrder, Category
 
 
 class DisplayEnum(Enum):
-    TILES = 'table'
+    TILES = 'tiles'
     LIST = 'list'
 
 
@@ -31,45 +31,66 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
-def catalog_category(request, category_id: Optional[int], category_name: Optional[str]):
-    return catalog(request)
+class CatalogView(ListView):
+    template_name = 'catalog/catalog.html'
+    context_object_name = 'products'
+    paginate_by = 2
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.categories: [Category] = []
 
-def catalog(request):
-    display: str = request.GET.get('display')
-    if 'display' not in request.session:
-        request.session['display'] = 'tiles' if display is None else display
-    elif display is not None:
-        request.session['display'] = display
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.is_ajax():
+            response_kwargs.setdefault('content_type', self.content_type)
+            return self.response_class(
+                request=self.request,
+                template='catalog/product-list.html',
+                context=context,
+                using=self.template_engine,
+                **response_kwargs
+            )
+        return super().render_to_response(context, **response_kwargs)
 
-    try:
-        sort: SortEnum = SortEnum[request.GET.get('sort')]
-    except KeyError:
-        sort: SortEnum = SortEnum.DATE_DESC
-    request.session['sort'] = sort.value
+    def get_queryset(self):
+        try:
+            sort: SortEnum = SortEnum[self.request.GET.get('sort')]
+        except KeyError:
+            sort: SortEnum = SortEnum.DATE_DESC
+        self.request.session['sort'] = sort.value
 
-    page: int = int(request.GET.get('page', '1'))
-    page_size: int = 2
-    total: int = Product.objects.count()
-    total_pages: int = (total - 1) // page_size + 1
-    products: [Product] = Product.objects.annotate(
-        real_price=Case(
-            When(actual_price__isnull=False, then='actual_price'),
-            default='price',
-        )
-    ).order_by(sort.value)[:5]
-    context = {
-        'sorts': {sort.name: sort.value for sort in SortEnum},
-        'products': {
-            product: ProductImage.objects.get(product=product, order=0) for product in products
-        },
-        'page': page,
-        'total_pages': total_pages,
-        'pages': range(1, total_pages + 1)
-    }
-    if request.is_ajax():
-        return render(request, 'catalog/product-list.html', context)
-    return render(request, 'catalog/catalog.html', context)
+        category_id: int = self.kwargs.get('category_id')
+        if category_id is not None:
+            category: Category = get_object_or_404(Category, pk=category_id)
+            while category.parent is not None:
+                self.categories.append(category)
+                category = category.parent
+            self.categories.append(category)
+            self.categories.reverse()
+
+        filters: dict = {}
+        if category_id is not None:
+            filters['categories__id__in'] = [category_id]
+        return Product.objects.annotate(
+            real_price=Case(
+                When(actual_price__isnull=False, then='actual_price'),
+                default='price',
+            )
+        ).filter(**filters).order_by(sort.value)
+
+    def get_context_data(self, **kwargs):
+        context: dict = super(CatalogView, self).get_context_data(**kwargs)
+        if self.categories:
+            context['categories'] = self.categories
+        context['sorts'] = {sort.name: sort.value for sort in SortEnum}
+
+        try:
+            display: DisplayEnum = DisplayEnum(self.request.GET.get('display'))
+            self.request.session['display'] = display.value
+        except (KeyError, ValueError):
+            if 'display' not in self.request.session:
+                self.request.session['display'] = DisplayEnum.TILES.value
+        return context
 
 
 def product_detail(request, product_id: str):

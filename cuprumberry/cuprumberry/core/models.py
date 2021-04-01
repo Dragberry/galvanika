@@ -28,6 +28,9 @@ class Product(models.Model):
     created_datetime: datetime = models.DateTimeField(default=now)
     created_by_id: int = models.IntegerField(default=-1)
 
+    def main_image(self):
+        return ProductImage.objects.get(product=self, order=0)
+
     def __str__(self):
         return f'Product(id={self.id}, name={self.name})'
 
