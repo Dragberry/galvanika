@@ -36,10 +36,10 @@
     <hr/>
   </div>
   <div class="col-12">
-    <div class="form-row d-flex justify-content-end">
+    <div class="form-row d-flex pb-2 justify-content-end">
       <div class="col-6 col-sm-4 col-md-3">
         <div class="input-group d-flex justify-content-end">
-          <div class="form-check-inline list-display-type">
+          <div class="form-check-inline list-display-type" title="{% translate 'Display tiles mode' %}">
             <label class="btn {% if request.session.display == 'tiles' %} btn-secondary {% endif %}"
                    for="displayTiles">
               <input form="filtersForm"
@@ -53,7 +53,7 @@
               <span class="fa fa-table"></span>
             </label>
         </div>
-        <div class="form-check-inline list-display-type">
+        <div class="form-check-inline list-display-type" title="{% translate 'Display list mode' %}">
             <label class="btn {% if request.session.display == 'list' %} btn-secondary {% endif %}"
                    for="displayList">
               <input form="filtersForm"
@@ -70,9 +70,9 @@
         </div>
       </div>
       <div class="col-6 col-sm-6 col-md-5">
-        <div class="input-group">
+        <div class="input-group" title="{% translate 'sort by' %}">
           <span class="input-group-text" id="sortingLabel">
-            <span class="fa fa-sort" title="Sort"></span>
+            <span class="fa fa-sort"></span>
           </span>
           <select form="filtersForm"
                   id="sorting"
@@ -82,7 +82,7 @@
                   onchange="doFilter()">
             {% for sort_name, sort_value in sorts.items %}
               <option value="{{ sort_name }}" {% if request.session.sort.name == sort_name %}selected{% endif %}>
-                {{ sort_name }}
+                {% translate sort_name %}
               </option>
             {% endfor %}
           </select>
@@ -98,72 +98,95 @@
   <div class="col-9">
     {% include "catalog/product-list.html" with products=products %}
   </div>
-  <div class="col-12 d-flex mb-2 justify-content-end">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        {% if page_obj.has_previous %}
-          <li class="page-item">
-            <a class="page-link" href="?page=1" aria-label="First">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-              <span aria-hidden="true">&lsaquo;</span>
-            </a>
-          </li>
-            <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="{{ page_obj.previous_page_number }}">
-              <span aria-hidden="true">{{ page_obj.previous_page_number }}</span>
-            </a>
-          </li>
-        {% else %}
-          <li class="page-item disabled">
-            <a class="page-link" href="#" aria-label="First">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&lsaquo;</span>
-            </a>
-          </li>
-        {% endif %}
-        <li class="page-item active disabled">
-          <a class="page-link" href="?page={{ page_obj.number }}">
-            {{ page_obj.number }}
-          </a>
-        </li>
-        {% if page_obj.has_next %}
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="{{ page_obj.next_page_number }}">
-              <span aria-hidden="true">{{ page_obj.next_page_number }}</span>
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-              <span aria-hidden="true">&rsaquo;</span>
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        {% else %}
-          <li class="page-item disabled">
-             <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&rsaquo;</span>
-             </a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#" aria-label="Last">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        {% endif %}
-      </ul>
-    </nav>
+  <div class="col-12 mb-2">
+    <div class="row justify-content-end"">
+      <div class="col-sm-6 col-md-5 col-lg-3 mb-2">
+        <div class="input-group" title="{% translate 'Page size' %}">
+          <span class="input-group-text" id="pageSizeLabel">
+            {% translate "Page size" %}
+          </span>
+          <select form="filtersForm"
+                  id="pageSize"
+                  name="pageSize"
+                  class="form-select form-select"
+                  aria-describedby="pageSizeLabel"
+                  onchange="doFilter()">
+            {% for page_size in page_sizes %}
+              <option value="{{ page_size }}" {% if request.session.page_size == page_size %}selected{% endif %}>
+                {{ page_size }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-2 mb-2 d-flex justify-content-end"">
+        <nav aria-label="Catalog page navigation">
+          <ul class="pagination">
+            {% if page_obj.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="First" title="{% translate 'First page' %}">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous" title="{% translate 'Previous page' %}">
+                  <span aria-hidden="true">&lsaquo;</span>
+                </a>
+              </li>
+                <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="{{ page_obj.previous_page_number }}">
+                  <span aria-hidden="true">{{ page_obj.previous_page_number }}</span>
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="First" title="{% translate 'First page' %}">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous" title="{% translate 'Previous page' %}">
+                  <span aria-hidden="true">&lsaquo;</span>
+                </a>
+              </li>
+            {% endif %}
+            <li class="page-item active disabled">
+              <a class="page-link" href="?page={{ page_obj.number }}">
+                {{ page_obj.number }}
+              </a>
+            </li>
+            {% if page_obj.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="{{ page_obj.next_page_number }}">
+                  <span aria-hidden="true">{{ page_obj.next_page_number }}</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next" title="{% translate 'Next page' %}">
+                  <span aria-hidden="true">&rsaquo;</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last" title="{% translate 'Last page' %}">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                 <a class="page-link" href="#" aria-label="Next" title="{% translate 'Next page' %}">
+                    <span aria-hidden="true">&rsaquo;</span>
+                 </a>
+              </li>
+              <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Last" title="{% translate 'Last page' %}">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </div>
   </div>
 </div>
 

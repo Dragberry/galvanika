@@ -33,6 +33,55 @@ msgstr "Контакты"
 msgid "about us"
 msgstr "О нас"
 
+# Filters
+msgid "sort by"
+msgstr "Сортировать"
+
+msgid "DATE_DESC"
+msgstr "Сначала новые"
+
+msgid "DATE_ASC"
+msgstr "Сначала старые"
+
+msgid "PRICE_DESC"
+msgstr "По убыванию цены"
+
+msgid "PRICE_ASC"
+msgstr "По возростанию цены"
+
+msgid "Display list mode"
+msgstr "Отображение списком"
+
+msgid "Display tiles mode"
+msgstr "Отображание таблицей"
+
+# Pagination
+msgid "Page size"
+msgstr "Размер страницы"
+
+msgid "First page"
+msgstr "Первая страница"
+
+msgid "Previous page"
+msgstr "Предыдущая страница"
+
+msgid "Next page"
+msgstr "Следующая страница"
+
+msgid "Last page"
+msgstr "Последняя страница"
+
+# Filters
+msgid "Price"
+msgstr "Цена"
+
+msgid "Price from"
+msgstr "От"
+
+msgid "Price to"
+msgstr "До"
+
+
 # Materials
 msgid "ash-maple"
 msgstr "Ясеневидный клён"

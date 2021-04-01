@@ -34,11 +34,23 @@ def index(request):
 class CatalogView(ListView):
     template_name = 'catalog/catalog.html'
     context_object_name = 'products'
-    paginate_by = 2
+
+    page_sizes: [int] = [12, 24, 48]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.categories: [Category] = []
+
+    def get_paginate_by(self, queryset):
+        try:
+            page_size: int = int(self.request.GET['pageSize'])
+            if page_size not in CatalogView.page_sizes:
+                raise ValueError()
+            self.request.session['page_size'] = page_size
+        except (KeyError, ValueError):
+            if 'page_size' not in self.request.session:
+                self.request.session['page_size'] = CatalogView.page_sizes[0]
+        return self.request.session['page_size']
 
     def render_to_response(self, context, **response_kwargs):
         if self.request.is_ajax():
@@ -53,6 +65,12 @@ class CatalogView(ListView):
         return super().render_to_response(context, **response_kwargs)
 
     def get_queryset(self):
+        # price_from: int =  int(self.request.GET.get('filterPriceFrom'))
+        # self.request.session['price_from'] = price_from
+        # price_to: int = int(self.request.GET.get('filterPriceTo'))
+        # self.request.session['price_from'] = price_to
+
+
         try:
             sort: SortEnum = SortEnum[self.request.GET.get('sort')]
         except KeyError:
@@ -90,6 +108,9 @@ class CatalogView(ListView):
         except (KeyError, ValueError):
             if 'display' not in self.request.session:
                 self.request.session['display'] = DisplayEnum.TILES.value
+
+        context['page_sizes'] = CatalogView.page_sizes
+
         return context
 
 
