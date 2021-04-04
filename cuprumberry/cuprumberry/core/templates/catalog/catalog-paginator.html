@@ -1,0 +1,95 @@
+{% load i18n %}
+
+<div class="row justify-content-end">
+    <div class="col-sm-6 col-md-5 col-lg-4 mb-2">
+        <div class="input-group" title="{% translate 'Page size' %}">
+            <span class="input-group-text" id="pageSizeLabel">
+              {% translate "Page size" %}
+            </span>
+            <select form="filtersForm"
+                    id="pageSize"
+                    name="pageSize"
+                    class="form-select form-select"
+                    aria-describedby="pageSizeLabel"
+                    onchange="doFilter()">
+                {% for page_size in page_sizes %}
+                <option value="{{ page_size }}" {% if catalog_filters.page_size == page_size %}selected{% endif %}>
+                    {{ page_size }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-2 d-flex justify-content-end">
+        <nav aria-label="Catalog page navigation">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First" title="{% translate 'First page' %}">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"
+                       title="{% translate 'Previous page' %}">
+                        <span aria-hidden="true">&lsaquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
+                       aria-label="{{ page_obj.previous_page_number }}">
+                        <span aria-hidden="true">{{ page_obj.previous_page_number }}</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" aria-label="First" title="{% translate 'First page' %}">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" aria-label="Previous" title="{% translate 'Previous page' %}">
+                        <span aria-hidden="true">&lsaquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+                <li class="page-item active disabled">
+                    <a class="page-link" href="?page={{ page_obj.number }}">
+                        {{ page_obj.number }}
+                    </a>
+                </li>
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}"
+                       aria-label="{{ page_obj.next_page_number }}">
+                        <span aria-hidden="true">{{ page_obj.next_page_number }}</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next"
+                       title="{% translate 'Next page' %}">
+                        <span aria-hidden="true">&rsaquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last"
+                       title="{% translate 'Last page' %}">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" aria-label="Next" title="{% translate 'Next page' %}">
+                        <span aria-hidden="true">&rsaquo;</span>
+                    </a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" aria-label="Last" title="{% translate 'Last page' %}">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>

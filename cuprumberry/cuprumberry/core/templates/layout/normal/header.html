@@ -44,7 +44,7 @@
           <li class="navbar-nav ms-auto justify-content-start">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link" href="/catalog">
+                <a class="nav-link" href="{% url 'core:catalog' %}">
                   {% translate "catalog" %}
                 </a>
               </li>
@@ -52,40 +52,24 @@
           </li>
           <li class="navbar-nav ms-auto justify-content-center">
             <ul class="navbar-nav ms-auto justify-content-center">-->
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'core:category' request.category_decorations.id %}">
+                  {% translate request.category_decorations.name %}
+                </a>
+              </li>
               {% for decoration in request.decorations %}
               <li class="nav-item">
-                <a class="nav-link" href="/catalog/categories/{{ decoration.id }}/{{ decoration.name }}">
+                {% with ""|add:decoration.parent.id|add:"/"|add:decoration.id as url %}
+                <a class="nav-link" href="{% url 'core:category' url %}">
                   {% translate decoration.name %}
                 </a>
+                {% endwith %}
               </li>
               {% endfor %}
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBase" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {% translate request.category_base.name %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'core:category' request.category_souvenirs.id %}">
+                  {% translate request.category_souvenirs.name %}
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownBase">
-                  {% for base in request.bases %}
-                    <li>
-                      <a class="dropdown-item" href="/catalog/categories/{{ base.id }}/{{ base.name }}">
-                        {% translate base.name %}
-                      </a>
-                    </li>
-                  {% endfor %}
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMetal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {% translate request.category_metal.name %}
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMetal">
-                  {% for metal in request.metals %}
-                    <li>
-                      <a class="dropdown-item" href="/catalog/categories/{{ metal.id }}/{{ metal.name }}">
-                        {% translate metal.name %}
-                      </a>
-                    </li>
-                  {% endfor %}
-                </ul>
               </li>
             </ul>
           </li>

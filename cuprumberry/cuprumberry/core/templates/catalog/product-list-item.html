@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col-12 col-sm-9 col-md-10">
             <h3 class="font-weight-bold">
-                <a href="/catalog/products/{{ product.id}}/{{ product.name }}">
+                <a href="{{ request.path }}/{{ product.url_name }}-{{ product.id }}">
                     <span>{{ product.name }}</span>
                 </a>
             </h3>
             <div class="row">
                 <div class="col-12 col-sm-4 col-md-3">
-                    <a href="/catalog/products/{{ product.id}}/{{ product.name }}">
+                    <a href="{{ request.path }}/{{ product.url_name }}-{{ product.id }}">
                         <img class="img-fluid"
                              title="{{ product.name }}"
                              alt="{{ product.name }}"
@@ -51,13 +51,13 @@
                     onclick="console.log({{ product.id }})"
                     class="btn btn-success btn-sm mt-2">
                 <span class="small">В корзину</span>
-            </button>
-            <button id="quickOrderButton"
-                    type="button"
-                    onclick="console.log({{ product.id }})"
-                    class="btn btn-primary btn-sm mt-2">
-                <span class="small">Быстрый заказ</span>
-            </button>
+                </button>
+                <button id="quickOrderButton"
+                        type="button"
+                        onclick="console.log({{ product.id }})"
+                        class="btn btn-primary btn-sm mt-2">
+                    <span class="small">Быстрый заказ</span>
+                </button>
             </div>
         </div>
         <div class="col-12">

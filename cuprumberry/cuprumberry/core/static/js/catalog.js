@@ -1,12 +1,15 @@
-function onDisplayChanged() {
-	$('input[name="display"]').parent().removeClass('btn-secondary');
-	$('input[name="display"]:checked').parent().addClass('btn-secondary');
-}
+/* on page init for mobiles */
+$(document).on('pageinit', function() {
+	addEventListeners();
+});
+/* On document ready */
+$(document).ready(function() {
+	addEventListeners();
+});
 
 var delayTimer;
 
-function doFilter() {
-    console.log('doFilter')
+function doFilter(delay = 1000) {
     clearTimeout(delayTimer);
 	delayTimer = setTimeout(function() {
 		var form = $('#filtersForm');
@@ -21,5 +24,20 @@ function doFilter() {
 	        	});
 	        }
 	   	});
-	}, 1000);
+	}, delay);
+}
+
+function addEventListeners() {
+    $('[id^=collapsedMenu_]').each(function() {
+        this.addEventListener('shown.bs.collapse', function (event) {
+            var icon = $(event.target).siblings('span').children('span')
+            icon.removeClass('fa-angle-double-right')
+            icon.addClass('fa-angle-double-down')
+        });
+        this.addEventListener('hidden.bs.collapse', function (event) {
+            var icon = $(event.target).siblings('span').children('span')
+            icon.removeClass('fa-angle-double-down')
+            icon.addClass('fa-angle-double-right')
+        });
+    });
 }

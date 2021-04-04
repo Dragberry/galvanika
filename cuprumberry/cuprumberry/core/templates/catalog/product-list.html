@@ -1,9 +1,22 @@
 <div class="row" id="productList">
-  {% for product in products %}
-    {% if request.session.display == 'list' %}
-      {% include "catalog/product-list-item.html" with product=product %}
-    {% else %}
-      {% include "catalog/product-tile-item.html" with product=product %}
-    {% endif %}
-  {% endfor %}
+    <div class="col-12">
+        {% include "catalog/catalog-top-menu.html" %}
+    </div>
+    <div class="col-12">
+        <div class="row">
+        {% for product in products %}
+            {% if catalog_filters.display == 'list' %}
+                {% include "catalog/product-list-item.html" with product=product %}
+            {% else %}
+                {% include "catalog/product-tile-item.html" with product=product %}
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12">
+        {% include "catalog/catalog-paginator.html" with page_obj=page_obj %}
+    </div>
 </div>

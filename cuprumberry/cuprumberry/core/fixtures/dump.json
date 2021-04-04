@@ -25,7 +25,7 @@
   },
   {
     "model": "core.category",
-    "pk": 10000,
+    "pk": "izdeliya-iz-metalla",
     "fields": {
       "parent": null,
       "name": "Металл"
@@ -33,15 +33,23 @@
   },
   {
     "model": "core.category",
-    "pk": 10001,
+    "pk": "izdeliya-iz-medi",
     "fields": {
-      "parent": 10000,
+      "parent": "izdeliya-iz-metalla",
       "name": "Медь"
     }
   },
   {
     "model": "core.category",
-    "pk": 20000,
+    "pk": "suveniry",
+    "fields": {
+      "parent": null,
+      "name": "Сувениры"
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": "bizhuteriya",
     "fields": {
       "parent": null,
       "name": "Бижутерия"
@@ -49,122 +57,122 @@
   },
   {
     "model": "core.category",
-    "pk": 20001,
+    "pk": "broshi",
     "fields": {
-      "parent": 20000,
+      "parent": "bizhuteriya",
       "name": "Броши"
     }
   },
   {
     "model": "core.category",
-    "pk": 20002,
+    "pk": "kulony",
     "fields": {
-      "parent": 20000,
+      "parent": "bizhuteriya",
       "name": "Кулоны"
     }
   },
   {
     "model": "core.category",
-    "pk": 20003,
+    "pk": "sergi",
     "fields": {
-      "parent": 20000,
+      "parent": "bizhuteriya",
       "name": "Серьги"
     }
   },
     {
     "model": "core.category",
-    "pk": 20004,
+    "pk": "kolca",
     "fields": {
-      "parent": 20000,
+      "parent": "bizhuteriya",
       "name": "Кольца"
     }
   },
   {
     "model": "core.category",
-    "pk": 20005,
+    "pk": "braslety",
     "fields": {
-      "parent": 20000,
+      "parent": "bizhuteriya",
       "name": "Браслеты"
     }
   },
     {
     "model": "core.category",
-    "pk": 20006,
+    "pk": "shpilki",
     "fields": {
-      "parent": 20000,
+      "parent": "bizhuteriya",
       "name": "Шпильки"
     }
   },
 
   {
     "model": "core.category",
-    "pk": 30000,
+    "pk": "osnova",
     "fields": {
       "parent": null,
-      "name": "Основание"
+      "name": "Основа"
     }
   },
   {
     "model": "core.category",
-    "pk": 30001,
+    "pk": "izdeliya-iz-duba",
     "fields": {
-      "parent": 30000,
+      "parent": "osnova",
       "name": "Дуб"
     }
   },
   {
     "model": "core.category",
-    "pk": 30002,
+    "pk": "izdeliya-iz-klena",
     "fields": {
-      "parent": 30000,
+      "parent": "osnova",
       "name": "Клён"
     }
   },
   {
     "model": "core.category",
-    "pk": 30003,
+    "pk": "izdeliya-iz-klena-yasenevidnogo",
     "fields": {
-      "parent": 30000,
+      "parent": "osnova",
       "name": "Клён ясеневидный"
     }
   },
   {
     "model": "core.category",
-    "pk": 30004,
+    "pk": "izdeliya-iz-osiny",
     "fields": {
-      "parent": 30000,
+      "parent": "osnova",
       "name": "Осина"
     }
   },
   {
     "model": "core.category",
-    "pk": 30005,
+    "pk": "izdeliya-iz-olhi",
     "fields": {
-      "parent": 30000,
+      "parent": "osnova",
       "name": "Ольха"
     }
   },
   {
     "model": "core.category",
-    "pk": 30006,
+    "pk": "izdeliya-iz-fizalisa",
     "fields": {
-      "parent": 30000,
+      "parent": "osnova",
       "name": "Физалис"
     }
   },
   {
     "model": "core.category",
-    "pk": 30007,
+    "pk": "izdeliya-iz-duba-ostrolistnogo",
     "fields": {
-      "parent": 30000,
+      "parent": "osnova",
       "name": "Дуб остролистный"
     }
   },
     {
     "model": "core.category",
-    "pk": 30008,
+    "pk": "izdeliya-iz-duba-podorozhnika",
     "fields": {
-      "parent": 30000,
+      "parent": "osnova",
       "name": "Подорожник"
     }
   },
@@ -180,11 +188,11 @@
       "created_datetime": "2021-03-20T22:14:07Z",
       "created_by_id": -1,
       "categories": [
-        10000,
-        10001,
-        20000,
-        20002,
-        30004
+        "izdeliya-iz-metalla",
+        "izdeliya-iz-medi",
+        "bizhuteriya",
+        "kulony",
+        "izdeliya-iz-osiny"
       ]
     }
   },
@@ -224,11 +232,11 @@
       "created_datetime": "2021-03-21T22:14:07Z",
       "created_by_id": -1,
       "categories": [
-        10000,
-        10001,
-        20000,
-        20001,
-        30001
+        "izdeliya-iz-metalla",
+        "izdeliya-iz-medi",
+        "bizhuteriya",
+        "broshi",
+        "izdeliya-iz-duba"
       ]
     }
   },
@@ -268,11 +276,11 @@
       "created_datetime": "2021-03-22T22:14:07Z",
       "created_by_id": -1,
       "categories": [
-        10000,
-        10001,
-        20000,
-        20002,
-        30006
+        "izdeliya-iz-metalla",
+        "izdeliya-iz-medi",
+        "bizhuteriya",
+        "kulony",
+        "izdeliya-iz-fizalisa"
       ]
     }
   },
@@ -312,11 +320,11 @@
       "created_datetime": "2021-03-22T22:14:07Z",
       "created_by_id": -1,
       "categories": [
-        10000,
-        10001,
-        20000,
-        20003,
-        30004
+        "izdeliya-iz-metalla",
+        "izdeliya-iz-medi",
+        "bizhuteriya",
+        "sergi",
+        "izdeliya-iz-osiny"
       ]
     }
   },
@@ -368,11 +376,11 @@
       "created_datetime": "2021-03-26T22:14:07Z",
       "created_by_id": -1,
       "categories": [
-        10000,
-        10001,
-        20000,
-        20002,
-        30005
+        "izdeliya-iz-metalla",
+        "izdeliya-iz-medi",
+        "bizhuteriya",
+        "kulony",
+        "izdeliya-iz-olhi"
       ]
     }
   },
@@ -412,11 +420,11 @@
       "created_datetime": "2021-03-27T22:14:07Z",
       "created_by_id": -1,
       "categories": [
-        10000,
-        10001,
-        20000,
-        20002,
-        30008
+        "izdeliya-iz-metalla",
+        "izdeliya-iz-medi",
+        "bizhuteriya",
+        "kulony",
+        "izdeliya-iz-duba-podorozhnika"
       ]
     }
   },
@@ -456,11 +464,11 @@
       "created_datetime": "2021-03-28T22:14:07Z",
       "created_by_id": -1,
       "categories": [
-        10000,
-        10001,
-        20000,
-        20001,
-        30007
+        "izdeliya-iz-metalla",
+        "izdeliya-iz-medi",
+        "bizhuteriya",
+        "broshi",
+        "izdeliya-iz-duba-ostrolistnogo"
       ]
     }
   },

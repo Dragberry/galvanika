@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.db import models
 from django.utils.timezone import now
+from transliterate import translit, slugify
 
 
 class Social(models.Model):
@@ -10,6 +11,7 @@ class Social(models.Model):
 
 
 class Category(models.Model):
+    id: str = models.CharField(max_length=32, primary_key=True)
     name: str = models.CharField(max_length=32)
     parent = models.ForeignKey("self", on_delete=models.PROTECT, null=True)
 
@@ -27,6 +29,9 @@ class Product(models.Model):
     categories: [Category] = models.ManyToManyField(Category)
     created_datetime: datetime = models.DateTimeField(default=now)
     created_by_id: int = models.IntegerField(default=-1)
+
+    def url_name(self) -> str:
+        return slugify(self.name, 'ru')
 
     def main_image(self):
         return ProductImage.objects.get(product=self, order=0)

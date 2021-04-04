@@ -1,0 +1,96 @@
+{% extends "layout/template.html" %}
+{% load i18n %}
+
+{% block title %} {{ product.name }} | CuprumBerry {% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="row">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'core:catalog' %}">{% translate "catalog" %}</a>
+                </li>
+                {% for category in categories %}
+                <li class="breadcrumb-item">
+                    <a href="{% url 'core:category' category.id %}">
+                        {{ category.name }}
+                    </a>
+                </li>
+                {% endfor %}
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ product.name }}
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-md-6 mb-2">
+        <div class="card">
+            <div id="productCarouselIndicators" class="carousel slide">
+                <div class="carousel-inner">
+                    {% for image in images %}
+                    <div class="carousel-item {% if image.order == 0 %} active {% endif %}">
+                        <img class="d-block w-100"
+                             title="{{ product.name }}"
+                             alt="{{ product.name }}"
+                             src="{{ image.image.url }}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="carousel-thumbnails-wrapper">
+                <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselIndicators"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#productCarouselIndicators"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                <a class="carousel-control-thumbnails text-center" role="button"
+                   onclick="$('.carousel-thumbnails').scrollLeft(-200)">
+                    <span class="fa fa-2x fa-angle-left"></span>
+                </a>
+                <a class="carousel-control-thumbnails carousel-control-right-thumbnails text-center" role="button"
+                   onclick="$('.carousel-thumbnails').scrollLeft(200)">
+                    <span class="fa fa-2x fa-angle-right"></span>
+                </a>
+                <ol class="carousel-thumbnails">
+                    {% for image in images %}
+                    <li class="img-carousel-thumbnail {% if image.order == 0 %} active {% endif %}"
+                        data-bs-target="#productCarouselIndicators"
+                        data-bs-slide-to="{{ forloop.counter0 }}"
+                        aria-current="true"
+                        aria-label="Slide {{ forloop.counter }}">
+                        <img class="img-thumbnail"
+                             title="{{ product.name }}"
+                             alt="{{ product.name }}"
+                             src="{{ image.image.url }}">
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="h1 fst-italic">{{ product.name }}</h1>
+            </div>
+            <div class="col-12">
+                <span class="fw-bold small mr-4">Код продукта: {{ product.id }}</span>
+            </div>
+            <div class="col-12">
+                <p>{{ product.short_description }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,4 +1,5 @@
 django
+transliterate
 pyyaml
 ua-parser
 user-agents
