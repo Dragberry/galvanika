@@ -54,7 +54,9 @@
                 </button>
                 <button id="quickOrderButton"
                         type="button"
-                        onclick="console.log({{ product.id }})"
+                        data-bs-toggle="modal"
+                        data-bs-target="#quickOrderModal"
+                        onclick="prepareQuickOrder({{ product.id }}, '{{ product.name }}', '{{ product.main_image.image.url }}')"
                         class="btn btn-primary btn-sm mt-2">
                     <span class="small">Быстрый заказ</span>
                 </button>

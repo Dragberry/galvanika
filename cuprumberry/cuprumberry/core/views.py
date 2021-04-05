@@ -3,10 +3,11 @@ from enum import Enum
 from typing import Optional
 
 from django.db.models import Case, When, Q
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, HttpResponseBadRequest
 from django.shortcuts import render, get_object_or_404
 from django.template import loader
 from django.urls import reverse
+from django.utils.translation import gettext
 from django.views.generic import ListView, DetailView
 
 from .models import Product, ProductOrder, Category
@@ -146,20 +147,49 @@ class ProductView(DetailView):
         return context
 
 
-def quick_order(request, product_id: str):
-    product: Product = get_object_or_404(Product, pk=product_id)
-    mobile: str = request.POST['mobile']
-    email: str = request.POST['email']
-    if not mobile or not email:
-        return render(request, 'products/product_detail.html', {
-            'product': product,
-            'error_message': "Please, specify your contact details.",
-        })
-    else:
-        product_order: ProductOrder = ProductOrder(
-            product=product,
-            mobile=mobile,
-            email=email
-        )
-        product_order.save()
-        return HttpResponseRedirect(reverse('core:product_detail', args=(product.id,)))
+def catalog_quick_order(request):
+    if request.is_ajax():
+        fields: dict = {
+            'productId': False,
+            'mobile': False,
+            'email': False,
+            'address': False,
+            'comment': False,
+        }
+        status: int = 200
+        product_id: str = request.POST.get('productId')
+        if not product_id:
+            status = 404
+            fields['productId'] = gettext('Quick order error: no productId')
+        mobile: str = request.POST.get('mobile')
+        email: str = request.POST.get('email')
+        if not mobile and not email:
+            status = 404
+            fields['mobile'] = gettext('Quick order error: either mobile or email must be provided')
+            fields['email'] = gettext('Quick order error: either mobile or email must be provided')
+        address: str = request.POST.get('address')
+        if not address:
+            status = 404
+            fields['address'] = gettext('Quick order error: no address')
+        comment: str = request.POST.get('comment')
+        if status == 200:
+            try:
+                product: Product = Product.objects.get(id=int(product_id))
+                product_order: ProductOrder = ProductOrder(
+                    product=product,
+                    mobile=mobile,
+                    email=email,
+                    address=address,
+                    comment=comment
+                )
+                product_order.save()
+            except Product.DoesNotExist:
+                status = 404
+                fields['productId'] = gettext('Quick order error: no product')
+            except Exception as e:
+                print(e)
+                status = 500
+
+        return JsonResponse(data={'fields': fields}, status=status)
+    return HttpResponseBadRequest()
+

@@ -71,45 +71,42 @@ msgstr "Следующая страница"
 msgid "Last page"
 msgstr "Последняя страница"
 
-# Filters
-msgid "Price"
-msgstr "Цена"
+# Quick order
+msgid "Quick order title"
+msgstr "Заказать изделие"
 
-msgid "Price from"
-msgstr "От"
+msgid "Mobile"
+msgstr "Телефон"
 
-msgid "Price to"
-msgstr "До"
+msgid "Email"
+msgstr "E-mail"
 
+msgid "Address"
+msgstr "Адрес"
 
-# Materials
-msgid "ash-maple"
-msgstr "Ясеневидный клён"
+msgid "Comment"
+msgstr "Комментарий"
 
-msgid "maple"
-msgstr "Клён"
+msgid "Cancel"
+msgstr "Отмена"
 
-msgid "aspen"
-msgstr "Осина"
+msgid "Confirm"
+msgstr "Подтвердить заказ"
 
-msgid "oak"
-msgstr "Дуб"
+msgid "Quick order thanks"
+msgstr "Спасибо за заказ!"
 
-msgid "alder"
-msgstr "Ольха"
+msgid "Quick order feedback"
+msgstr "Мы свяжемся с Вами в самое ближайшее время."
 
-# Product Categories
-msgid "brooches"
-msgstr "Броши"
+msgid "Quick order error: no productId"
+msgstr "Не указан продукт для заказа"
 
-msgid "pendants"
-msgstr "Кулоны"
+msgid "Quick order error: either mobile or email must be provided"
+msgstr "Необходимо указать телефон и/или e-mail"
 
-msgid "earrings"
-msgstr "Серьги"
+msgid "Quick order error: no address"
+msgstr "Необходимо указать адрес"
 
-msgid "rings"
-msgstr "Кольца"
-
-msgid "bracelets"
-msgstr "Браслеты"
+msgid "Quick order error: no product"
+msgstr "Ой, кажется прооизошла ошибка. У нас нет такого продукта."

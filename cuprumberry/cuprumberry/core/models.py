@@ -16,7 +16,7 @@ class Category(models.Model):
     parent = models.ForeignKey("self", on_delete=models.PROTECT, null=True)
 
     def __str__(self):
-        return f'Category({self.name}{", parent" if self.parent.name is not None else ""})'
+        return f'Category({self.name})'
 
 
 class Product(models.Model):
@@ -41,10 +41,11 @@ class Product(models.Model):
 
 
 class ProductOrder(models.Model):
-    id: int = models.IntegerField(primary_key=True)
     product: Product = models.ForeignKey(Product, on_delete=models.PROTECT)
-    mobile: str = models.CharField(max_length=36)
-    email: str = models.CharField(max_length=36)
+    mobile: str = models.CharField(max_length=36, null=True)
+    email: str = models.CharField(max_length=36, null=True)
+    address: str = models.CharField(max_length=256, null=True)
+    comment: str = models.CharField(max_length=128, null=True)
     created_datetime: datetime = models.DateTimeField(default=now)
     created_by_id: int = models.IntegerField(default=-1)
 

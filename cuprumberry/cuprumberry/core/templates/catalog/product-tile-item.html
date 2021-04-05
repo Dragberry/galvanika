@@ -36,16 +36,18 @@
                     <div class="row">
                         <div class="d-grid gap-2 col-6 mx-auto">
                             <button id="addToCartButton" type="button" onclick="console.log({{ product.id }})"
-                                class="btn btn-success btn-sm">
+                                    class="btn btn-success btn-sm">
                                 <span class="fa fa-cart-plus"></span>
                                 <span class="small">В корзину</span>
                             </button>
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto">
                             <button id="quickOrderButton"
-                                type="button"
-                                onclick="console.log({{ product.id }})"
-                                class="btn btn-primary btn-sm">
+                                    type="button"
+                                    class="btn btn-primary btn-sm"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#quickOrderModal"
+                                    onclick="prepareQuickOrder({{ product.id }}, '{{ product.name }}', '{{ product.main_image.image.url }}')">
                                 <span class="small">Быстрый заказ</span>
                             </button>
                         </div>

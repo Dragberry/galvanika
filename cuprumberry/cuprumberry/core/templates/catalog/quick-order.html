@@ -1,0 +1,76 @@
+{% load i18n %}
+<div class="modal fade"
+     id="quickOrderModal"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="quickOrderModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title h1" id="quickOrderModalLabel">{% translate 'Quick order title' %}</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form id="quickOrderForm" method="post" action="{% url 'core:quick_order' %}">
+                        {% csrf_token %}
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <img id="quickOrderProductImg" class="img-thumbnail rounded">
+                            </div>
+                            <div class="col-6">
+                                <span id="quickOrderProductName" class="d-flex h2">...</span>
+                                <span class="d-flex h6 fw-bold small mr-4">
+                                    Код продукта: <span class="ms-2" id="quickOrderProductId">...</span>
+                                </span>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label for="quickOrderMobile" class="form-label">{% translate 'Mobile' %}:</label>
+                                <input type="text" class="form-control" id="quickOrderMobile" name="mobile" placeholder="+375(29)123-45-67">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label for="quickOrderEmail" class="form-label">{% translate 'Email' %}:</label>
+                                <input type="email" class="form-control" id="quickOrderEmail" name="email" placeholder="name@example.com">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label for="quickOrderAddress" class="form-label">{% translate 'Address' %}:</label>
+                                <textarea class="form-control" id="quickOrderAddress" name="address" rows="3"></textarea>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label for="quickOrderComment" class="form-label">{% translate 'Comment' %}:</label>
+                                <textarea class="form-control" id="quickOrderComment" name="comment" rows="3"></textarea>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <input type="hidden" name="productId">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate 'Cancel' %}</button>
+                <button type="button" class="btn btn-primary" onclick="submitQuickOrder()">
+                    {% translate 'Confirm' %}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+    <div id="quickOrderSubmittedToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">
+                {% translate 'Quick order thanks' %}
+            </strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {% translate 'Quick order feedback' %}
+        </div>
+    </div>
+</div>
