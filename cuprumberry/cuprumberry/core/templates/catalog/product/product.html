@@ -84,13 +84,60 @@
                 <h1 class="h1 fst-italic">{{ product.name }}</h1>
             </div>
             <div class="col-12">
-                <span class="fw-bold small mr-4">Код продукта: {{ product.id }}</span>
+                <p class="fw-bold small mr-4">Код продукта: {{ product.id }}</p>
+            </div>
+            <div class="col-12">
+                <h2 class="small">
+                    {% for category in product.categories.all %}
+                        <em>{{ category.name }}</em>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}</p>
+                </h2>
             </div>
             <div class="col-12">
                 <p>{{ product.short_description }}</p>
             </div>
+            <div class="col-12 text-end">
+                {% if product.actual_price %}
+                <div>
+                    <strong class="h1">{{ product.actual_price }} BYN</strong>
+                </div>
+                <div>
+                    <del class="h3">{{ product.price }} BYN</del>
+                </div>
+                {% else %}
+                <div>
+                    <strong class="h1">{{ product.price }} BYN</strong>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-12">
+                <hr/>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="row">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button id="addToCartButton" type="button" onclick="console.log({{ product.id }})"
+                                class="btn btn-success btn-sm">
+                            <span class="fa fa-cart-plus"></span>
+                            <span class="small">В корзину</span>
+                        </button>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button id="quickOrderButton"
+                                type="button"
+                                class="btn btn-primary btn-sm"
+                                data-bs-toggle="modal"
+                                data-bs-target="#quickOrderModal"
+                                onclick="prepareQuickOrder({{ product.id }}, '{{ product.name }}', '{{ product.main_image.image.url }}')">
+                            <span class="small">Быстрый заказ</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+{% include "catalog/quick-order.html" %}
 
 {% endblock %}
