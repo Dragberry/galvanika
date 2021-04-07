@@ -1,7 +1,21 @@
 {% extends "layout/template.html" %}
 {% load i18n %}
 
-{% block title %} {{ product.name }} | CuprumBerry {% endblock %}
+{% block title %}
+    {% if product.page_title %}
+        {{ product.page_title }}
+    {% else %}
+        {{ product.name }} | CuprumBerry
+    {% endif %}
+{% endblock %}
+
+{% block meta_description  %}
+    {{ product.page_description }}
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ product.page_keywords }}
+{% endblock %}
 
 {% block content %}
 
@@ -53,14 +67,6 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-                <a class="carousel-control-thumbnails text-center" role="button"
-                   onclick="$('.carousel-thumbnails').scrollLeft(-200)">
-                    <span class="fa fa-2x fa-angle-left"></span>
-                </a>
-                <a class="carousel-control-thumbnails carousel-control-right-thumbnails text-center" role="button"
-                   onclick="$('.carousel-thumbnails').scrollLeft(200)">
-                    <span class="fa fa-2x fa-angle-right"></span>
-                </a>
                 <ol class="carousel-thumbnails">
                     {% for image in images %}
                     <li class="img-carousel-thumbnail {% if image.order == 0 %} active {% endif %}"
@@ -81,7 +87,15 @@
     <div class="col-6">
         <div class="row">
             <div class="col-12">
-                <h1 class="h1 fst-italic">{{ product.name }}</h1>
+                <h1 class="h1 fst-italic">
+                    {% block h1 %}
+                        {% if product.page_h1 %}
+                            {{ product.page_h1 }}
+                        {% else %}
+                            {{ product.name }}
+                        {% endif %}
+                    {% endblock %}
+                </h1>
             </div>
             <div class="col-12">
                 <p class="fw-bold small mr-4">Код продукта: {{ product.id }}</p>

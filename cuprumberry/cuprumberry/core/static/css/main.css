@@ -284,6 +284,8 @@ ol.carousel-thumbnails {
 
 .img-carousel-thumbnail img.img-thumbnail  {
 	max-width: 100px;
+	height: 100px;
+    object-fit: cover;
 }
 
 .carousel-control-thumbnails {
@@ -294,6 +296,14 @@ ol.carousel-thumbnails {
     position: absolute;
     background: #e6e6e6;
 	opacity: 0.9;
+}
+
+.carousel-thumbnails-wrapper .carousel-control-prev {
+    margin-bottom: 100px;
+}
+
+.carousel-thumbnails-wrapper .carousel-control-next {
+    margin-bottom: 100px;
 }
 
 .carousel-control-thumbnails:hover {

@@ -3,10 +3,9 @@ from enum import Enum
 from typing import Optional
 
 from django.db.models import Case, When, Q
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, HttpResponseBadRequest
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
+from django.shortcuts import get_object_or_404
 from django.template import loader
-from django.urls import reverse
 from django.utils.translation import gettext
 from django.views.generic import ListView, DetailView
 
@@ -99,6 +98,8 @@ class CatalogView(ListView):
             for category_id in category_ids_list:
                 self.categories.append(get_object_or_404(Category, pk=category_id))
             filters.append(Q(categories__id=category_ids_list[-1]))
+        else:
+            self.categories.append(Category.objects.get(pk='all'))
 
         return Product.objects.annotate(
             real_price=Case(

@@ -1,7 +1,21 @@
 {% extends "layout/template.html" %}
 {% load i18n %}
 
-{% block title %} Каталог изделий | CuprumBerry {% endblock %}
+{% block title %}
+    {% if current_category.page_title %}
+        {{ current_category.page_title }}
+    {% else %}
+        {{ current_category.name }} | CuprumBerry
+    {% endif %}
+{% endblock %}
+
+{% block meta_description  %}
+    {{ current_category.page_description }}
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ current_category.page_keywords }}
+{% endblock %}
 
 {% block content %}
 

@@ -10,16 +10,27 @@ class Social(models.Model):
     action: str = models.CharField(max_length=64)
 
 
-class Category(models.Model):
+class SeoPage(models.Model):
+    page_title = models.CharField(max_length=255, null=True)
+    page_description = models.CharField(max_length=1024, null=True)
+    page_keywords = models.CharField(max_length=1024, null=True)
+    page_h1 = models.CharField(max_length=128, null=True)
+
+    class Meta:
+        abstract = True
+
+
+class Category(SeoPage):
     id: str = models.CharField(max_length=32, primary_key=True)
     name: str = models.CharField(max_length=32)
     parent = models.ForeignKey("self", on_delete=models.PROTECT, null=True)
+    description = models.CharField(max_length=4096, null=True)
 
     def __str__(self):
         return f'Category({self.name})'
 
 
-class Product(models.Model):
+class Product(SeoPage):
     id: int = models.IntegerField(primary_key=True)
     name: str = models.CharField(max_length=36)
     short_description: str = models.CharField(max_length=1024, null=True)

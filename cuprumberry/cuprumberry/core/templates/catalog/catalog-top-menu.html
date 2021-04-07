@@ -5,7 +5,15 @@
         <form id="filtersForm" action="{{ request.path }}" method="GET"></form>
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <h1>Каталог авторских украшений</h1>
+                <h1>
+                    {% block h1 %}
+                        {% if current_category.page_h1 %}
+                            {{ current_category.page_h1 }}
+                        {% else %}
+                            {{ current_category.name }}
+                        {% endif %}
+                    {% endblock %}
+                </h1>
             </div>
             <div class="col-sm-12 col-md-3">
                 <div class="input-group d-flex justify-content-end">
