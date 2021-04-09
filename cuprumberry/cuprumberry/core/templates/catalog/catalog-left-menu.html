@@ -3,6 +3,7 @@
     <div class="col-12">
         <div class="row">
             <ul class="nav flex-column">
+                {% if request.category_decorations %}
                 <li class="nav-item">
                     <span class="nav-link {% if parent_category.id == request.category_decorations.id %} active {% endif %}">
                         <span class="fa fa-xs {% if parent_category.id == request.category_decorations.id %}fa-angle-double-down{% else %}fa-angle-double-right {% endif %}""
@@ -11,11 +12,10 @@
                               data-bs-target="#collapsedMenu_{{ request.category_decorations.id }}"
                               aria-expanded="{% if parent_category.id == request.category_decorations.id %}true{% else %}false{% endif %}"
                               aria-controls="#collapsedMenu_{{ request.category_decorations.id }}">
-                        </span>
+                    </span>
                         <a class="ms-2" aria-current="page" href="{% url 'core:category' request.category_decorations.id %}">
                             {{ request.category_decorations.name }}
                         </a>
-                    </span>
                     <ul class="nav flex-column ms-5 collapse {% if parent_category.id == request.category_decorations.id  %}show{% endif %}"
                         id="collapsedMenu_{{ request.category_decorations.id }}">
                         {% for decoration in request.decorations %}
@@ -30,6 +30,8 @@
                         {% endfor %}
                     </ul>
                 </li>
+                {% endif %}
+                {% if request.category_souvenirs %}
                 <li class="nav-item">
                     <span class="nav-link {% if parent_category.id == request.category_souvenirs.id %} active {% endif %}">
                         <span class="fa fa-circle fa-xs"></span>
@@ -38,6 +40,8 @@
                         </a>
                     </span>
                 </li>
+                {% endif %}
+                {% if request.category_base %}
                 <li class="nav-item">
                     <span class="nav-link {% if parent_category.id == request.category_base.id %} active {% endif %}">
                          <span class="fa fa-xs {% if parent_category.id == request.category_base.id  %}fa-angle-double-down{% else %}fa-angle-double-right{% endif %}"
@@ -65,6 +69,7 @@
                         {% endfor %}
                     </ul>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>

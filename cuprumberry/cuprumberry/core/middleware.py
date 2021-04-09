@@ -1,3 +1,6 @@
+from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Q
+
 from .models import Category, Social
 
 
@@ -9,13 +12,25 @@ class MainMenuMiddleware:
 
     def __init__(self, get_response):
         self.get_response = get_response
-        self.category_decorations: Category = Category.objects.get(id=MainMenuMiddleware.CATEGORY_DECORATIONS)
-        self.decorations: [Category] = Category.objects.filter(parent=MainMenuMiddleware.CATEGORY_DECORATIONS)
-        self.category_base: Category = Category.objects.get(id=MainMenuMiddleware.CATEGORY_BASE)
-        self.bases: [Category] = Category.objects.filter(parent=MainMenuMiddleware.CATEGORY_BASE).order_by('name')
-        self.category_metal: Category = Category.objects.get(id=MainMenuMiddleware.CATEGORY_METAL)
-        self.category_souvenirs: Category = Category.objects.get(id=MainMenuMiddleware.CATEGORY_SOUVENIRS)
-        self.metals: [Category] = Category.objects.filter(parent=MainMenuMiddleware.CATEGORY_METAL)
+        try:
+            self.category_decorations: Category = Category.objects.get(Q(id=MainMenuMiddleware.CATEGORY_DECORATIONS) & Q(deleted=False))
+        except ObjectDoesNotExist:
+            self.category_decorations = None
+        try:
+            self.category_base: Category = Category.objects.get(Q(id=MainMenuMiddleware.CATEGORY_BASE) & Q(deleted=False))
+        except ObjectDoesNotExist:
+            self.category_base = None
+        try:
+            self.category_metal: Category = Category.objects.get(Q(id=MainMenuMiddleware.CATEGORY_METAL) & Q(deleted=False))
+        except ObjectDoesNotExist:
+            self.category_metal = None
+        try:
+            self.category_souvenirs: Category = Category.objects.get(Q(id=MainMenuMiddleware.CATEGORY_SOUVENIRS) & Q(deleted=False))
+        except ObjectDoesNotExist:
+            self.category_souvenirs = None
+        self.decorations: [Category] = Category.objects.filter(Q(parent=MainMenuMiddleware.CATEGORY_DECORATIONS) & Q(deleted=False))
+        self.bases: [Category] = Category.objects.filter(Q(parent=MainMenuMiddleware.CATEGORY_BASE) & Q(deleted=False)).order_by('name')
+        self.metals: [Category] = Category.objects.filter(Q(parent=MainMenuMiddleware.CATEGORY_METAL) & Q(deleted=False))
         self.socials: [Social] = Social.objects.all()
 
     def __call__(self, request):

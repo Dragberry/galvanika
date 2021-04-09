@@ -55,7 +55,7 @@ class CatalogView(ListView):
     def setup(self, request, *args, **kwargs):
         super().setup(request, *args, **kwargs)
         self.catalog_filters: [str, dict] = request.session.setdefault('catalog_filters', {
-            'sort': SortEnum.DATE_DESC.value,
+            'sort': SortEnum.DATE_DESC.name,
             'display': DisplayEnum.TILES.value,
             'page_size': CatalogView.page_sizes[0],
         })
@@ -90,13 +90,13 @@ class CatalogView(ListView):
         except KeyError:
             sort: SortEnum = SortEnum[self.catalog_filters['sort']]
 
-        filters: [Q] = []
+        filters: [Q] = [Q(deleted=False)]
 
         category_ids: str = self.kwargs.get('category_ids')
         if category_ids is not None:
             category_ids_list: [str] = category_ids.split('/')
             for category_id in category_ids_list:
-                self.categories.append(get_object_or_404(Category, pk=category_id))
+                self.categories.append(get_object_or_404(Category, Q(pk=category_id) & Q(deleted=False)))
             filters.append(Q(categories__id=category_ids_list[-1]))
         else:
             self.categories.append(Category.objects.get(pk='all'))
@@ -146,6 +146,10 @@ class ProductView(DetailView):
         context['categories'] = categories
         context['images'] = self.object.productimage_set.order_by('order')
         return context
+
+    def get_queryset(self, queryset=None):
+        qs = super().get_queryset()
+        return qs.filter(Q(deleted=False))
 
 
 def catalog_quick_order(request):

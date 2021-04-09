@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.db import models
 from django.utils.timezone import now
-from transliterate import translit, slugify
+from transliterate import slugify
 
 
 class Social(models.Model):
@@ -11,10 +11,11 @@ class Social(models.Model):
 
 
 class SeoPage(models.Model):
-    page_title = models.CharField(max_length=255, null=True)
-    page_description = models.CharField(max_length=1024, null=True)
-    page_keywords = models.CharField(max_length=1024, null=True)
-    page_h1 = models.CharField(max_length=128, null=True)
+    page_title = models.CharField(max_length=255, blank=True, null=True)
+    page_description = models.CharField(max_length=1024, blank=True, null=True)
+    page_keywords = models.CharField(max_length=1024, blank=True, null=True)
+    page_h1 = models.CharField(max_length=128, blank=True, null=True)
+    deleted: bool = models.BooleanField(default=False)
 
     class Meta:
         abstract = True
@@ -23,20 +24,20 @@ class SeoPage(models.Model):
 class Category(SeoPage):
     id: str = models.CharField(max_length=32, primary_key=True)
     name: str = models.CharField(max_length=32)
-    parent = models.ForeignKey("self", on_delete=models.PROTECT, null=True)
-    description = models.CharField(max_length=4096, null=True)
+    parent = models.ForeignKey("self", on_delete=models.PROTECT, blank=True, null=True)
+    description = models.CharField(max_length=4096, blank=True, null=True)
 
     def __str__(self):
-        return f'Category({self.name})'
+        return f'Category({self.name}{", DELETED" if self.deleted else ""})'
 
 
 class Product(SeoPage):
     id: int = models.IntegerField(primary_key=True)
     name: str = models.CharField(max_length=36)
-    short_description: str = models.CharField(max_length=1024, null=True)
-    long_description: str = models.CharField(max_length=4096, null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
-    actual_price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+    short_description: str = models.CharField(max_length=1024, blank=True, null=True)
+    long_description: str = models.CharField(max_length=4096, blank=True, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    actual_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     categories: [Category] = models.ManyToManyField(Category)
     created_datetime: datetime = models.DateTimeField(default=now)
     created_by_id: int = models.IntegerField(default=-1)
@@ -48,15 +49,15 @@ class Product(SeoPage):
         return ProductImage.objects.get(product=self, order=0)
 
     def __str__(self):
-        return f'Product(id={self.id}, name={self.name})'
+        return f'Product({self.id}, {self.name}{", DELETED" if self.deleted else ""})'
 
 
 class ProductOrder(models.Model):
     product: Product = models.ForeignKey(Product, on_delete=models.PROTECT)
-    mobile: str = models.CharField(max_length=36, null=True)
-    email: str = models.CharField(max_length=36, null=True)
-    address: str = models.CharField(max_length=256, null=True)
-    comment: str = models.CharField(max_length=128, null=True)
+    mobile: str = models.CharField(max_length=36, blank=True, null=True)
+    email: str = models.CharField(max_length=36, blank=True, null=True)
+    address: str = models.CharField(max_length=256, blank=True, null=True)
+    comment: str = models.CharField(max_length=128, blank=True, null=True)
     created_datetime: datetime = models.DateTimeField(default=now)
     created_by_id: int = models.IntegerField(default=-1)
 
@@ -77,8 +78,23 @@ class ProductImage(models.Model):
         return f'ProductImage({self.title})'
 
 
-class BlogPost(models.Model):
-    id: int = models.IntegerField(primary_key=True)
+class AbstractPost(models.Model):
+    created_datetime: datetime = models.DateTimeField(default=now)
+    created_by_id: int = models.IntegerField(default=-1)
+
+    class Meta:
+        abstract = True
+
+
+class BlogPost(AbstractPost):
+    title: str = models.CharField(max_length=256)
+    content: str = models.CharField(max_length=4096)
+    created_datetime: datetime = models.DateTimeField(default=now)
+    created_by_id: int = models.IntegerField(default=-1)
+
+
+class ProductPost(AbstractPost):
+    product: Product = models.ForeignKey(Product, on_delete=models.CASCADE)
     title: str = models.CharField(max_length=256)
     content: str = models.CharField(max_length=4096)
     created_datetime: datetime = models.DateTimeField(default=now)
