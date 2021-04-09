@@ -53,63 +53,8 @@
         Последние новости
       </h3>
 
-      {% for product in product_list %}
-      <article class="blog-post">
-        <h2 class="blog-post-title">{{ product.name }}</h2>
-        <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
-        <div class="row">
-          <div class="col-6">
-            <div class="row align-items-start">
-              <div class="col">
-              <p>{{ product.short_description }}</p>
-              </div>
-            </div>
-            <div class="row align-items-end">
-              <div class="col">
-                <blockquote>
-<!--                  <p>Состав: {% for material in product.materials.all %}<em>{{ material.name }}</em>{% if not forloop.last %}, {% endif %} {% endfor %}</p>-->
-                </blockquote>
-              </div>
-            </div>
-          </div>
-          <div class="col-6">
-            <div id="productImagesCarousel{{ product.id }}" class="carousel slide" data-bs-ride="carousel">
-              {% with product_images="product.productimage_set.all" %}
-              <div class="carousel-indicators">
-                {% for product_image in product.productimage_set.all %}
-                  <button type="button"
-                          data-bs-target="#productImagesCarousel{{ product.id }}"
-                          data-bs-slide-to="{{ forloop.counter0 }}"
-                          class="{% if forloop.counter0 == 0 %} active {% endif %}"
-                          aria-current="true"
-                          aria-label="Slide {{ forloop.counter }}">
-                  </button>
-                {% endfor %}
-              </div>
-              <div class="carousel-inner">
-                {% for product_image in product.productimage_set.all %}
-                  <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
-                    <img src="{{ product_image.image.url }}" class="d-block w-100" alt="...">
-                  </div>
-                {% endfor %}
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#productImagesCarousel{{ product.id }}" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#productImagesCarousel{{ product.id }}" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-              {% endwith %}
-            </div>
-          </div>
-        </div>
-        <hr>
-        <blockquote>
-          <p>Теги: {% for category in product.categories.all %}<em>{{ category.name }}</em>{% if not forloop.last %}, {% endif %} {% endfor %}</p>
-        </blockquote>
-      </article>
+      {% for post in posts %}
+        {% include "main/product-post.html" with post=post %}
       {% endfor %}
 
       <nav class="blog-pagination" aria-label="Pagination">

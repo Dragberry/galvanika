@@ -5,3 +5,4 @@ ua-parser
 user-agents
 django-user-agents
 Pillow
+babel

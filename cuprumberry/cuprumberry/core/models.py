@@ -11,10 +11,11 @@ class Social(models.Model):
 
 
 class SeoPage(models.Model):
-    page_title = models.CharField(max_length=255, blank=True, null=True)
-    page_description = models.CharField(max_length=1024, blank=True, null=True)
-    page_keywords = models.CharField(max_length=1024, blank=True, null=True)
-    page_h1 = models.CharField(max_length=128, blank=True, null=True)
+    url: str = models.CharField(max_length=255, blank=True, null=True)
+    page_title: str = models.CharField(max_length=255, blank=True, null=True)
+    page_description: str = models.CharField(max_length=1024, blank=True, null=True)
+    page_keywords: str = models.CharField(max_length=1024, blank=True, null=True)
+    page_h1: str = models.CharField(max_length=128, blank=True, null=True)
     deleted: bool = models.BooleanField(default=False)
 
     class Meta:
@@ -31,6 +32,17 @@ class Category(SeoPage):
         return f'Category({self.name}{", DELETED" if self.deleted else ""})'
 
 
+class Image(models.Model):
+    id: int = models.IntegerField(primary_key=True)
+    title: str = models.CharField(max_length=256)
+    image = models.ImageField(upload_to='images')
+    created_datetime: datetime = models.DateTimeField(default=now)
+    created_by_id: int = models.IntegerField(default=-1)
+
+    def __str__(self):
+        return f'Image({self.id}, {self.title})'
+
+
 class Product(SeoPage):
     id: int = models.IntegerField(primary_key=True)
     name: str = models.CharField(max_length=36)
@@ -39,14 +51,13 @@ class Product(SeoPage):
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     actual_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     categories: [Category] = models.ManyToManyField(Category)
+    main_image: Image = models.OneToOneField(Image, related_name='main_image', on_delete=models.CASCADE, blank=True, null=True)
+    images: [Image] = models.ManyToManyField(Image)
     created_datetime: datetime = models.DateTimeField(default=now)
     created_by_id: int = models.IntegerField(default=-1)
 
     def url_name(self) -> str:
-        return slugify(self.name, 'ru')
-
-    def main_image(self):
-        return ProductImage.objects.get(product=self, order=0)
+        return self.url if self.url is not None else slugify(self.name, 'ru')
 
     def __str__(self):
         return f'Product({self.id}, {self.name}{", DELETED" if self.deleted else ""})'
@@ -62,40 +73,12 @@ class ProductOrder(models.Model):
     created_by_id: int = models.IntegerField(default=-1)
 
     def __str__(self):
-        return f'ProductOrder(id={self.id}, product_id={self.product.name}, product_id={self.product.name})'
+        return f'ProductOrder(id={self.pk}, product_id={self.product.name}, product_id={self.product.name})'
 
 
-class ProductImage(models.Model):
-    id: int = models.IntegerField(primary_key=True)
-    product: Product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    title: str = models.CharField(max_length=256)
-    order: int = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='images')
-    created_datetime: datetime = models.DateTimeField(default=now)
-    created_by_id: int = models.IntegerField(default=-1)
-
-    def __str__(self):
-        return f'ProductImage({self.title})'
-
-
-class AbstractPost(models.Model):
-    created_datetime: datetime = models.DateTimeField(default=now)
-    created_by_id: int = models.IntegerField(default=-1)
-
-    class Meta:
-        abstract = True
-
-
-class BlogPost(AbstractPost):
+class BlogPost(models.Model):
     title: str = models.CharField(max_length=256)
     content: str = models.CharField(max_length=4096)
     created_datetime: datetime = models.DateTimeField(default=now)
     created_by_id: int = models.IntegerField(default=-1)
-
-
-class ProductPost(AbstractPost):
-    product: Product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    title: str = models.CharField(max_length=256)
-    content: str = models.CharField(max_length=4096)
-    created_datetime: datetime = models.DateTimeField(default=now)
-    created_by_id: int = models.IntegerField(default=-1)
+    product: Product = models.OneToOneField(Product, on_delete=models.PROTECT, blank=True, null=True)

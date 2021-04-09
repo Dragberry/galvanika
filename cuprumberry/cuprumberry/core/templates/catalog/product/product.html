@@ -47,7 +47,7 @@
             <div id="productCarouselIndicators" class="carousel slide">
                 <div class="carousel-inner">
                     {% for image in images %}
-                    <div class="carousel-item {% if image.order == 0 %} active {% endif %}">
+                    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
                         <img class="d-block w-100"
                              title="{{ product.name }}"
                              alt="{{ product.name }}"

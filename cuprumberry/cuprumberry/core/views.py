@@ -9,7 +9,7 @@ from django.template import loader
 from django.utils.translation import gettext
 from django.views.generic import ListView, DetailView
 
-from .models import Product, ProductOrder, Category
+from .models import Product, ProductOrder, Category, BlogPost
 
 
 class DisplayEnum(Enum):
@@ -25,10 +25,10 @@ class SortEnum(Enum):
 
 
 def index(request):
-    products: [Product] = Product.objects.order_by('-created_datetime')[:5]
+    posts: [BlogPost] = BlogPost.objects.order_by('-created_datetime')[:5]
     template = loader.get_template('index.html')
     context = {
-        'product_list': products,
+        'posts': posts,
     }
     return HttpResponse(template.render(context, request))
 
@@ -144,7 +144,7 @@ class ProductView(DetailView):
             for category_id in category_ids.split('/'):
                 categories.append(get_object_or_404(Category, pk=category_id))
         context['categories'] = categories
-        context['images'] = self.object.productimage_set.order_by('order')
+        context['images'] = self.object.images.all()
         return context
 
     def get_queryset(self, queryset=None):
