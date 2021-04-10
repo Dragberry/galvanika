@@ -198,3 +198,12 @@ def catalog_quick_order(request):
         return JsonResponse(data={'fields': fields}, status=status)
     return HttpResponseBadRequest()
 
+
+def delivery_and_payment(request):
+    template = loader.get_template('common/delivery-and-payment.html')
+    return HttpResponse(template.render({}, request))
+
+
+def contacts(request):
+    template = loader.get_template('common/contacts.html')
+    return HttpResponse(template.render({}, request))

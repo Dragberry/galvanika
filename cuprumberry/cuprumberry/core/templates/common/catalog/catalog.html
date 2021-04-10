@@ -1,4 +1,4 @@
-{% extends "layout/template.html" %}
+{% extends "common/template.html" %}
 {% load i18n %}
 
 {% block title %}
@@ -25,13 +25,16 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
+                    <a href="{% url 'core:index' %}">{% translate "home" %}</a>
+                </li>
+                <li class="breadcrumb-item">
                     <a href="{% url 'core:catalog' %}">{% translate "catalog" %}</a>
                 </li>
                 {% for category in categories %}
                 <li class="breadcrumb-item {% if forloop.last %} active {% endif %}"
                     {% if forloop.last %} aria-current="page" {% endif %}>
                     {% if forloop.last %}
-                    {{ category.name }}
+                        {{ category.name }}
                     {% else %}
                     <a href="{% url 'core:category' category.id %}">
                         {{ category.name }}
@@ -57,16 +60,21 @@
         <hr/>
     </div>
 
+    {% if request.user_agent.is_mobile %}
+    <div class="col-12">
+        {% include "common/catalog/product-list.html" %}
+    </div>
+    {% else %}
     <div class="col-3">
-        {% include "catalog/catalog-left-menu.html" %}
+        {% include "normal/catalog/catalog-left-menu.html" %}
     </div>
 
     <div class="col-9">
-        {% include "catalog/product-list.html" %}
+        {% include "common/catalog/product-list.html" %}
     </div>
+    {% endif %}
 </div>
 
-{% include "catalog/quick-order.html" %}
-
+{% include "./quick-order.html" %}
 
 {% endblock %}

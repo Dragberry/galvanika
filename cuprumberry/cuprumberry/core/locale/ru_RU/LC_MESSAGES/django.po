@@ -18,6 +18,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # Common
+msgid "home"
+msgstr "Главная"
+
 msgid "details"
 msgstr "Подробнее"
 
