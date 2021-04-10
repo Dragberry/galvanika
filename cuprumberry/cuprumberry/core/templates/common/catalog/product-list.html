@@ -1,0 +1,5 @@
+{% if request.user_agent.is_mobile %}
+    {% include "mobile/catalog/product-list.html" %}
+{% else %}
+    {% include "normal/catalog/product-list.html" %}
+{% endif %}

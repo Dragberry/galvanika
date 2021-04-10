@@ -1,0 +1,18 @@
+<div class="row" id="productList">
+    <div class="col-12">
+        {% include "./catalog-top-menu.html" %}
+    </div>
+    <div class="col-12">
+        <div class="row">
+        {% for product in products %}
+            {% include "./product-tile-item.html" with product=product %}
+        {% endfor %}
+        </div>
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12">
+        {% include "common/catalog/catalog-paginator.html" with page_obj=page_obj %}
+    </div>
+</div>

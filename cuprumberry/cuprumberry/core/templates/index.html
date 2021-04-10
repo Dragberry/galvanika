@@ -1,4 +1,4 @@
-{% extends "layout/template.html" %}
+{% extends "common/template.html" %}
 {% load i18n %}
 
 {% block title %} Дизайнерская бижутерия ручной работы | CuprumBerry {% endblock %}
@@ -54,7 +54,7 @@
       </h3>
 
       {% for post in posts %}
-        {% include "main/product-post.html" with post=post %}
+        {% include "common/main/product-post.html" with post=post %}
       {% endfor %}
 
       <nav class="blog-pagination" aria-label="Pagination">

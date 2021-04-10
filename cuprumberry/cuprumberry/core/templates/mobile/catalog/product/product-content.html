@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="col-12">
+        <h1 class="h1 fst-italic">
+            {% block h1 %}
+                {% if product.page_h1 %}
+                    {{ product.page_h1 }}
+                {% else %}
+                    {{ product.name }}
+                {% endif %}
+            {% endblock %}
+        </h1>
+    </div>
+    <div class="col-12">
+        <p class="fw-bold small mr-4">Код продукта: {{ product.id }}</p>
+    </div>
+    <div class="col-12">
+        <h2 class="small">
+            {% for category in product.categories.all %}
+                <em>{{ category.name }}</em>{% if not forloop.last %}, {% endif %}
+            {% endfor %}</p>
+        </h2>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div id="productCarouselIndicators" class="carousel slide">
+                <div class="carousel-inner">
+                    {% for image in images %}
+                    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+                        <img class="d-block w-100"
+                             title="{{ product.name }}"
+                             alt="{{ product.name }}"
+                             src="{{ image.image.url }}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="carousel-thumbnails-wrapper">
+                <button class="carousel-control-prev" type="button" data-bs-target="#productCarouselIndicators"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#productCarouselIndicators"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                <ol class="carousel-thumbnails">
+                    {% for image in images %}
+                    <li class="img-carousel-thumbnail {% if image.order == 0 %} active {% endif %}"
+                        data-bs-target="#productCarouselIndicators"
+                        data-bs-slide-to="{{ forloop.counter0 }}"
+                        aria-current="true"
+                        aria-label="Slide {{ forloop.counter }}">
+                        <img class="img-thumbnail"
+                             title="{{ product.name }}"
+                             alt="{{ product.name }}"
+                             src="{{ image.image.url }}">
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12 text-end">
+                {% if product.actual_price %}
+                <div>
+                    <strong class="h1">{{ product.actual_price }} BYN</strong>
+                </div>
+                <div>
+                    <del class="h3">{{ product.price }} BYN</del>
+                </div>
+                {% else %}
+                <div>
+                    <strong class="h1">{{ product.price }} BYN</strong>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-12">
+                <hr/>
+            </div>
+            <div class="col-12 mb-2">
+                <div class="row">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button id="addToCartButton" type="button" onclick="console.log({{ product.id }})"
+                                class="btn btn-success btn-sm">
+                            <span class="fa fa-cart-plus"></span>
+                            <span class="small">В корзину</span>
+                        </button>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button id="quickOrderButton"
+                                type="button"
+                                class="btn btn-primary btn-sm"
+                                data-bs-toggle="modal"
+                                data-bs-target="#quickOrderModal"
+                                onclick="prepareQuickOrder({{ product.id }}, '{{ product.name }}', '{{ product.main_image.image.url }}')">
+                            <span class="small">Быстрый заказ</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <p>{{ product.short_description }}</p>
+            </div>
+        </div>
+    </div>
+</div>

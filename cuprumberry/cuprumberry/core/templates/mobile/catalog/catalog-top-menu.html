@@ -1,0 +1,41 @@
+{% load i18n %}
+
+<div class="row">
+    <div class="col-12">
+        <form id="filtersForm" action="{{ request.path }}" method="GET"></form>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h1>
+                    {% block h1 %}
+                        {% if current_category.page_h1 %}
+                            {{ current_category.page_h1 }}
+                        {% else %}
+                            {{ current_category.name }}
+                        {% endif %}
+                    {% endblock %}
+                </h1>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-row d-flex pb-2 justify-content-end">
+                    <div class="input-group" title="{% translate 'sort by' %}">
+                        <span class="input-group-text" id="sortingLabel">
+                            <span class="fa fa-sort"></span>
+                        </span>
+                        <select form="filtersForm"
+                                id="sorting"
+                                name="sort"
+                                class="form-control form-select form-select-sm"
+                                aria-describedby="sortingLabel"
+                                onchange="doFilter()">
+                            {% for sort_name, sort_value in sorts.items %}
+                            <option value="{{ sort_name }}" {% if catalog_filters.sort == sort_name %}selected{% endif %}>
+                                {% translate sort_name %}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

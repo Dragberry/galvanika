@@ -18,13 +18,13 @@
 </head>
 <body>
 
-{% include "layout/normal/header.html" %}
+{% include "normal/layout/header.html" %}
 
 <main class="container">
 {% block content %} Content {% endblock %}
 </main>
 
-{% include "layout/common/footer.html" %}
+{% include "common/layout/footer.html" %}
 
 <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>

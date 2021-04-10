@@ -1,0 +1,56 @@
+{% extends "common/template.html" %}
+{% load i18n %}
+
+{% block title %}
+    {% if product.page_title %}
+        {{ product.page_title }}
+    {% else %}
+        {{ product.name }} | CuprumBerry
+    {% endif %}
+{% endblock %}
+
+{% block meta_description  %}
+    {{ product.page_description }}
+{% endblock %}
+
+{% block meta_keywords %}
+    {{ product.page_keywords }}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="row">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'core:catalog' %}">{% translate "catalog" %}</a>
+                </li>
+                {% for category in categories %}
+                <li class="breadcrumb-item">
+                    <a href="{% url 'core:category' category.id %}">
+                        {{ category.name }}
+                    </a>
+                </li>
+                {% endfor %}
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ product.name }}
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12">
+        {% if request.user_agent.is_mobile %}
+            {% include "mobile/catalog/product/product-content.html" %}
+        {% else %}
+            {% include "normal/catalog/product/product-content.html" %}
+        {% endif %}
+    </div>
+</div>
+
+{% include "../quick-order.html" %}
+
+{% endblock %}

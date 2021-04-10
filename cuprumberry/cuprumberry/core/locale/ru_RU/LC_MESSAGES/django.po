@@ -51,7 +51,7 @@ msgid "PRICE_DESC"
 msgstr "По убыванию цены"
 
 msgid "PRICE_ASC"
-msgstr "По возростанию цены"
+msgstr "По возрастанию цены"
 
 msgid "Display list mode"
 msgstr "Отображение списком"

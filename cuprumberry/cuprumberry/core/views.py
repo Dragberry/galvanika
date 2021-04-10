@@ -42,7 +42,7 @@ class CatalogFilters:
 
 
 class CatalogView(ListView):
-    template_name = 'catalog/catalog.html'
+    template_name = 'common/catalog/catalog.html'
     context_object_name = 'products'
 
     page_sizes: [int] = [4, 24, 48]
@@ -76,7 +76,7 @@ class CatalogView(ListView):
             response_kwargs.setdefault('content_type', self.content_type)
             return self.response_class(
                 request=self.request,
-                template='catalog/product-list.html',
+                template='common/catalog/product-list.html',
                 context=context,
                 using=self.template_engine,
                 **response_kwargs
@@ -132,7 +132,7 @@ class CatalogView(ListView):
 
 
 class ProductView(DetailView):
-    template_name = 'catalog/product/product.html'
+    template_name = 'common/catalog/product/product.html'
     context_object_name = 'product'
     model = Product
 
