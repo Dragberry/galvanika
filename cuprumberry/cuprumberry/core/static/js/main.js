@@ -25,3 +25,17 @@ function onPageResize() {
 		$("body").css('margin-bottom', footerHeight + 50);
 	}
 }
+
+function loadMorePosts(lastPost) {
+    var form = $('#loadMorePostsForm');
+    var url = form.attr('action');
+    console.log('loadMorePosts', url)
+    $.ajax({
+        type: "GET",
+        url: url,
+        success: function(data)  {
+        console.log('loadMorePosts success')
+            $('#loadMorePostsBlock').replaceWith(data);
+        }
+    });
+}

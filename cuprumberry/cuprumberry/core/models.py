@@ -22,16 +22,6 @@ class SeoPage(models.Model):
         abstract = True
 
 
-class Category(SeoPage):
-    id: str = models.CharField(max_length=32, primary_key=True)
-    name: str = models.CharField(max_length=32)
-    parent = models.ForeignKey("self", on_delete=models.PROTECT, blank=True, null=True)
-    description = models.CharField(max_length=4096, blank=True, null=True)
-
-    def __str__(self):
-        return f'Category({self.name}{", DELETED" if self.deleted else ""})'
-
-
 class Image(models.Model):
     id: int = models.IntegerField(primary_key=True)
     title: str = models.CharField(max_length=256)
@@ -41,6 +31,26 @@ class Image(models.Model):
 
     def __str__(self):
         return f'Image({self.id}, {self.title})'
+
+
+class Category(SeoPage):
+    id: str = models.CharField(max_length=32, primary_key=True)
+    name: str = models.CharField(max_length=32)
+    parent = models.ForeignKey("self", on_delete=models.PROTECT, blank=True, null=True)
+    description = models.CharField(max_length=4096, blank=True, null=True)
+    image: Image = models.OneToOneField(Image, on_delete=models.CASCADE, blank=True, null=True)
+
+    def full_path(self) -> str:
+        categories = []
+        category = self
+        while category is not None:
+            categories.append(category)
+            category = category.parent
+
+        return '/'.join([c.id for c in reversed(categories)])
+
+    def __str__(self):
+        return f'Category({self.id}, {self.name}{", DELETED" if self.deleted else ""})'
 
 
 class Product(SeoPage):
@@ -73,7 +83,21 @@ class ProductOrder(models.Model):
     created_by_id: int = models.IntegerField(default=-1)
 
     def __str__(self):
-        return f'ProductOrder(id={self.pk}, product_id={self.product.name}, product_id={self.product.name})'
+        return f'ProductOrder(id={self.pk}, product_id={self.product.name}, product_id={self.prвoduct.name})'
+
+
+class QuickReferenceCard(models.Model):
+    title: str = models.CharField(max_length=256)
+    content: str = models.CharField(max_length=4096)
+    order: bool = models.IntegerField(default=0)
+    deleted: bool = models.BooleanField(default=False)
+    product: Product = models.OneToOneField(Product, on_delete=models.PROTECT, blank=True, null=True)
+    category: Category = models.OneToOneField(Category, on_delete=models.PROTECT, blank=True, null=True)
+    created_datetime: datetime = models.DateTimeField(default=now)
+    created_by_id: int = models.IntegerField(default=-1)
+
+    def __str__(self):
+        return f'QuickReferenceCard({self.pk}, {self.title})'
 
 
 class BlogPost(models.Model):

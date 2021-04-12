@@ -1,0 +1,18 @@
+<div class="col-lg-4 col-md-6 col-sm-12">
+    {% if quick_reference.category %}
+
+    <div class="quick-reference-wrapper">
+        <a href="{% url 'core:category' quick_reference.category.full_path %}">
+            <img class="img-fluid"
+                 title="{{ quick_reference.category.name }}"
+                 alt="{{ quick_reference.category }}"
+                 src="{{ quick_reference.category.image.image.url }}">
+            <span class="quick-reference-overlay">
+                <h3 class="quick-reference-text">{{ quick_reference.title }}</h3>
+            </span>
+        </a>
+    </div>
+    {% elif quick_reference.category %}
+
+    {% endif %}
+</div>

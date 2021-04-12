@@ -9,7 +9,7 @@ from django.template import loader
 from django.utils.translation import gettext
 from django.views.generic import ListView, DetailView
 
-from .models import Product, ProductOrder, Category, BlogPost
+from .models import Product, ProductOrder, Category, BlogPost, QuickReferenceCard
 
 
 class DisplayEnum(Enum):
@@ -24,13 +24,39 @@ class SortEnum(Enum):
     PRICE_ASC = 'real_price'
 
 
+PAGE_SIZE: int = 5
+
+
 def index(request):
-    posts: [BlogPost] = BlogPost.objects.order_by('-created_datetime')[:5]
+    posts: [BlogPost] = BlogPost.objects.order_by('-created_datetime')[:PAGE_SIZE]
+    page_size: int = len(posts)
+    quick_references: [QuickReferenceCard] = QuickReferenceCard.objects.order_by('order')[:3]
     template = loader.get_template('index.html')
     context = {
         'posts': posts,
+        'offset': page_size,
+        'is_last_page': page_size < PAGE_SIZE,
+        'quick_references': quick_references
     }
     return HttpResponse(template.render(context, request))
+
+
+def load_more_posts(request, offset: str):
+    if request.is_ajax():
+        try:
+            offset: int = int(offset)
+        except ValueError:
+            offset: int = 0
+        posts: [BlogPost] = BlogPost.objects.order_by('-created_datetime')[offset:offset + PAGE_SIZE]
+        page_size: int = len(posts)
+        context = {
+            'posts': posts,
+            'offset': offset + page_size,
+            'is_last_page': page_size < PAGE_SIZE,
+        }
+        template = loader.get_template('common/main/load-more-posts.html')
+        return HttpResponse(template.render(context, request))
+    return HttpResponseBadRequest()
 
 
 @dataclass

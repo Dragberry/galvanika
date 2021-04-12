@@ -24,6 +24,36 @@
     }
   },
   {
+    "model": "core.image",
+    "pk": 10000,
+    "fields": {
+      "title": "Броши",
+      "image": "images/броши.jpg",
+      "created_datetime": "2021-03-24T20:43:39Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 10001,
+    "fields": {
+      "title": "Кулоны",
+      "image": "images/кулоны.jpg",
+      "created_datetime": "2021-03-24T20:43:39Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 10002,
+    "fields": {
+      "title": "Серьги",
+      "image": "images/серьги.jpg",
+      "created_datetime": "2021-03-24T20:43:39Z",
+      "created_by_id": -1
+    }
+  },
+  {
     "model": "core.category",
     "pk": "all",
     "fields": {
@@ -73,7 +103,8 @@
     "pk": "broshi",
     "fields": {
       "parent": "bizhuteriya",
-      "name": "Броши"
+      "name": "Броши",
+      "image": 10000
     }
   },
   {
@@ -81,7 +112,8 @@
     "pk": "kulony",
     "fields": {
       "parent": "bizhuteriya",
-      "name": "Кулоны"
+      "name": "Кулоны",
+      "image": 10001
     }
   },
   {
@@ -89,7 +121,8 @@
     "pk": "sergi",
     "fields": {
       "parent": "bizhuteriya",
-      "name": "Серьги"
+      "name": "Серьги",
+      "image": 10002
     }
   },
     {
@@ -189,7 +222,7 @@
       "name": "Подорожник"
     }
   },
-   {
+  {
     "model": "core.image",
     "pk": 1,
     "fields": {

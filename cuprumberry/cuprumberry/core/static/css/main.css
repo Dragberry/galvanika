@@ -21,6 +21,42 @@ main {
 }
 
 /*************** Main page *************/
+.quick-reference-wrapper {
+    display: inline-block;
+    margin-top: 25px;
+    position: relative;
+}
+
+.quick-reference-wrapper img {
+   display: block;
+   max-width:100%;
+}
+
+.quick-reference-wrapper .quick-reference-overlay {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.25);
+    color:white;
+}
+
+.quick-reference-text {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 3em;
+}
+
+h2.header {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
 .dropdown-toggle::after {
     display:none;
 }

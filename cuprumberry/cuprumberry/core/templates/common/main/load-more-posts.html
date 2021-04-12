@@ -1,0 +1,16 @@
+{% for post in posts %}
+{% include "common/main/product-post.html" with post=post %}
+{% endfor %}
+
+<div id="loadMorePostsBlock">
+    <form id="loadMorePostsForm" method="get" action="{% url 'core:load_more_posts' offset %}"></form>
+    {% if not is_last_page %}
+    <nav class="blog-pagination" aria-label="Pagination">
+        <button class="btn btn-outline-primary"
+                id="loadMorePostsButton"
+                onclick="loadMorePosts()">
+            Загрузить ещё
+        </button>
+    </nav>
+    {% endif %}
+</div>
