@@ -4,7 +4,7 @@
 {% block title %} Дизайнерская бижутерия ручной работы | CuprumBerry {% endblock %}
 
 {% block content %}
-<div class="p-4 p-md-5 mb-1 text-white rounded bg-dark">
+<div class="p-4 p-md-5 mb-1 text-white rounded main-image">
     <div class="col-md-6 px-0">
         <h1 class="display-4 fst-italic">Дизайнерская бижутерия ручной работы</h1>
         <p class="lead my-3 d-none d-md-block">
@@ -22,13 +22,13 @@
 </div>
 
 <div class="row">
-    <div class="col-md-8">
-        <p class="h2 pb-4 mb-2 fst-italic border-bottom">
+    <div class="col-12">
+        <p class="h1 pb-4 mb-2 fst-italic border-bottom">
             Последние новости:
         </p>
-
+    </div>
+    <div class="col-md-8">
         {% include "common/main/load-more-posts.html" with posts=posts %}
-
     </div>
 
     <div class="col-md-4">

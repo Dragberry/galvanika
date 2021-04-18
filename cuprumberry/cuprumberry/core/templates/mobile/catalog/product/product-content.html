@@ -21,7 +21,7 @@
         </h2>
     </div>
     <div class="col-12">
-        <div class="card">
+        <div class="card bg-light rounded p-2">
             <div id="productCarouselIndicators" class="carousel slide">
                 <div class="carousel-inner">
                     {% for image in images %}
@@ -63,8 +63,8 @@
         </div>
     </div>
     <div class="col-12">
-        <div class="row">
-            <div class="col-12 text-end">
+        <div class="row bg-light rounded p-2">
+            <div class="col-12 text-end text-danger">
                 {% if product.actual_price %}
                 <div>
                     <strong class="h1">{{ product.actual_price }} BYN</strong>

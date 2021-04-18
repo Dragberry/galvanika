@@ -3,13 +3,13 @@
 <div class="row justify-content-end">
     <div class="col-sm-6 col-md-5 col-lg-4 mb-2">
         <div class="input-group" title="{% translate 'Page size' %}">
-            <span class="input-group-text" id="pageSizeLabel">
+            <span class="input-group-text bg-primary text-white" id="pageSizeLabel">
               {% translate "Page size" %}
             </span>
             <select form="filtersForm"
                     id="pageSize"
                     name="pageSize"
-                    class="form-select form-select"
+                    class="form-select form-select bg-light"
                     aria-describedby="pageSizeLabel"
                     onchange="doFilter()">
                 {% for page_size in page_sizes %}

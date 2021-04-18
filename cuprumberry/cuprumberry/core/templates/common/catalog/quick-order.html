@@ -8,11 +8,11 @@
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-light">
                 <span class="modal-title h1" id="quickOrderModalLabel">{% translate 'Quick order title' %}</span>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body bg-light">
                 <div class="container-fluid">
                     <form id="quickOrderForm" method="post" action="{% url 'core:quick_order' %}">
                         {% csrf_token %}
@@ -51,7 +51,7 @@
                     </form>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer bg-light">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate 'Cancel' %}</button>
                 <button type="button" class="btn btn-primary" onclick="submitQuickOrder()">
                     {% translate 'Confirm' %}

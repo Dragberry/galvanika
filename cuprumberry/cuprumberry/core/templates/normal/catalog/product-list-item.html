@@ -1,15 +1,15 @@
-<div class="container">
-    <div class="row">
+<div class="col-12">
+    <div class="row bg-light rounded pt-4 pb-4 ps-2 pe-2 mb-3">
         <div class="col-12 col-sm-9 col-md-10">
-            <h3 class="font-weight-bold">
-                <a href="{{ request.path }}/{{ product.url_name }}-{{ product.id }}">
+            <h2 class="font-weight-bold">
+                <a class="link-dark" href="{{ request.path }}/{{ product.url_name }}-{{ product.id }}">
                     <span>{{ product.name }}</span>
                 </a>
-            </h3>
+            </h2>
             <div class="row">
                 <div class="col-12 col-sm-4 col-md-3">
                     <a href="{{ request.path }}/{{ product.url_name }}-{{ product.id }}">
-                        <img class="img-fluid"
+                        <img class="img-thumbnail product-img-thumbnail"
                              title="{{ product.name }}"
                              alt="{{ product.name }}"
                              src="{{ product.main_image.image.url }}">
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-3 col-md-2 text-center">
+        <div class="col-12 col-sm-3 col-md-2 text-center text-danger align-items-end">
             {% if product.actual_price %}
             <div>
                 <strong>{{ product.actual_price }} BYN</strong>
@@ -61,9 +61,6 @@
                     <span class="small">Быстрый заказ</span>
                 </button>
             </div>
-        </div>
-        <div class="col-12">
-            <hr/>
         </div>
     </div>
 </div>

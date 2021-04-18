@@ -1,7 +1,6 @@
 {% load i18n %}
-
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 bg-light rounded ps-3 pe-3 pt-2 pb-2 mb-4">
         <form id="filtersForm" action="{{ request.path }}" method="GET"></form>
         <div class="row">
             <div class="col-sm-12 col-md-6">
@@ -18,7 +17,7 @@
             <div class="col-sm-12 col-md-3">
                 <div class="input-group d-flex justify-content-end">
                     <div class="form-check-inline list-display-type" title="{% translate 'Display tiles mode' %}">
-                        <label class="btn {% if catalog_filters.display == 'tiles' %} btn-success {% endif %}"
+                        <label class="btn {% if catalog_filters.display == 'tiles' %} btn-primary {% endif %}"
                                for="displayTiles">
                             <input form="filtersForm"
                                    id="displayTiles"
@@ -32,7 +31,7 @@
                         </label>
                     </div>
                     <div class="form-check-inline list-display-type" title="{% translate 'Display list mode' %}">
-                        <label class="btn {% if catalog_filters.display == 'list' %} btn-success {% endif %}"
+                        <label class="btn {% if catalog_filters.display == 'list' %} btn-primary {% endif %}"
                                for="displayList">
                             <input form="filtersForm"
                                    id="displayList"
@@ -50,13 +49,13 @@
             <div class="col-sm-12 col-md-3">
                 <div class="form-row d-flex pb-2 justify-content-end">
                     <div class="input-group" title="{% translate 'sort by' %}">
-                        <span class="input-group-text" id="sortingLabel">
+                        <span class="input-group-text bg-primary text-white" id="sortingLabel">
                             <span class="fa fa-sort"></span>
                         </span>
                         <select form="filtersForm"
                                 id="sorting"
                                 name="sort"
-                                class="form-control form-select form-select-sm"
+                                class="form-control form-select form-select-sm bg-light"
                                 aria-describedby="sortingLabel"
                                 onchange="doFilter()">
                             {% for sort_name, sort_value in sorts.items %}

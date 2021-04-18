@@ -42,6 +42,15 @@ function addEventListeners() {
     });
 }
 
+/* global bootstrap: false */
+(function () {
+  'use strict'
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+    new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+})()
+
 function prepareQuickOrder(productId, productName, productImageUrl) {
      $('#quickOrderProductId').text(productId)
      $('#quickOrderProductName').text(productName)

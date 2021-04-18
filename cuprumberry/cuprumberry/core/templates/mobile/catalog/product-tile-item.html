@@ -1,13 +1,13 @@
 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
     <div class="card bg-light">
-        <a href="{{ request.path }}/{{ product.url_name }}-{{ product.id }}">
-            <img class="img-fluid"
+        <a class="p-2" href="{{ request.path }}/{{ product.url_name }}-{{ product.id }}">
+            <img class="img-thumbnail product-img-thumbnail"
                  title="{{ product.name }}"
                  alt="{{ product.name }}"
                  src="{{ product.main_image.image.url }}">
         </a>
         <div class="container">
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col-12">
                     <h3 class="font-weight-bold">
                         <a href="{{ request.path }}/{{ product.url_name }}-{{ product.id }}">
