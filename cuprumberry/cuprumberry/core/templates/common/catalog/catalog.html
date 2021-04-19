@@ -5,7 +5,7 @@
     {% if current_category.page_title %}
         {{ current_category.page_title }}
     {% else %}
-        {{ current_category.name }} | CuprumBerry
+        {{ current_category.name }} | | {{ request.app_name }}
     {% endif %}
 {% endblock %}
 

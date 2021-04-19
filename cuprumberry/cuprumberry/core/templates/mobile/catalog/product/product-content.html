@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-12">
+<div class="row bg-light rounded p-2">
+    <div class="col-12 ">
         <h1 class="h1 fst-italic">
             {% block h1 %}
                 {% if product.page_h1 %}
@@ -14,14 +14,17 @@
         <p class="fw-bold small mr-4">Код продукта: {{ product.id }}</p>
     </div>
     <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12">
         <h2 class="small">
             {% for category in product.categories.all %}
                 <em>{{ category.name }}</em>{% if not forloop.last %}, {% endif %}
-            {% endfor %}</p>
+            {% endfor %}
         </h2>
     </div>
     <div class="col-12">
-        <div class="card bg-light rounded p-2">
+        <div class="card bg-light rounded">
             <div id="productCarouselIndicators" class="carousel slide">
                 <div class="carousel-inner">
                     {% for image in images %}

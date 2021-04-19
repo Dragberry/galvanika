@@ -58,6 +58,9 @@
                 <p class="fw-bold small mr-4">Код продукта: {{ product.id }}</p>
             </div>
             <div class="col-12">
+                <hr/>
+            </div>
+            <div class="col-12">
                 <h2 class="small">
                     {% for category in product.categories.all %}
                         <em>{{ category.name }}</em>{% if not forloop.last %}, {% endif %}

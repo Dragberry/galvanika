@@ -32,11 +32,6 @@ body {
   background-size: cover;
 }
 
-.main-image {
-  background-image: url(/static/images/main-img.jpg);
-  background-size: contain;
-}
-
 .footer {
   position: absolute;
   bottom: 0;
@@ -52,6 +47,15 @@ body {
 }
 
 /*************** Main page *************/
+.main-image {
+  background-image: url(/static/images/bg.png);
+  background-size: cover;
+}
+
+.main-header {
+  text-shadow: 2px 2px #020122;
+}
+
 .quick-reference-wrapper {
   display: inline-block;
   margin-top: 25px;

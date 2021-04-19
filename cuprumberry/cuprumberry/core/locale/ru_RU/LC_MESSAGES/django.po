@@ -31,11 +31,8 @@ msgstr "Каталог"
 msgid "materials"
 msgstr "Материалы"
 
-msgid "delivery and payment"
-msgstr "Доставка и оплата"
-
-msgid "contacts"
-msgstr "Контакты"
+msgid "information"
+msgstr "Информация"
 
 msgid "about us"
 msgstr "О нас"

@@ -17,9 +17,9 @@ class MainMenuMiddleware:
         except ObjectDoesNotExist:
             self.category_decorations = None
         try:
-            self.category_base: Category = Category.objects.get(Q(id=MainMenuMiddleware.CATEGORY_BASE) & Q(deleted=False))
+            self.information: Category = Category.objects.get(Q(id=MainMenuMiddleware.CATEGORY_BASE) & Q(deleted=False))
         except ObjectDoesNotExist:
-            self.category_base = None
+            self.information = None
         try:
             self.category_metal: Category = Category.objects.get(Q(id=MainMenuMiddleware.CATEGORY_METAL) & Q(deleted=False))
         except ObjectDoesNotExist:
@@ -36,11 +36,14 @@ class MainMenuMiddleware:
     def __call__(self, request):
         request.category_decorations = self.category_decorations
         request.decorations = self.decorations
-        request.category_base = self.category_base
+        request.category_base = self.information
         request.bases = self.bases
         request.category_metal = self.category_metal
         request.metals = self.metals
         request.socials = self.socials
         request.category_souvenirs = self.category_souvenirs
+        request.app_name = 'CuprumBerry.by'
+        request.app_email = 'cuprumberry@cuprumberry.by'
+        request.app_mobile = '+375(29)114-47-50'
         response = self.get_response(request)
         return response

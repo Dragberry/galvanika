@@ -1,0 +1,63 @@
+{% extends "common/template.html" %}
+{% load i18n %}
+
+{% block title %} Информация о контактах, оплате и доставке | {{ request.app_name }} {% endblock %}
+
+{% block meta_description  %}
+    Контакты, доставка и оплата на сайте CuprumBerry.by
+{% endblock %}
+
+{% block meta_keywords %}
+    доставка, пересылка, оплата, контакты
+{% endblock %}
+
+{% block content %}
+
+<div class="row bg-light rounded p-2">
+     <div class="col-12">
+        <h1>Информация о контактах, оплате и доставке</h1>
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12">
+        <h2>Контакты:</h2>
+    </div>
+    <div class="col-12">
+        <p>По любым вопросам с нами можно связаться по телефону, электронной почте или через социальные сети.</p>
+        <p><strong>{{ request.app_mobile }}</strong></p>
+        <p><strong>{{ request.app_email }}</strong></p>
+        {% for social in request.socials %}
+        <p>
+            <a href="{{ social.action }}" title="{% translate social.name %} ">
+                <span class="social-icon social-{{ social.name }}"></span>
+            </a>
+            <span class="ms-4">{% translate social.name %}</span>
+        </p>
+        {% endfor %}
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12">
+        <h2>Способы оплаты:</h2>
+    </div>
+    <div class="col-12">
+        <ul>
+            <li>Перевод на карту</li>
+            <li>Наличными при самовывозе или доставке по г.Минску</li>
+        </ul>
+    </div>
+    <div class="col-12">
+        <h2>Способы доставки:</h2>
+    </div>
+    <div class="col-12">
+        <ul>
+            <li>Самовывоз в г.Минске (район БСМП)</li>
+            <li>Доставка по Минску (7 рублей)</li>
+            <li>Доставка почтой по Беларуси и странам СНГ (оплачивается отдельно)</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

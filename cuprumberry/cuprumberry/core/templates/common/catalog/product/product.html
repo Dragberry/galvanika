@@ -5,7 +5,7 @@
     {% if product.page_title %}
         {{ product.page_title }}
     {% else %}
-        {{ product.name }} | CuprumBerry
+        {{ product.name }} | {{ request.app_name }}
     {% endif %}
 {% endblock %}
 
