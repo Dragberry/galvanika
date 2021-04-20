@@ -60,6 +60,7 @@ class Product(SeoPage):
     long_description: str = models.CharField(max_length=4096, blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     actual_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    sold: bool = models.BooleanField(default=False)
     categories: [Category] = models.ManyToManyField(Category)
     main_image: Image = models.OneToOneField(Image, related_name='main_image', on_delete=models.CASCADE, blank=True, null=True)
     images: [Image] = models.ManyToManyField(Image)

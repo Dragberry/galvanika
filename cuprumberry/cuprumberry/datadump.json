@@ -1,0 +1,891 @@
+[
+{
+  "model": "core.social",
+  "pk": 1000,
+  "fields": {
+    "name": "viber",
+    "action": "viber://chat?number=%2B375291234567"
+  }
+},
+{
+  "model": "core.social",
+  "pk": 1001,
+  "fields": {
+    "name": "vk",
+    "action": "https://vk.com/cuprumberry"
+  }
+},
+{
+  "model": "core.social",
+  "pk": 1003,
+  "fields": {
+    "name": "instagram",
+    "action": "https://instagram.com/cuprumberry"
+  }
+},
+{
+  "model": "core.image",
+  "pk": 1,
+  "fields": {
+    "title": "Кулон из листьев осины",
+    "image": "images/кулон-осина-1-1.jpg",
+    "created_datetime": "2021-03-24T20:43:39Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 2,
+  "fields": {
+    "title": "Кулон из листьев осины",
+    "image": "images/кулон-осина-1-2.jpg",
+    "created_datetime": "2021-03-24T20:47:08Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 3,
+  "fields": {
+    "title": "Брошь из листа дуба",
+    "image": "images/брошь-дуб-1-1.jpg",
+    "created_datetime": "2021-03-24T20:43:39Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 4,
+  "fields": {
+    "title": "Брошь из листа дуба",
+    "image": "images/брошь-дуб-1-2.jpg",
+    "created_datetime": "2021-03-24T20:47:08Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 5,
+  "fields": {
+    "title": "Кулон из физалиса",
+    "image": "images/кулон-физалис-1-1.jpg",
+    "created_datetime": "2021-03-24T20:43:39Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 6,
+  "fields": {
+    "title": "Кулон из физалиса",
+    "image": "images/кулон-физалис-1-2.jpg",
+    "created_datetime": "2021-03-24T20:47:08Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 7,
+  "fields": {
+    "title": "Серьги из осины",
+    "image": "images/серьги-осина-1-1.jpg",
+    "created_datetime": "2021-03-24T20:43:39Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 8,
+  "fields": {
+    "title": "Серьги из осины",
+    "image": "images/серьги-осина-1-2.jpg",
+    "created_datetime": "2021-03-24T20:47:08Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 9,
+  "fields": {
+    "title": "Экотропа на Ольманских болотах",
+    "image": "images/серьги-осина-1-3.jpg",
+    "created_datetime": "2021-03-24T20:47:08Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 10,
+  "fields": {
+    "title": "Кулон из ольхи",
+    "image": "images/кулон-ольха-1-1.jpg",
+    "created_datetime": "2021-03-24T20:43:39Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 11,
+  "fields": {
+    "title": "Кулон из ольхи",
+    "image": "images/кулон-ольха-1-2.jpg",
+    "created_datetime": "2021-03-24T20:47:08Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 12,
+  "fields": {
+    "title": "Кулон из подорожника",
+    "image": "images/кулон-подорожник-1-1.jpg",
+    "created_datetime": "2021-03-24T20:43:39Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 13,
+  "fields": {
+    "title": "Кулон из подорожника",
+    "image": "images/кулон-подорожник-1-2.jpg",
+    "created_datetime": "2021-03-24T20:47:08Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 14,
+  "fields": {
+    "title": "Кулон из остролистного дуба",
+    "image": "images/брошь-дуб-остролистный-1-1.jpg",
+    "created_datetime": "2021-03-24T20:43:39Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 15,
+  "fields": {
+    "title": "Кулон из остролистного дуба",
+    "image": "images/брошь-дуб-остролистный-1-2.jpg",
+    "created_datetime": "2021-03-24T20:47:08Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 10000,
+  "fields": {
+    "title": "Броши",
+    "image": "images/броши.jpg",
+    "created_datetime": "2021-03-24T20:43:39Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 10001,
+  "fields": {
+    "title": "Кулоны",
+    "image": "images/кулоны.jpg",
+    "created_datetime": "2021-03-24T20:43:39Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.image",
+  "pk": 10002,
+  "fields": {
+    "title": "Серьги",
+    "image": "images/серьги.jpg",
+    "created_datetime": "2021-03-24T20:43:39Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.category",
+  "pk": "all",
+  "fields": {
+    "url": null,
+    "page_title": "Каталог оригинальных украшений | CuprumBerry",
+    "page_description": "Каталог оригинальных украшений ручной работы из меди",
+    "page_keywords": "украшения, сувениры, бижутерия, кулоны, серьги, броши",
+    "page_h1": "Каталог авторских украшений",
+    "deleted": false,
+    "name": "Все изделия",
+    "parent": null,
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "bizhuteriya",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Бижутерия",
+    "parent": null,
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "braslety",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Браслеты",
+    "parent": "bizhuteriya",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "broshi",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Броши",
+    "parent": "bizhuteriya",
+    "description": null,
+    "image": 10000
+  }
+},
+{
+  "model": "core.category",
+  "pk": "catalog",
+  "fields": {
+    "url": null,
+    "page_title": "Каталог оригинальных украшений | CuprumBerry",
+    "page_description": "Каталог оригинальных украшений ручной работы из меди",
+    "page_keywords": "украшения, сувениры, бижутерия, кулоны, серьги, броши",
+    "page_h1": null,
+    "deleted": false,
+    "name": "Каталог",
+    "parent": null,
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "izdeliya-iz-duba",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Дуб",
+    "parent": "osnova",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "izdeliya-iz-duba-ostrolistnogo",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Дуб остролистный",
+    "parent": "osnova",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "izdeliya-iz-duba-podorozhnika",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Подорожник",
+    "parent": "osnova",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "izdeliya-iz-fizalisa",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Физалис",
+    "parent": "osnova",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "izdeliya-iz-klena",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Клён",
+    "parent": "osnova",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "izdeliya-iz-klena-yasenevidnogo",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Клён ясеневидный",
+    "parent": "osnova",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "izdeliya-iz-medi",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Медь",
+    "parent": "izdeliya-iz-metalla",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "izdeliya-iz-metalla",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Металл",
+    "parent": null,
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "izdeliya-iz-olhi",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Ольха",
+    "parent": "osnova",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "izdeliya-iz-osiny",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Осина",
+    "parent": "osnova",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "kolca",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Кольца",
+    "parent": "bizhuteriya",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "kulony",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Кулоны",
+    "parent": "bizhuteriya",
+    "description": null,
+    "image": 10001
+  }
+},
+{
+  "model": "core.category",
+  "pk": "osnova",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Основа",
+    "parent": null,
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "osnovanie",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Основание",
+    "parent": null,
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "sergi",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Серьги",
+    "parent": "bizhuteriya",
+    "description": null,
+    "image": 10002
+  }
+},
+{
+  "model": "core.category",
+  "pk": "shpilki",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Шпильки",
+    "parent": "bizhuteriya",
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.category",
+  "pk": "suveniry",
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Сувениры",
+    "parent": null,
+    "description": null,
+    "image": null
+  }
+},
+{
+  "model": "core.product",
+  "pk": 1000,
+  "fields": {
+    "url": "catalog/bizhuteriya/kulony/kulon-iz-osiny-1000",
+    "page_title": "Купить кулон ручной работы из листа осины в Минске",
+    "page_description": "Здесь вы можете приобрести необычный кулон темно-коричневого цвета из листа осины, созданный методом гальванопластики.",
+    "page_keywords": "украшения, кулоны, осина, гальванопластика",
+    "page_h1": "Кулон из листа осины",
+    "deleted": false,
+    "name": "Кулон из осины",
+    "short_description": "Осиновый лист, покрытый слоем меди и выполненный в виде кулона.",
+    "long_description": "Украшение сделано из настоящего листа осины, покрытого медью. Я очень люблю эти листья, они такие нарядные и можно часами рассматривать сеть их мелких прожилок.",
+    "price": "40.00",
+    "actual_price": null,
+    "sold": false,
+    "main_image": 1,
+    "created_datetime": "2021-03-20T00:00:00Z",
+    "created_by_id": -1,
+    "categories": [
+      "bizhuteriya",
+      "izdeliya-iz-medi",
+      "izdeliya-iz-metalla",
+      "izdeliya-iz-osiny",
+      "kulony"
+    ],
+    "images": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "core.product",
+  "pk": 1001,
+  "fields": {
+    "url": "catalog/bizhuteriya/broshi/brosh-iz-lista-duba-1001",
+    "page_title": "Заказать оригинальную брошь из дубового листа в Минске.",
+    "page_description": "На этой странице Вы найдете уникальную медную брошь в форме дубового листа.",
+    "page_keywords": "украшение, бижутерия, брошь, дуб, медь",
+    "page_h1": "Брошь из дубового листа.",
+    "deleted": false,
+    "name": "Брошь из листа дуба",
+    "short_description": "Брошь из меди, выолненная методом гальванопластики в форме добвого листа.",
+    "long_description": "Держа эту брошь в руках, я чувствую умиротворение и спокойствие. Возможно, потому, что само дерево дуба такое сильное и могучее, и его энергия ощущается даже в маленьком листике.",
+    "price": "38.40",
+    "actual_price": null,
+    "sold": false,
+    "main_image": 3,
+    "created_datetime": "2021-03-21T00:00:00Z",
+    "created_by_id": -1,
+    "categories": [
+      "bizhuteriya",
+      "broshi",
+      "izdeliya-iz-duba",
+      "izdeliya-iz-medi",
+      "izdeliya-iz-metalla"
+    ],
+    "images": [
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "core.product",
+  "pk": 1002,
+  "fields": {
+    "url": "catalog/bizhuteriya/kylone/kylon-is-fizalisa-1002",
+    "page_title": "Приобрести уникальный кулон из меди в форме физалиса в городе Минск.",
+    "page_description": "Если Вы ищете оригинальное украшение, то этот медный кулон из оболочки физалиса точно подойдет Вам.",
+    "page_keywords": "украшения, кулоны, металл, медь, handmade, физалис, ручная работа",
+    "page_h1": "Медный кулон из чашелистников физаслиса.",
+    "deleted": false,
+    "name": "Кулон из физалиса",
+    "short_description": "Часть оболочки физалиса в виде медного кулона.",
+    "long_description": "Физалисы похожи на маленькие солнышки. У меня их целая коробочка сушеных, что мне особенно нравится, так то, что они сохраняют свой яркий цвет. Открываешь такую коробочку зимой и настроение поднимается от этих оранжевых сказочных фонариков.",
+    "price": "65.00",
+    "actual_price": "49.00",
+    "sold": false,
+    "main_image": 5,
+    "created_datetime": "2021-03-22T00:00:00Z",
+    "created_by_id": -1,
+    "categories": [
+      "bizhuteriya",
+      "izdeliya-iz-fizalisa",
+      "izdeliya-iz-medi",
+      "izdeliya-iz-metalla",
+      "kulony"
+    ],
+    "images": [
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "core.product",
+  "pk": 4,
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Серьги из осины",
+    "short_description": "Эти осиновые листья летом я привезла с Ольманских болот, что находятся на границе Беларуси и Украины. Их там было на любой вкус, как и местных комаров. Пока меня съедали заживо, я выбирала эти листья, представляя, какие они получатся, если я выживу, конечно:) Поэтому если соберетесь поехать, обязательно берите репеллент. Мы, к сожалению, не подготовились, и я очень рада, что нам повстречались местные жители, которые щедро поделились этой спасительной жидкостью. Они говорят, что их комары почти не кусают, хотя на нас уже не было свободных мест. Наверное, комарам тоже интересно пробовать что-то новое, либо мы очень вкусные просто.А на последнем фото как раз я. Иду по экотропе.",
+    "long_description": "Эти осиновые листья летом я привезла с Ольманских болот, что находятся на границе Беларуси и Украины. Их там было на любой вкус, как и местных комаров. Пока меня съедали заживо, я выбирала эти листья, представляя, какие они получатся, если я выживу, конечно:) Поэтому если соберетесь поехать, обязательно берите репеллент. Мы, к сожалению, не подготовились, и я очень рада, что нам повстречались местные жители, которые щедро поделились этой спасительной жидкостью. Они говорят, что их комары почти не кусают, хотя на нас уже не было свободных мест. Наверное, комарам тоже интересно пробовать что-то новое, либо мы очень вкусные просто.А на последнем фото как раз я. Иду по экотропе.",
+    "price": "45.00",
+    "actual_price": null,
+    "sold": false,
+    "main_image": 7,
+    "created_datetime": "2021-03-22T22:14:07Z",
+    "created_by_id": -1,
+    "categories": [
+      "bizhuteriya",
+      "izdeliya-iz-medi",
+      "izdeliya-iz-metalla",
+      "izdeliya-iz-osiny",
+      "sergi"
+    ],
+    "images": [
+      7,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "core.product",
+  "pk": 5,
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Кулон из ольхи",
+    "short_description": "Вы видели, каким волшебным становится лес после дождя? Сейчас, работая с природными материалами, я обращаю внимание на такие вещи гораздо больше и мне жаль, что я не замечала этого великолепия раньше. В сверкающих каплях растения выглядят ещё более красочно и живо. Примерно таким я и встретила этот листик, да так и решила меднить - с капелькой дождя.А вот то, что это лист ольхи, я узнала только сегодня:)",
+    "long_description": "Вы видели, каким волшебным становится лес после дождя? Сейчас, работая с природными материалами, я обращаю внимание на такие вещи гораздо больше и мне жаль, что я не замечала этого великолепия раньше. В сверкающих каплях растения выглядят ещё более красочно и живо. Примерно таким я и встретила этот листик, да так и решила меднить - с капелькой дождя.А вот то, что это лист ольхи, я узнала только сегодня:)",
+    "price": "54.00",
+    "actual_price": null,
+    "sold": false,
+    "main_image": 10,
+    "created_datetime": "2021-03-26T22:14:07Z",
+    "created_by_id": -1,
+    "categories": [
+      "bizhuteriya",
+      "izdeliya-iz-medi",
+      "izdeliya-iz-metalla",
+      "izdeliya-iz-olhi",
+      "kulony"
+    ],
+    "images": [
+      10,
+      11
+    ]
+  }
+},
+{
+  "model": "core.product",
+  "pk": 6,
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Кулон из подорожника",
+    "short_description": "Подорожник должен быть в аптечке у каждого человека, заботящегося о своем здоровье. Если у вас ещё нет, советую обзавестись как можно быстрее. Это лучшее средство при всех видах порезов и ссадин. В крайнем случае можно и при переломе приложить. Но к врачу лучше обратиться, конечно, вдруг приложили неправильно, пусть проверит.\nСрок годности не ограничен.",
+    "long_description": "Подорожник должен быть в аптечке у каждого человека, заботящегося о своем здоровье. Если у вас ещё нет, советую обзавестись как можно быстрее. Это лучшее средство при всех видах порезов и ссадин. В крайнем случае можно и при переломе приложить. Но к врачу лучше обратиться, конечно, вдруг приложили неправильно, пусть проверит.\nСрок годности не ограничен.",
+    "price": "49.00",
+    "actual_price": null,
+    "sold": false,
+    "main_image": 12,
+    "created_datetime": "2021-03-27T22:14:07Z",
+    "created_by_id": -1,
+    "categories": [
+      "bizhuteriya",
+      "izdeliya-iz-duba-podorozhnika",
+      "izdeliya-iz-medi",
+      "izdeliya-iz-metalla",
+      "kulony"
+    ],
+    "images": [
+      12,
+      13
+    ]
+  }
+},
+{
+  "model": "core.product",
+  "pk": 7,
+  "fields": {
+    "url": null,
+    "page_title": null,
+    "page_description": null,
+    "page_keywords": null,
+    "page_h1": null,
+    "deleted": false,
+    "name": "Брошь из остролистного дуба",
+    "short_description": "Как ни странно, но это тоже дуб, только остролистный. Он растет недалеко от моего дома. В первый раз я обратила на него внимание, когда заметила жёлуди на земле. Я тогда ещё подумала, откуда они взялись тут, а потом присмотрелась: так их много, оказывается, а деревьев подходящих не видно. Всезнающий Google выручил и рассказал мне, что количество видов дуба исчисляется сотнями. Теперь на вопрос \"какие из деревьев я могу без труда отличить?\", дуб, наверное, мне отвечать не стоит",
+    "long_description": "Как ни странно, но это тоже дуб, только остролистный. Он растет недалеко от моего дома. В первый раз я обратила на него внимание, когда заметила жёлуди на земле. Я тогда ещё подумала, откуда они взялись тут, а потом присмотрелась: так их много, оказывается, а деревьев подходящих не видно. Всезнающий Google выручил и рассказал мне, что количество видов дуба исчисляется сотнями. Теперь на вопрос \"какие из деревьев я могу без труда отличить?\", дуб, наверное, мне отвечать не стоит",
+    "price": "48.00",
+    "actual_price": null,
+    "sold": false,
+    "main_image": 14,
+    "created_datetime": "2021-03-28T22:14:07Z",
+    "created_by_id": -1,
+    "categories": [
+      "bizhuteriya",
+      "broshi",
+      "izdeliya-iz-duba-ostrolistnogo",
+      "izdeliya-iz-medi",
+      "izdeliya-iz-metalla"
+    ],
+    "images": [
+      14,
+      15
+    ]
+  }
+},
+{
+  "model": "core.quickreferencecard",
+  "pk": 1,
+  "fields": {
+    "title": "Медные кулоны",
+    "content": "Кулоны ручной работы, созданные методом электрохимического осаждения меди",
+    "order": 0,
+    "deleted": false,
+    "product": null,
+    "category": "kulony",
+    "created_datetime": "2021-04-11T19:48:40Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.quickreferencecard",
+  "pk": 2,
+  "fields": {
+    "title": "Броши из меди",
+    "content": "Авторские броши, выполненые методом гальванопластики с испольщованием меди",
+    "order": 1,
+    "deleted": false,
+    "product": null,
+    "category": "broshi",
+    "created_datetime": "2021-04-11T19:50:37Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.quickreferencecard",
+  "pk": 3,
+  "fields": {
+    "title": "Серьги из меди",
+    "content": "Оригинальные серьги ручной работы на основе листьев различных растений, покрытых медью.",
+    "order": 3,
+    "deleted": false,
+    "product": null,
+    "category": "sergi",
+    "created_datetime": "2021-04-11T22:42:59Z",
+    "created_by_id": -1
+  }
+},
+{
+  "model": "core.blogpost",
+  "pk": 1,
+  "fields": {
+    "title": "Новый изделие! Медный кулон в форме осинового листа.",
+    "content": "Украшение сделано из настоящего листа осины, покрытого медью. Я очень люблю эти листья, они такие нарядные и можно часами рассматривать сеть их мелких прожилок.",
+    "created_datetime": "2021-03-20T00:00:00Z",
+    "created_by_id": -1,
+    "product": 1000
+  }
+},
+{
+  "model": "core.blogpost",
+  "pk": 2,
+  "fields": {
+    "title": "Новое поступление! Брошь из дубового листа.",
+    "content": "Держа эту брошь в руках, я чувствую умиротворение и спокойствие. Возможно, потому, что само дерево дуба такое сильное и могучее, и его энергия ощущается даже в маленьком листике.",
+    "created_datetime": "2021-03-21T00:00:00Z",
+    "created_by_id": -1,
+    "product": 1001
+  }
+},
+{
+  "model": "core.blogpost",
+  "pk": 3,
+  "fields": {
+    "title": "Обновление в каталоге! Кулон из физалиса.",
+    "content": "Физалисы похожи на маленькие солнышки. У меня их целая коробочка сушеных, что мне особенно нравится, так то, что они сохраняют свой яркий цвет. Открываешь такую коробочку зимой и настроение поднимается от этих оранжевых сказочных фонариков.",
+    "created_datetime": "2021-03-22T00:00:00Z",
+    "created_by_id": -1,
+    "product": 1002
+  }
+},
+{
+  "model": "core.blogpost",
+  "pk": 4,
+  "fields": {
+    "title": "Серьги из листьев осины",
+    "content": "Серьги из листьев осины",
+    "created_datetime": "2021-04-12T20:31:27Z",
+    "created_by_id": -1,
+    "product": 4
+  }
+},
+{
+  "model": "core.blogpost",
+  "pk": 5,
+  "fields": {
+    "title": "Кулон из листьев ольхи",
+    "content": "Кулон из листьев ольхи",
+    "created_datetime": "2021-04-12T20:31:54Z",
+    "created_by_id": -1,
+    "product": 5
+  }
+},
+{
+  "model": "core.blogpost",
+  "pk": 6,
+  "fields": {
+    "title": "Кулон из подорожника",
+    "content": "Кулон из подорожника",
+    "created_datetime": "2021-04-12T20:32:21Z",
+    "created_by_id": -1,
+    "product": 6
+  }
+}
+]

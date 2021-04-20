@@ -17,6 +17,10 @@
     {{ product.page_keywords }}
 {% endblock %}
 
+{% block canonical %}
+        <link rel="canonical" href="{% url 'core:product' product.url product.id %}" />
+{% endblock %}
+
 {% block content %}
 
 <div class="row">
