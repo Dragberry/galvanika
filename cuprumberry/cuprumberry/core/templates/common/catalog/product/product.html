@@ -1,24 +1,17 @@
 {% extends "common/template.html" %}
 {% load i18n %}
+{% load fullurl %}
 
-{% block title %}
-    {% if product.page_title %}
-        {{ product.page_title }}
-    {% else %}
-        {{ product.name }} | {{ request.app_name }}
-    {% endif %}
-{% endblock %}
+{% block title %}{% if product.page_title %}{{ product.page_title }}{% else %}{{ product.name }} | {{ request.app_name }}{% endif %}{% endblock %}
 
-{% block meta_description  %}
-    {{ product.page_description }}
-{% endblock %}
+{% block meta_description  %}{{ product.page_description }}{% endblock %}
 
-{% block meta_keywords %}
-    {{ product.page_keywords }}
-{% endblock %}
+{% block meta_keywords %}{{ product.page_keywords }}{% endblock %}
 
 {% block canonical %}
-        <link rel="canonical" href="{% url 'core:product' product.url product.id %}" />
+    {% if request.path != product.url %}
+        <link rel="canonical" href="{% buildfullurl product.url %}" />
+    {% endif %}
 {% endblock %}
 
 {% block content %}

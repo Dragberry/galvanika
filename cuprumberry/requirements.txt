@@ -4,6 +4,9 @@ pyyaml
 ua-parser
 user-agents
 django-user-agents
+django-fullurl
 Pillow
 babel
 mysqlclient
+uuid
+

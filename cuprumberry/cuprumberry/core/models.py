@@ -1,5 +1,9 @@
 from datetime import datetime
+from io import BytesIO
+import uuid
 
+import PIL
+from django.core.files.base import ContentFile, File
 from django.db import models
 from django.utils.timezone import now
 from transliterate import slugify
@@ -26,8 +30,41 @@ class Image(models.Model):
     id: int = models.IntegerField(primary_key=True)
     title: str = models.CharField(max_length=256)
     image = models.ImageField(upload_to='images')
+    preview = models.ImageField(upload_to='images', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='images', blank=True, null=True)
     created_datetime: datetime = models.DateTimeField(default=now)
     created_by_id: int = models.IntegerField(default=-1)
+
+    def save(self, **kwargs):
+        template: str = f'{slugify(self.title)}-{str(uuid.uuid4())}-%s.jpg'
+        im = PIL.Image.open(self.image)
+
+        source_image = im.convert('RGB')
+        output = BytesIO()
+        source_image.save(output, format='JPEG')
+        output.seek(0)
+        content_file = ContentFile(output.read())
+        self.image.save(template % 'original', content_file, save=False)
+
+        source_image = im.convert('RGB')
+        source_image.thumbnail((200, 200))
+        output = BytesIO()
+        source_image.save(output, format='JPEG')
+        output.seek(0)
+        content_file = ContentFile(output.read())
+        file = File(content_file)
+        self.thumbnail.save(template % 'thumbnail', file, save=False)
+
+        source_image = im.convert('RGB')
+        source_image.thumbnail((640, 480))
+        output = BytesIO()
+        source_image.save(output, format='JPEG')
+        output.seek(0)
+        content_file = ContentFile(output.read())
+        file = File(content_file)
+        self.preview.save(template % 'preview', file, save=False)
+
+        super().save(**kwargs)
 
     def __str__(self):
         return f'Image({self.id}, {self.title})'
@@ -68,7 +105,7 @@ class Product(SeoPage):
     created_by_id: int = models.IntegerField(default=-1)
 
     def url_name(self) -> str:
-        return self.url if self.url is not None else slugify(self.name, 'ru')
+        return f'{slugify(self.name, "ru")}-{self.id}' if not self.url else self.url[self.url.rfind('/') + 1:]
 
     def __str__(self):
         return f'Product({self.id}, {self.name}{", DELETED" if self.deleted else ""})'

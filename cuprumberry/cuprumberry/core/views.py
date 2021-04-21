@@ -116,7 +116,7 @@ class CatalogView(ListView):
         except KeyError:
             sort: SortEnum = SortEnum[self.catalog_filters['sort']]
 
-        filters: [Q] = [Q(deleted=False)]
+        filters: [Q] = [Q(deleted=False), Q(sold=False)]
 
         category_ids: str = self.kwargs.get('category_ids')
         if category_ids is not None:
@@ -175,7 +175,7 @@ class ProductView(DetailView):
 
     def get_queryset(self, queryset=None):
         qs = super().get_queryset()
-        return qs.filter(Q(deleted=False))
+        return qs.filter(Q(deleted=False) & Q(sold=False))
 
 
 def catalog_quick_order(request):

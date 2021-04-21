@@ -559,7 +559,7 @@
   "model": "core.product",
   "pk": 1000,
   "fields": {
-    "url": "catalog/bizhuteriya/kulony/kulon-iz-osiny-1000",
+    "url": "/catalog/bizhuteriya/kulony/kulon-iz-osiny-1000",
     "page_title": "Купить кулон ручной работы из листа осины в Минске",
     "page_description": "Здесь вы можете приобрести необычный кулон темно-коричневого цвета из листа осины, созданный методом гальванопластики.",
     "page_keywords": "украшения, кулоны, осина, гальванопластика",
@@ -591,7 +591,7 @@
   "model": "core.product",
   "pk": 1001,
   "fields": {
-    "url": "catalog/bizhuteriya/broshi/brosh-iz-lista-duba-1001",
+    "url": "/catalog/bizhuteriya/broshi/brosh-iz-lista-duba-1001",
     "page_title": "Заказать оригинальную брошь из дубового листа в Минске.",
     "page_description": "На этой странице Вы найдете уникальную медную брошь в форме дубового листа.",
     "page_keywords": "украшение, бижутерия, брошь, дуб, медь",
@@ -623,7 +623,7 @@
   "model": "core.product",
   "pk": 1002,
   "fields": {
-    "url": "catalog/bizhuteriya/kylone/kylon-is-fizalisa-1002",
+    "url": "/catalog/bizhuteriya/kulony/kylon-is-fizalisa-1002",
     "page_title": "Приобрести уникальный кулон из меди в форме физалиса в городе Минск.",
     "page_description": "Если Вы ищете оригинальное украшение, то этот медный кулон из оболочки физалиса точно подойдет Вам.",
     "page_keywords": "украшения, кулоны, металл, медь, handmade, физалис, ручная работа",
