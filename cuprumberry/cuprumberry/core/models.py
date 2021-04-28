@@ -20,6 +20,7 @@ class SeoPage(models.Model):
     page_description: str = models.CharField(max_length=1024, blank=True, null=True)
     page_keywords: str = models.CharField(max_length=1024, blank=True, null=True)
     page_h1: str = models.CharField(max_length=128, blank=True, null=True)
+    no_index: bool = models.BooleanField(default=False)
     deleted: bool = models.BooleanField(default=False)
 
     class Meta:
@@ -27,7 +28,7 @@ class SeoPage(models.Model):
 
 
 class Image(models.Model):
-    id: int = models.IntegerField(primary_key=True)
+    id: int = models.AutoField(primary_key=True)
     title: str = models.CharField(max_length=256)
     image = models.ImageField(upload_to='images')
     preview = models.ImageField(upload_to='images', blank=True, null=True)
@@ -91,7 +92,7 @@ class Category(SeoPage):
 
 
 class Product(SeoPage):
-    id: int = models.IntegerField(primary_key=True)
+    id: int = models.AutoField(primary_key=True)
     name: str = models.CharField(max_length=36)
     short_description: str = models.CharField(max_length=1024, blank=True, null=True)
     long_description: str = models.CharField(max_length=4096, blank=True, null=True)
@@ -112,6 +113,7 @@ class Product(SeoPage):
 
 
 class ProductOrder(models.Model):
+    id: int = models.AutoField(primary_key=True)
     product: Product = models.ForeignKey(Product, on_delete=models.PROTECT)
     mobile: str = models.CharField(max_length=36, blank=True, null=True)
     email: str = models.CharField(max_length=36, blank=True, null=True)
@@ -121,10 +123,11 @@ class ProductOrder(models.Model):
     created_by_id: int = models.IntegerField(default=-1)
 
     def __str__(self):
-        return f'ProductOrder(id={self.pk}, product_id={self.product.name}, product_id={self.prвoduct.name})'
+        return f'ProductOrder(id={self.pk}, product_id={self.product.name}, product_id={self.product.name})'
 
 
 class QuickReferenceCard(models.Model):
+    id: int = models.AutoField(primary_key=True)
     title: str = models.CharField(max_length=256)
     content: str = models.CharField(max_length=4096)
     order: bool = models.IntegerField(default=0)
@@ -139,6 +142,7 @@ class QuickReferenceCard(models.Model):
 
 
 class BlogPost(models.Model):
+    id: int = models.AutoField(primary_key=True)
     title: str = models.CharField(max_length=256)
     content: str = models.CharField(max_length=4096)
     created_datetime: datetime = models.DateTimeField(default=now)
