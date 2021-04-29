@@ -32,7 +32,7 @@
                         <img class="d-block w-100"
                              title="{{ product.name }}"
                              alt="{{ product.name }}"
-                             src="{{ image.image.url }}">
+                             src="{{ image.original.url }}">
                     </div>
                     {% endfor %}
                 </div>
@@ -58,7 +58,7 @@
                         <img class="img-thumbnail"
                              title="{{ product.name }}"
                              alt="{{ product.name }}"
-                             src="{{ image.image.url }}">
+                             src="{{ image.thumbnail.url }}">
                     </li>
                     {% endfor %}
                 </ol>

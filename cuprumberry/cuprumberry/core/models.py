@@ -30,41 +30,51 @@ class SeoPage(models.Model):
 class Image(models.Model):
     id: int = models.AutoField(primary_key=True)
     title: str = models.CharField(max_length=256)
-    image = models.ImageField(upload_to='images')
+    folder: str = models.CharField(max_length=32, default='common')
+    original = models.ImageField(upload_to='images', blank=True, null=True)
     preview = models.ImageField(upload_to='images', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='images', blank=True, null=True)
     created_datetime: datetime = models.DateTimeField(default=now)
     created_by_id: int = models.IntegerField(default=-1)
 
     def save(self, **kwargs):
-        template: str = f'{slugify(self.title)}-{str(uuid.uuid4())}-%s.jpg'
-        im = PIL.Image.open(self.image)
+        template: str = f'{self.folder}/{slugify(self.title)}-{uuid.uuid4().hex[:8].upper()}-%s.jpg'
+        try:
+            im = PIL.Image.open(self.original)
+            source_image = im.convert('RGB')
+            output = BytesIO()
+            source_image.save(output, format='JPEG')
+            output.seek(0)
+            content_file = ContentFile(output.read())
+            self.original.save(template % 'original', content_file, save=False)
 
-        source_image = im.convert('RGB')
-        output = BytesIO()
-        source_image.save(output, format='JPEG')
-        output.seek(0)
-        content_file = ContentFile(output.read())
-        self.image.save(template % 'original', content_file, save=False)
+            source_image = im.convert('RGB')
+            source_image.thumbnail((200, 200))
+            output = BytesIO()
+            source_image.save(output, format='JPEG')
+            output.seek(0)
+            content_file = ContentFile(output.read())
+            file = File(content_file)
+            self.thumbnail.save(template % 'thumbnail', file, save=False)
 
-        source_image = im.convert('RGB')
-        source_image.thumbnail((200, 200))
-        output = BytesIO()
-        source_image.save(output, format='JPEG')
-        output.seek(0)
-        content_file = ContentFile(output.read())
-        file = File(content_file)
-        self.thumbnail.save(template % 'thumbnail', file, save=False)
-
-        source_image = im.convert('RGB')
-        source_image.thumbnail((640, 480))
-        output = BytesIO()
-        source_image.save(output, format='JPEG')
-        output.seek(0)
-        content_file = ContentFile(output.read())
-        file = File(content_file)
-        self.preview.save(template % 'preview', file, save=False)
-
+            source_image = im.convert('RGB')
+            source_image.thumbnail((640, 480))
+            output = BytesIO()
+            source_image.save(output, format='JPEG')
+            output.seek(0)
+            content_file = ContentFile(output.read())
+            file = File(content_file)
+            self.preview.save(template % 'preview', file, save=False)
+        except ValueError:
+            if self.original is not None:
+                self.original.delete()
+                self.original = None
+            if self.thumbnail is not None:
+                self.thumbnail.delete()
+                self.thumbnail = None
+            if self.preview is not None:
+                self.preview.delete()
+                self.preview = None
         super().save(**kwargs)
 
     def __str__(self):
