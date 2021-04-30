@@ -129,6 +129,12 @@ body {
       height: 100px;
       margin: 0 2px;
 
+      &.active {
+        img {
+          box-shadow: inset 0px 0px 40px 40px $dark;
+        }
+      }
+
       img {
         background-color: $white;
 

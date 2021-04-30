@@ -114,6 +114,9 @@ body {
   height: 100px;
   margin: 0 2px;
 }
+.carousel-thumbnails-wrapper ol.carousel-thumbnails .img-carousel-thumbnail.active img {
+  box-shadow: inset 0px 0px 40px 40px #020122;
+}
 .carousel-thumbnails-wrapper ol.carousel-thumbnails .img-carousel-thumbnail img {
   background-color: #fff;
 }

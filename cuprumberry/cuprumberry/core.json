@@ -986,6 +986,32 @@
     }
   },
   {
+    "model": "core.image",
+    "pk": 75,
+    "fields": {
+      "title": "Серьги из листьев крыжовника в темной патине",
+      "folder": "1026",
+      "original": "images/1026/sergi-iz-listev-kryzhovnika-v-temnoj-patine-45A27F11-original.jpg",
+      "preview": "images/1026/sergi-iz-listev-kryzhovnika-v-temnoj-patine-45A27F11-preview.jpg",
+      "thumbnail": "images/1026/sergi-iz-listev-kryzhovnika-v-temnoj-patine-45A27F11-thumbnail.jpg",
+      "created_datetime": "2021-04-30T23:43:54Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 76,
+    "fields": {
+      "title": "Серьги из листьев крыжовника в темной патине",
+      "folder": "1026",
+      "original": "images/1026/sergi-iz-listev-kryzhovnika-v-temnoj-patine-522CDB96-original.jpg",
+      "preview": "images/1026/sergi-iz-listev-kryzhovnika-v-temnoj-patine-522CDB96-preview.jpg",
+      "thumbnail": "images/1026/sergi-iz-listev-kryzhovnika-v-temnoj-patine-522CDB96-thumbnail.jpg",
+      "created_datetime": "2021-04-30T23:44:20Z",
+      "created_by_id": -1
+    }
+  },
+  {
     "model": "core.category",
     "pk": "all",
     "fields": {
@@ -1218,6 +1244,23 @@
       "no_index": false,
       "deleted": false,
       "name": "Крылатки клёна",
+      "parent": "osnova",
+      "description": null,
+      "image": null
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": "izdeliya-iz-kryzhovnika",
+    "fields": {
+      "url": null,
+      "page_title": null,
+      "page_description": null,
+      "page_keywords": null,
+      "page_h1": null,
+      "no_index": false,
+      "deleted": false,
+      "name": "Крыжовник",
       "parent": "osnova",
       "description": null,
       "image": null
@@ -2389,7 +2432,7 @@
       "no_index": true,
       "deleted": false,
       "name": "Кулон из листьев одуванчика",
-      "short_description": "Медный кулон из листа одуванчика, укаршенный агатом и покрытый патиной мягкого синего цвета.",
+      "short_description": "Медный кулон из листа одуванчика, украшенный агатом и покрытый патиной мягкого синего цвета.",
       "long_description": "Читаю сейчас книгу \"Вино из одуванчиков\". Сначала я подумала, что это авторская выдумка, но оказывается, и правда есть такое одуванчиковое вино. Мне очень интересно, какое оно. Яркое, солнечное и со вкусом лета... Как-то так я себе его представляю. Иначе и быть не может, потому что одно только название уже поднимает настроение. А вы пробовали?Возможно, когда-нибудь я его приготовлю, а пока из одуванчика я приготовила вот такое украшение.",
       "price": "48.00",
       "actual_price": null,
@@ -2410,6 +2453,39 @@
         72,
         73,
         74
+      ]
+    }
+  },
+  {
+    "model": "core.product",
+    "pk": 1026,
+    "fields": {
+      "url": "/catalog/bizhuteriya/sergi/sergi-iz-kryzhovnika-1026",
+      "page_title": "Купить медные серьги из листьев крыжовника в Минске",
+      "page_description": null,
+      "page_keywords": null,
+      "page_h1": "Медные серьги из из листиков крыжовника",
+      "no_index": true,
+      "deleted": false,
+      "name": "Серьги из листьев крыжовника",
+      "short_description": "Миниатюрные медные серьги из листьев крыжовника в темной патине, украшенные белыми бусинами.",
+      "long_description": "Серёжки, в которых лето...",
+      "price": "48.00",
+      "actual_price": null,
+      "sold": false,
+      "main_image": 75,
+      "created_datetime": "2021-04-30T18:00:00Z",
+      "created_by_id": -1,
+      "categories": [
+        "bizhuteriya",
+        "izdeliya-iz-kryzhovnika",
+        "izdeliya-iz-medi",
+        "izdeliya-iz-metalla",
+        "sergi"
+      ],
+      "images": [
+        75,
+        76
       ]
     }
   }

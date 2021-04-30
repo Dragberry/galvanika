@@ -2,8 +2,8 @@
     <div class="card bg-light">
         <a class="p-2" href="{{ request.path }}/{{ product.url_name }}">
             <img class="img-thumbnail product-img-thumbnail"
-                 title="{{ product.name }}"
-                 alt="{{ product.name }}"
+                 title="{{ product.short_description}}"
+                 alt="{{ product.short_description}}"
                  src="{{ product.main_image.preview.url }}">
         </a>
         <div class="container">
@@ -47,7 +47,7 @@
                                     class="btn btn-primary btn-sm"
                                     data-bs-toggle="modal"
                                     data-bs-target="#quickOrderModal"
-                                    onclick="prepareQuickOrder({{ product.id }}, '{{ product.name }}', '{{ product.main_image.image.url }}')">
+                                    onclick="prepareQuickOrder({{ product.id }}, '{{ product.name }}', '{{ product.main_image.preview.url }}')">
                                 <span class="small">Быстрый заказ</span>
                             </button>
                         </div>

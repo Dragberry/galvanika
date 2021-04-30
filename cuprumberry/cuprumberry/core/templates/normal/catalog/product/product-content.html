@@ -4,7 +4,7 @@
             <div id="productCarouselIndicators" class="carousel slide">
                 <div class="carousel-inner">
                     {% for image in images %}
-                    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+                    <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}">
                         <img class="d-block w-100"
                              title="{{ product.name }}"
                              alt="{{ product.name }}"
@@ -26,7 +26,7 @@
                 </button>
                 <ol class="carousel-thumbnails">
                     {% for image in images %}
-                    <li class="img-carousel-thumbnail {% if image.order == 0 %} active {% endif %}"
+                    <li class="img-carousel-thumbnail {% if forloop.counter0 == 0 %}active{% endif %}"
                         data-bs-target="#productCarouselIndicators"
                         data-bs-slide-to="{{ forloop.counter0 }}"
                         aria-current="true"
@@ -102,7 +102,7 @@
                                 class="btn btn-primary btn-sm"
                                 data-bs-toggle="modal"
                                 data-bs-target="#quickOrderModal"
-                                onclick="prepareQuickOrder({{ product.id }}, '{{ product.name }}', '{{ product.main_image.image.url }}')">
+                                onclick="prepareQuickOrder({{ product.id }}, '{{ product.name }}', '{{ product.main_image.preview.url }}')">
                             <span class="small">Быстрый заказ</span>
                         </button>
                     </div>

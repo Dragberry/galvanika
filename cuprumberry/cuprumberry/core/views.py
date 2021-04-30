@@ -63,7 +63,7 @@ def load_more_posts(request, offset: str):
 class CatalogFilters:
     sort: SortEnum = SortEnum.DATE_DESC
     display: DisplayEnum = DisplayEnum.TILES
-    page_size: int = 4
+    page_size: int = 12
     bases: [str] = field(default_factory=list)
 
 
@@ -71,7 +71,7 @@ class CatalogView(ListView):
     template_name = 'common/catalog/catalog.html'
     context_object_name = 'products'
 
-    page_sizes: [int] = [4, 24, 48]
+    page_sizes: [int] = [12, 24, 48]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
