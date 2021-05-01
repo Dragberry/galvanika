@@ -1,12 +1,24 @@
 /* on page init for mobiles */
 $(document).on('pageinit', function() {
 	onPageResize();
+	setupMainMenu();
 });
 /* On document ready */
 $(document).ready(function() {
 	onPageResize();
 	$(window).resize(onPageResize);
+	setupMainMenu();
 });
+
+function setupMainMenu() {
+    var mainNavBarCollapse = document.getElementById('mainNavBarCollapse')
+    mainNavBarCollapse.addEventListener('shown.bs.collapse', function () {
+        $('.fixed-top').addClass('mobile-navbar-show');
+    });
+    mainNavBarCollapse.addEventListener('hidden.bs.collapse', function () {
+        $('.fixed-top').removeClass('mobile-navbar-show');
+    });
+}
 
 /* Update body margin on screen resize */
 function onPageResize() {

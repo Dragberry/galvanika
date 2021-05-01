@@ -1,36 +1,30 @@
 {% load i18n %}
 <header class="blog-header fixed-top">
 
-    <nav id="mainNavBar" class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="mainNavBar">
+    <nav id="mainNavBar" class="navbar navbar-mobile navbar-dark bg-dark" aria-label="mainNavBar">
         <div class="container">
-            <div class="row text-light pt-1 pb-1 ps-2 pe-4">
-                <div class="col-10 text-center">
-                    <a class="text-decoration-none" href="{% url 'core:index' %}" title="{% translate 'На главную' %}">
-                        <span class="h2 fst-italic text-light">
-                          Ремесленная мастерская "CuprumBerry"
-                        </span>
-                    </a>
-                </div>
-                <div class="col-2">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#mainNavBarCollapse" aria-controls="mainNavBarCollapse"
-                            aria-expanded="false" aria-label="Toggle main NavBar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
+            <div class="navbar-mobile-top d-flex flex-nowrap w-100">
+                <a class="navbar-brand text-center" href="{% url 'core:index' %}" title="{% translate 'На главную' %}">
+                        Ремесленная мастерская "CuprumBerry"
+                </a>
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNavBarCollapse" aria-controls="mainNavBarCollapse"
+                        aria-expanded="false" aria-label="Toggle main NavBar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
 
-            <div class="collapse navbar-collapse flex-column ml-lg-2 ml-0" id="mainNavBarCollapse">
+            <div  class="collapse navbar-collapse flex-column ml-lg-2 ml-0" id="mainNavBarCollapse">
                 <div class="row text-light align-items-center">
-                    <div class="col-6 justify-content-start">
-                      <span>{{ request.app_mobile }}</span>
+                    <div class="col-12 mt-2 text-center">
+                        <span>{{ request.app_mobile }}</span>
                     </div>
-                    <div class="col-6 ms-auto d-flex justify-content-end">
-                    {% for social in request.socials %}
-                    <a href="{{ social.action }}" title="{% translate social.name %} ">
-                        <span class="ms-2 mt-3 social-icon social-{{ social.name }}"></span>
-                    </a>
-                    {% endfor %}
+                    <div class="col-12 ms-auto d-flex justify-content-center">
+                        {% for social in request.socials %}
+                        <a href="{{ social.action }}" title="{% translate social.name %} ">
+                            <span class="ms-2 mt-3 social-icon social-{{ social.name }}"></span>
+                        </a>
+                        {% endfor %}
                     </div>
                 </div>
                 <ul class="navbar-nav ms-auto justify-content-center">

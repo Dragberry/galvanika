@@ -4217,6 +4217,29 @@ textarea.form-control-lg {
   color: #fff;
 }
 
+/****** Mobile *****/
+.mobile-navbar-show {
+  background: #020122 !important;
+  height: 100vh !important;
+  overflow-y: scroll !important;
+}
+
+.navbar-mobile .container div a {
+  white-space: normal !important;
+}
+.navbar-mobile .container .navbar-collapse ul li.nav-item {
+  padding: 0.25em;
+  text-align: center;
+  font-size: 1.25rem;
+}
+.navbar-mobile .container .navbar-collapse ul li.nav-item ul.dropdown-menu li {
+  text-align: center;
+  font-size: 1.25rem;
+}
+.navbar-mobile .container .navbar-collapse ul li.nav-item ul.dropdown-menu li a.dropdown-item {
+  padding: 0.25em;
+}
+
 .card {
   position: relative;
   display: flex;

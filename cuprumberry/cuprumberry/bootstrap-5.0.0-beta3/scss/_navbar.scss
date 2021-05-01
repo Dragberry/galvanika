@@ -304,3 +304,42 @@
     }
   }
 }
+
+/****** Mobile *****/
+.mobile-navbar-show {
+  background: $dark !important;
+  height: 100vh !important;
+  overflow-y: scroll !important;
+}
+
+.navbar-mobile {
+  .container {
+    div {
+      a {
+        white-space: normal !important;
+      }
+    }
+
+    .navbar-collapse {
+      ul {
+        li.nav-item {
+          padding: 0.25em;
+          text-align: center;
+          font-size: $h5-font-size;
+
+          ul.dropdown-menu {
+
+            li {
+              text-align: center;
+              font-size: $h5-font-size;
+
+              a.dropdown-item {
+                padding: 0.25em;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

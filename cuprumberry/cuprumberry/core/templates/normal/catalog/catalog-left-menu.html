@@ -1,5 +1,5 @@
 {% load i18n %}
-<ul class="list-unstyled bg-light rounded w-75 ps-3 pt-2 pb-2 pe-3">
+<ul class="list-unstyled bg-light rounded ps-3 pt-2 pb-2 pe-3">
     {% if request.category_decorations %}
     <li class="mb-1">
         <div class="btn-toggle-wrapper p-1 rounded {% if parent_category.id == request.category_decorations.id %}active{% endif %}">
