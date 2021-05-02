@@ -1,3 +1,4 @@
+{% load core_tags %}
 <div class="row bg-light rounded p-2">
     <div class="col-12 ">
         <h1 class="h1 fst-italic">
@@ -10,8 +11,9 @@
             {% endblock %}
         </h1>
     </div>
-    <div class="col-12">
-        <p class="fw-bold small mr-4">Код продукта: {{ product.id }}</p>
+    <div class="col-12 d-flex">
+        <p class="fw-normal small">Код продукта: <span class="fw-bold">{{ product.id }}</span></p>
+        <p class="fw-normal small ms-auto">Добавлено: <span class="fw-bold">  {{ product.created_datetime|format_date }}</span></p>
     </div>
     <div class="col-12">
         <hr/>
@@ -106,7 +108,22 @@
                 </div>
             </div>
             <div class="col-12">
-                <p>{{ product.short_description }}</p>
+                <p class="fw-bold small mr-4">Описание:</p>
+                <h3 class="fw-normal">{{ product.short_description }}</h3>
+            </div>
+            <div class="col-12">
+                <hr/>
+            </div>
+            <div class="col-12">
+                <p class="fw-bold small mr-4">От автора:</p>
+                <p class="d-flex align-items-baseline">
+                    <span id="longDescription" class="d-inline-block text-truncate w-50">{{ product.long_description }}</span>
+                    <button id="showLongDescription"
+                            class="btn btn-link p-0"
+                            onclick="$('#longDescription').removeClass('d-inline-block text-truncate w-50');$('#showLongDescription').remove();">
+                        Читать дальше
+                    </button>
+                </p>
             </div>
         </div>
     </div>

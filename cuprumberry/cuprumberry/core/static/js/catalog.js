@@ -40,6 +40,11 @@ function doFilter(delay = 1000) {
 	}, delay);
 }
 
+function showMoreLongDescription() {
+    $('#longDescription').removeClass('d-inline-block text-truncate w-50 w-75');
+    $('#showLongDescription').remove();
+}
+
 /* global bootstrap: false */
 (function () {
   'use strict'
