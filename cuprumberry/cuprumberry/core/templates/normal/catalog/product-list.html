@@ -19,4 +19,10 @@
     <div class="col-12">
         {% include "common/catalog/catalog-paginator.html" with page_obj=page_obj %}
     </div>
+    {% if category.description %}
+    <div class="col-12 bg-light rounded p-3">
+        {{ category.description|safe}}
+    </div>
+    {% endif %}
+    </div>
 </div>

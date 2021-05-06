@@ -8,16 +8,19 @@ $(document).ready(function() {
 });
 
 function addEventListeners() {
-    document.getElementById('productCarouselIndicators').addEventListener('slide.bs.carousel', function (event) {
-        var $thumbnails = $('.carousel-thumbnails');
-        var $thumbnail_prev = $(`.img-carousel-thumbnail[data-bs-slide-to="${event.from}"]`);
-        var $thumbnail_next = $(`.img-carousel-thumbnail[data-bs-slide-to="${event.to}"]`);
-        var slidesWidth = $thumbnails.width();
-        var scrollLeft = ($thumbnail_next.outerWidth() * (0.5 + event.to)) - (slidesWidth / 2);
-        $thumbnails.animate({scrollLeft: scrollLeft}, 600, 'linear');
-        $thumbnail_prev.removeClass('active');
-        $thumbnail_next.addClass('active');
-    });
+    var productCarouselIndicators = document.getElementById('productCarouselIndicators');
+    if (productCarouselIndicators) {
+        productCarouselIndicators.addEventListener('slide.bs.carousel', function (event) {
+            var $thumbnails = $('.carousel-thumbnails');
+            var $thumbnail_prev = $(`.img-carousel-thumbnail[data-bs-slide-to="${event.from}"]`);
+            var $thumbnail_next = $(`.img-carousel-thumbnail[data-bs-slide-to="${event.to}"]`);
+            var slidesWidth = $thumbnails.width();
+            var scrollLeft = ($thumbnail_next.outerWidth() * (0.5 + event.to)) - (slidesWidth / 2);
+            $thumbnails.animate({scrollLeft: scrollLeft}, 600, 'linear');
+            $thumbnail_prev.removeClass('active');
+            $thumbnail_next.addClass('active');
+        });
+    }
 }
 
 var delayTimer;

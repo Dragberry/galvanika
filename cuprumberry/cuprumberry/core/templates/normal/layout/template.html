@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/socials.css' %}">
     <title>{% block title %} Title {% endblock %}</title>
-    <meta name="description" content="{% block meta_description %} meta description {% endblock %}">
-    <meta name="keywords" content="{% block meta_keywords %} meta keywords {% endblock %}">
+    <meta name="robots" content="{% block meta_robots %}noindex, nofollow, nosnippet{% endblock %}">
+    <meta name="description" content="{% block meta_description %}meta description{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}meta keywords{% endblock %}">
     {% block canonical %} {% endblock %}
 </head>
 <body>

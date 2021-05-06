@@ -1,11 +1,20 @@
 {% extends "common/template.html" %}
 {% load i18n %}
+{% load fullurl %}
 
 {% block title %}{% if current_category.page_title %}{{ current_category.page_title }}{% else %}{{ current_category.name }} | {{ request.app_name }}{% endif %}{% endblock %}
 
 {% block meta_description %}{{ current_category.page_description }}{% endblock %}
 
 {% block meta_keywords %}{{ current_category.page_keywords }}{% endblock %}
+
+{% block meta_robots %}{% if request.path == current_category.url and not current_category.no_index and not current_category.deleted %}index, follow{% else %}noindex, nofollow, nosnippet{% endif %}{% endblock %}
+
+{% if request.path != current_category.url %}
+    {% block canonical %}
+    <link rel="canonical" href="{% buildfullurl current_category.url %}" />
+    {% endblock %}
+{% endif %}
 
 {% block content %}
 
@@ -52,7 +61,7 @@
 
     {% if request.user_agent.is_mobile %}
     <div class="col-12">
-        {% include "common/catalog/product-list.html" %}
+        {% include "common/catalog/product-list.html" with category=current_category %}
     </div>
     {% else %}
     <div class="col-sm-12 col-md-3">
@@ -60,7 +69,7 @@
     </div>
 
     <div class="col-sm-12 col-md-9">
-        {% include "common/catalog/product-list.html" %}
+        {% include "common/catalog/product-list.html" with category=current_category %}
     </div>
     {% endif %}
 </div>
