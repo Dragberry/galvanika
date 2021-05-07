@@ -23,21 +23,12 @@
     <div class="col-12 bg-light rounded p-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="{% url 'core:index' %}">{% translate "home" %}</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="{% url 'core:catalog' %}">{% translate "catalog" %}</a>
-                </li>
-                {% for category in categories %}
-                <li class="breadcrumb-item {% if forloop.last %} active {% endif %}"
-                    {% if forloop.last %} aria-current="page" {% endif %}>
+                {% for b_name, b_url in breadcrumb.items %}
+                <li class="breadcrumb-item {% if forloop.last %}active{% endif %}" {% if forloop.last %}aria-current="page"{% endif %}>
                     {% if forloop.last %}
-                        {{ category.name }}
+                    {{ b_name }}
                     {% else %}
-                    <a href="{% url 'core:category' category.id %}">
-                        {{ category.name }}
-                    </a>
+                    <a href="{{ b_url }}">{{ b_name }}</a>
                     {% endif %}
                 </li>
                 {% endfor %}

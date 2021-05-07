@@ -6,6 +6,7 @@ from django.db.models import Case, When, Q
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404
 from django.template import loader
+from django.urls import reverse
 from django.utils.translation import gettext
 from django.views.generic import ListView, DetailView
 
@@ -139,10 +140,20 @@ class CatalogView(ListView):
 
         context['page_sizes'] = CatalogView.page_sizes
 
+        breadcrumb: [str, str] = {
+            gettext('home'): reverse('core:index'),
+            gettext('catalog'): reverse('core:catalog'),
+        }
         if self.categories:
             context['categories'] = self.categories
             context['parent_category'] = self.categories[0]
             context['current_category'] = self.categories[-1]
+            full_category_id: str = ''
+            for category in self.categories:
+                full_category_id = f'{full_category_id}/{category.id}' if full_category_id else category.id
+                breadcrumb[category.name] = reverse('core:category', kwargs={'category_ids': full_category_id})
+        context['breadcrumb'] = breadcrumb
+
         context['sorts'] = {sort.name: sort.value for sort in SortEnum}
 
         try:
@@ -164,13 +175,23 @@ class ProductView(DetailView):
 
     def get_context_data(self, **kwargs):
         context: dict = super(ProductView, self).get_context_data(**kwargs)
+        breadcrumb: [str, str] = {
+            gettext('home'): reverse('core:index'),
+            gettext('catalog'): reverse('core:catalog'),
+        }
         categories: [Category] = []
         category_ids: str = self.kwargs.get('category_ids')
         if category_ids is not None:
+            full_category_id: str = ''
             for category_id in category_ids.split('/'):
-                categories.append(get_object_or_404(Category, pk=category_id))
+                category: Category = get_object_or_404(Category, pk=category_id)
+                categories.append(category)
+                full_category_id = f'{full_category_id}/{category.id}' if full_category_id else category.id
+                breadcrumb[category.name] = reverse('core:category', kwargs={'category_ids': full_category_id})
+        context['breadcrumb'] = breadcrumb
         context['categories'] = categories
         context['images'] = self.object.images.all()
+
         return context
 
     def get_queryset(self, queryset=None):
