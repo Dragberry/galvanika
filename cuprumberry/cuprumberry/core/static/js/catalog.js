@@ -57,6 +57,31 @@ function showMoreLongDescription() {
   })
 })()
 
+function addToCart(productId) {
+    $('#addToCartForm > :input[name="productId"]').val(productId)
+
+    var $form = $('#addToCartForm');
+    var url = $form.attr('action');
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: $form.serialize(),
+        success: function(data)  {
+            $('#itemAddedToCartProductId').text(data['productId'])
+            $('#itemAddedToCartProductName').text(data['productName'])
+            $('#itemAddedToCartProductImg').attr('src', data['productImageUrl'])
+            $('#itemAddedToCartProductImg').attr('alt', data['productName'])
+            $('#itemAddedToCartToast').toast('show');
+        },
+         error: function($xhr, textStatus, errorThrown){
+            var data = $xhr.responseJSON;
+            $('#itemNotAddedToCartToast').toast('show');
+            $('#itemNotAddedToCartError').text(data['error'])
+         }
+    });
+}
+
 function prepareQuickOrder(productId, productName, productImageUrl) {
      $('#quickOrderProductId').text(productId)
      $('#quickOrderProductName').text(productName)

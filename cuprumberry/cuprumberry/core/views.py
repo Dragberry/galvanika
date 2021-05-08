@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Optional
+from typing import Optional, Set
 
 from django.db.models import Case, When, Q
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
@@ -249,3 +249,48 @@ def catalog_quick_order(request):
 def information(request):
     template = loader.get_template('common/information.html')
     return HttpResponse(template.render({}, request))
+
+
+class Cart:
+    @staticmethod
+    def add_item(request):
+        if request.is_ajax():
+            status: int = 200
+            product_id: str = request.POST.get('productId')
+            data: dict = {'productId': product_id}
+            try:
+                product: Product = get_object_or_404(Product, Q(id=int(product_id)) & Q(deleted=False) & Q(sold=False))
+                data['productName'] = product.name
+                data['productImageUrl'] = product.main_image.thumbnail.url
+                products_in_cart: [str] = request.session.setdefault('cart', [])
+                if product.id not in products_in_cart:
+                    products_in_cart.append(product.id)
+                    request.session['cart'] = products_in_cart
+                else:
+                    data['error'] = gettext('Cart error: Item is already in cart')
+                    status = 409
+            except ValueError:
+                status = 400
+                data['error'] = gettext('Error: Bad request')
+            except Product.DoesNotExist:
+                status = 404
+                data['error'] = gettext('Cart error: Product not found')
+            except Exception as e:
+                print(e)
+                status = 500
+                data['error'] = gettext('Error: Internal server error')
+
+            return JsonResponse(data=data, status=status)
+        return HttpResponseBadRequest()
+
+    @staticmethod
+    def remove_item(request):
+        pass
+
+    @staticmethod
+    def next(request):
+        pass
+
+    @staticmethod
+    def submit_order(request):
+        pass

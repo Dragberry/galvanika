@@ -114,3 +114,25 @@ msgstr "Необходимо указать адрес"
 
 msgid "Quick order error: no product"
 msgstr "Ой, кажется прооизошла ошибка. У нас нет такого продукта."
+
+# Cart
+msgid "Cart: Product has been added to cart"
+msgstr "Товар добавлен в корзину"
+
+msgid "Cart: Product code"
+msgstr "Код продукта"
+
+msgid "Cart: Error"
+msgstr "Ошибка"
+
+msgid "Cart error: Item is already in cart"
+msgstr "Товар уже в корзине"
+
+msgid "Cart error: Product not found"
+msgstr "Товар не найден"
+
+msgid "Error: Bad request"
+msgstr "Ошибка запроса"
+
+msgid "Error: Internal server error"
+msgstr "Внутренняя ошибка сервера"

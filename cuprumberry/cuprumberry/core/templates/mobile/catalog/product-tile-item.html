@@ -35,7 +35,9 @@
                 <div class="col-12 mb-2">
                     <div class="row">
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <button id="addToCartButton" type="button" onclick="console.log({{ product.id }})"
+                            <button id="addToCartButton"
+                                    type="button"
+                                    onclick="addToCart({{ product.id }});"
                                     class="btn btn-success btn-sm">
                                 <span class="fa fa-cart-plus"></span>
                                 <span class="small">В корзину</span>
