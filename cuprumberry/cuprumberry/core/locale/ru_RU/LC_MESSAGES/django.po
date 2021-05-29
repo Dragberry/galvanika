@@ -34,6 +34,9 @@ msgstr "Материалы"
 msgid "information"
 msgstr "Информация"
 
+msgid "cart"
+msgstr "Корзина"
+
 msgid "about us"
 msgstr "О нас"
 

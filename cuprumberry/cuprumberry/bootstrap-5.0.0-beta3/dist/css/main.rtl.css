@@ -133,4 +133,10 @@ body {
 .carousel-thumbnails-wrapper .carousel-control-next {
   margin-bottom: 100px;
 }
+
+/****** Cart *******/
+.cart-image {
+  max-height: 7rem;
+  margin-left: 0.5rem;
+}
 /*# sourceMappingURL=main.rtl.css.map */

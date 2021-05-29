@@ -251,7 +251,36 @@ def information(request):
     return HttpResponse(template.render({}, request))
 
 
+class CartStage(Enum):
+    CART = 'CART'
+    ORDER = 'ORDER'
+    SUCCESS = 'SUCCESS'
+
+
 class Cart:
+    @staticmethod
+    def index(request):
+        try:
+            cart_stage: CartStage = CartStage[request.session['cart_stage']]
+        except KeyError:
+            cart_stage: CartStage = CartStage.CART
+
+        if cart_stage == CartStage.ORDER:
+            template_name: str = 'common/cart/cart-order-details.html'
+        elif cart_stage == CartStage.SUCCESS:
+            template_name: str = 'common/cart/cart-order-success.html'
+        else:
+            template_name: str = 'common/cart/cart-product-list.html'
+
+        products_in_cart: [str] = request.session.setdefault('cart', [])
+        products: [Product] = [Product.objects.get(id=product_id) for product_id in products_in_cart]
+        template = loader.get_template(template_name)
+        context = {
+            'products': products,
+            'total_order_amount': sum([p.price if p.price else p.actual_price for p in products])
+        }
+        return HttpResponse(template.render(context, request))
+
     @staticmethod
     def add_item(request):
         if request.is_ajax():
@@ -266,6 +295,8 @@ class Cart:
                 if product.id not in products_in_cart:
                     products_in_cart.append(product.id)
                     request.session['cart'] = products_in_cart
+                    request.session['cart_product_count'] = len(products_in_cart)
+                    data['cartProductCount'] = len(products_in_cart)
                 else:
                     data['error'] = gettext('Cart error: Item is already in cart')
                     status = 409

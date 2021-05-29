@@ -68,6 +68,14 @@ function addToCart(productId) {
         url: url,
         data: $form.serialize(),
         success: function(data)  {
+            var $cartProductCountBadge = $('#cartProductCountBadge')
+            var cartProductCount = data['cartProductCount'];
+            $cartProductCountBadge.text(cartProductCount)
+            if (cartProductCount > 0) {
+                $cartProductCountBadge.removeClass('d-none');
+            } else {
+                $cartProductCountBadge.addClass('d-none');
+            }
             $('#itemAddedToCartProductId').text(data['productId'])
             $('#itemAddedToCartProductName').text(data['productName'])
             $('#itemAddedToCartProductImg').attr('src', data['productImageUrl'])
