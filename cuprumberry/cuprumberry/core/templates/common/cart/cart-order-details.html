@@ -17,9 +17,9 @@
         <hr/>
     </div>
     <div class="col-12">
-        <div class="row align-items-center">
+        <div class="row justify-content-center">
             <div class="col-6">
-                <form id="cartOrderForm" method="post" action="{% url 'core:quick_order' %}">
+                <form id="cartOrderForm" method="post" action="{% url 'core:cart_submit_order' %}">
                     {% csrf_token %}
                     <div class="row justify-content-center">
                         <div class="col-12 mb-2">
@@ -52,9 +52,9 @@
         <a class='btn btn-primary me-2' href="{% url 'core:cart_go_back' %}">
             Редактировать заказ
         </a>
-        <a class='btn btn-primary' href="{% url 'core:cart_submit_order' %}">
+        <button class='btn btn-primary' onclick="submitCartOrder();">
             Оформить заказ
-        </a>
+        </button>
     </div>
 </div>
 

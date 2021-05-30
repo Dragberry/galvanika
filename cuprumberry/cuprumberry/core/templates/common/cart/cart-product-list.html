@@ -1,42 +1,25 @@
-{% extends "common/template.html" %}
-{% load i18n %}
-
-{% block title %} Корзина | {{ request.app_name }} {% endblock %}
-
-{% block meta_description  %}{% endblock %}
-
-{% block meta_keywords %}{% endblock %}
-
-{% block content %}
-
-<div class="row bg-light rounded p-2">
-     <div class="col-12">
-        <h1>Корзина</h1>
+<div id="cartProductList" class="row">
+    <div id="cartIsEmpty" class="col-12 text-center {% if not products %}{% else %}d-none{% endif %}">
+        <p class="mt-4 fw-bold">Корзина пуста</p>
+        <p class="mt-4">
+            <a class="btn btn-success" href="{% url 'core:catalog' %}">Перейти в каталог</a>
+        </p>
     </div>
+
+    {% if products %}
     <div class="col-12">
-        <hr/>
-    </div>
-     <div class="col-12">
-        <div class="row">
-            <div id="cartIsEmpty" class="col-md-12 text-center {% if not products %}{% else %}d-none{% endif %}">
-				<p class="mt-4 fw-bold">Корзина пуста</p>
-				<p class="mt-4">
-                    <a class="btn btn-success" href="{% url 'core:catalog' %}">Перейти в каталог</a>
-                </p>
-			</div>
-
-            {% if products %}
+        <form id="cartItemsForm" action="{% url 'core:cart_remove_item' %}" method="GET">
             <table id="cartItems" class="table">
-				<tr>
-			    	<th scope="col">#</th>
-			     	<th scope="col">Название</th>
-			     	<th scope="col">Цена</th>
-		       		<th scope="col" class="text-center">Удалить</th>
-			    </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Цена</th>
+                    <th scope="col" class="text-center">Удалить</th>
+                </tr>
                 {% for product in products %}
-                <tr  data-product-id="{{ product.id }}">
-					<th scope="row" data-index="{{ forloop.counter }}">{{ forloop.counter }}</th>
-					<td class="align-middle">
+                <tr data-product-id="{{ product.id }}">
+                    <th scope="row" data-index="{{ forloop.counter }}">{{ forloop.counter }}</th>
+                    <td class="align-middle">
                         <a href="{{ product.url }}">
                             <img class="cart-image img-fluid img-thumbnail float-start"
                                  title="{{ product.name }}"
@@ -47,9 +30,9 @@
                             <span class="d-block">{{ product.name }}</span>
                         </a>
                         <span class="fw-bold small mr-4">Код продукта: {{ product.id }}</span>
-					</td>
-					<td class="align-middle text-nowrap">
-						{% if product.actual_price %}
+                    </td>
+                    <td class="align-middle text-nowrap">
+                        {% if product.actual_price %}
                         <div>
                             <strong>{{ product.actual_price }} BYN</strong>
                         </div>
@@ -61,20 +44,19 @@
                             <strong>{{ product.price }} BYN</strong>
                         </div>
                         {% endif %}
-					</td>
-					<td class="text-center align-middle">
-						<button onclick="removeItemFromCart({{ product.id }})"
+                    </td>
+                    <td class="text-center align-middle">
+                        <button onclick="removeItemFromCart({{ product.id }})"
                                 type="button"
                                 class="btn btn-danger"
                                 title="Удалить">
-				 			<span class="fa fa-times fa-lg"></span>
-				 		</button>
-					</td>
-				</tr>
+                            <span class="fa fa-times fa-lg"></span>
+                        </button>
+                    </td>
+                </tr>
                 {% endfor %}
             </table>
-            {% endif %}
-        </div>
+        </form>
     </div>
     <div class="col-12">
         <hr>
@@ -87,10 +69,9 @@
         </span>
     </div>
     <div class="col-12 d-flex justify-content-end">
-        <a class='btn btn-primary {% if not products %}disabled{% endif %}' href="{% url 'core:cart_go_next' }">
+        <a class='btn btn-primary {% if not products %}disabled{% endif %}' href="{% url 'core:cart_go_next' %}">
             Перейти к оформлению заказа
         </a>
     </div>
+    {% endif %}
 </div>
-
-{% endblock %}
