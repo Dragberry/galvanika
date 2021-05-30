@@ -3,9 +3,10 @@ from enum import Enum
 from typing import Optional, Set
 
 from django.db.models import Case, When, Q
-from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
+from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseNotFound
 from django.shortcuts import get_object_or_404
 from django.template import loader
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.translation import gettext
 from django.views.generic import ListView, DetailView
@@ -264,13 +265,14 @@ class Cart:
             cart_stage: CartStage = CartStage[request.session['cart_stage']]
         except KeyError:
             cart_stage: CartStage = CartStage.CART
+            request.session['cart_stage'] = cart_stage.value
 
         if cart_stage == CartStage.ORDER:
             template_name: str = 'common/cart/cart-order-details.html'
         elif cart_stage == CartStage.SUCCESS:
             template_name: str = 'common/cart/cart-order-success.html'
         else:
-            template_name: str = 'common/cart/cart-product-list.html'
+            template_name: str = 'common/cart/cart-edit-items.html'
 
         products_in_cart: [str] = request.session.setdefault('cart', [])
         products: [Product] = [Product.objects.get(id=product_id) for product_id in products_in_cart]
@@ -291,7 +293,7 @@ class Cart:
                 product: Product = get_object_or_404(Product, Q(id=int(product_id)) & Q(deleted=False) & Q(sold=False))
                 data['productName'] = product.name
                 data['productImageUrl'] = product.main_image.thumbnail.url
-                products_in_cart: [str] = request.session.setdefault('cart', [])
+                products_in_cart: [int] = request.session.setdefault('cart', [])
                 if product.id not in products_in_cart:
                     products_in_cart.append(product.id)
                     request.session['cart'] = products_in_cart
@@ -316,11 +318,51 @@ class Cart:
 
     @staticmethod
     def remove_item(request):
-        pass
+        if request.is_ajax():
+            try:
+                product_id: int = int(request.GET.get('productId'))
+                products_in_cart: [int] = request.session.setdefault('cart', [])
+                if product_id not in products_in_cart:
+                    return HttpResponseNotFound()
+                products_in_cart.remove(product_id)
+                products: [Product] = [Product.objects.get(id=product_id) for product_id in products_in_cart]
+                request.session['cart'] = products_in_cart
+                request.session['cart_product_count'] = len(products_in_cart)
+                data: dict = {
+                    'cartProductList': render_to_string(
+                        template_name='common/cart/cart-product-list.html',
+                        context={
+                            'products': products,
+                            'total_order_amount': sum([p.price if p.price else p.actual_price for p in products])
+                        }
+                    ),
+                    'cartProductCount': len(products_in_cart)
+                }
+                return JsonResponse(data=data, status=200)
+            except (KeyError, ValueError):
+                return HttpResponseBadRequest()
+        return HttpResponseBadRequest()
 
     @staticmethod
     def next(request):
-        pass
+        request.session['cart_stage'] = CartStage.ORDER.value
+        template = loader.get_template('common/cart/cart-order-details.html')
+        context = {
+
+        }
+        return HttpResponse(template.render(context, request))
+
+    @staticmethod
+    def back(request):
+        request.session['cart_stage'] = CartStage.CART.value
+        products_in_cart: [str] = request.session.setdefault('cart', [])
+        products: [Product] = [Product.objects.get(id=product_id) for product_id in products_in_cart]
+        template = loader.get_template('common/cart/cart-edit-items.html')
+        context = {
+            'products': products,
+            'total_order_amount': sum([p.price if p.price else p.actual_price for p in products])
+        }
+        return HttpResponse(template.render(context, request))
 
     @staticmethod
     def submit_order(request):

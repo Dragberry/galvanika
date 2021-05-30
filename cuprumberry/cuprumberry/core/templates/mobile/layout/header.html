@@ -10,7 +10,11 @@
                 <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
                         data-bs-target="#mainNavBarCollapse" aria-controls="mainNavBarCollapse"
                         aria-expanded="false" aria-label="Toggle main NavBar">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon">
+                        <span class="cartProductCountBadge badge bg-secondary {% if not request.session.cart_product_count %}d-none{% endif %}">
+                            {{ request.session.cart_product_count }}
+                        </span>
+                    </span>
                 </button>
             </div>
 
@@ -116,7 +120,7 @@
                             <li class="nav-item">
                                  <a class="nav-link text-center" href="{% url 'core:cart' %}">
                                     {% translate "cart" %}
-                                    <span id="cartProductCountBadge" class="badge bg-secondary {% if not request.session.cart_product_count %}d-none{% endif %}">
+                                    <span class="cartProductCountBadge badge bg-secondary {% if not request.session.cart_product_count %}d-none{% endif %}">
                                         {{ request.session.cart_product_count }}
                                     </span>
                                  </a>

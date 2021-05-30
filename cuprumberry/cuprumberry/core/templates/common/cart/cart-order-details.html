@@ -1,7 +1,7 @@
 {% extends "common/template.html" %}
 {% load i18n %}
 
-{% block title %} Корзина | {{ request.app_name }} {% endblock %}
+{% block title %} Корзина | Оформление заказа | {{ request.app_name }} {% endblock %}
 
 {% block meta_description  %}{% endblock %}
 
@@ -17,6 +17,44 @@
         <hr/>
     </div>
     <div class="col-12">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <form id="cartOrderForm" method="post" action="{% url 'core:quick_order' %}">
+                    {% csrf_token %}
+                    <div class="row justify-content-center">
+                        <div class="col-12 mb-2">
+                            <label for="cartOrderMobile" class="form-label">{% translate 'Mobile' %}:</label>
+                            <input type="text" class="form-control" id="cartOrderMobile" name="mobile" placeholder="+375(29)123-45-67">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="cartOrderEmail" class="form-label">{% translate 'Email' %}:</label>
+                            <input type="email" class="form-control" id="cartOrderEmail" name="email" placeholder="name@example.com">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="cartOrderAddress" class="form-label">{% translate 'Address' %}:</label>
+                            <textarea class="form-control" id="cartOrderAddress" name="address" rows="3"></textarea>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="cartOrderComment" class="form-label">{% translate 'Comment' %}:</label>
+                            <textarea class="form-control" id="cartOrderComment" name="comment" rows="3"></textarea>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <input type="hidden" name="productId">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+        <a class='btn btn-primary me-2' href="{% url 'core:cart_go_back' %}">
+            Редактировать заказ
+        </a>
+        <a class='btn btn-primary' href="{% url 'core:cart_submit_order' %}">
+            Оформить заказ
+        </a>
     </div>
 </div>
 

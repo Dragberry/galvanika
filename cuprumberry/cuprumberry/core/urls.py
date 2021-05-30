@@ -19,5 +19,6 @@ urlpatterns = [
     url('^cart/add$', Cart.add_item, name='cart_add_item'),
     url('^cart/remove', Cart.remove_item, name='cart_remove_item'),
     url('^cart/next', Cart.next, name='cart_go_next'),
+    url('^cart/back', Cart.back, name='cart_go_back'),
     url('^cart/submit-order', Cart.submit_order, name='cart_submit_order'),
 ]

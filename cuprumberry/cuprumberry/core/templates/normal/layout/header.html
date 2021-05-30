@@ -83,7 +83,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-center" href="{% url 'core:cart' %}">
                                     {% translate "cart" %}
-                                    <span id="cartProductCountBadge" class="badge bg-secondary {% if not request.session.cart_product_count %}d-none{% endif %}">
+                                    <span class="cartProductCountBadge badge bg-secondary {% if not request.session.cart_product_count %}d-none{% endif %}">
                                         {{ request.session.cart_product_count }}
                                     </span>
                                 </a>
