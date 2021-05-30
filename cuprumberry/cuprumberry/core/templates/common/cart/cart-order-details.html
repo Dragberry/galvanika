@@ -18,7 +18,7 @@
     </div>
     <div class="col-12">
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-md-6 col-sm-12">
                 <form id="cartOrderForm" method="post" action="{% url 'core:cart_submit_order' %}">
                     {% csrf_token %}
                     <div class="row justify-content-center">
