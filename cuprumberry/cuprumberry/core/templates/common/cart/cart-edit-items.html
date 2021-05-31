@@ -1,7 +1,7 @@
 {% extends "common/template.html" %}
 {% load i18n %}
 
-{% block title %} Корзина | Детали заказа | {{ request.app_name }} {% endblock %}
+{% block title %} {% translate 'Cart title' %} | {% translate 'Cart details' %} | {{ request.app_name }} {% endblock %}
 
 {% block meta_description  %}{% endblock %}
 
@@ -11,7 +11,7 @@
 
 <div class="row bg-light rounded p-2">
      <div class="col-12">
-        <h1>Корзина</h1>
+        <h1> {% translate 'Cart details' %}</h1>
     </div>
     <div class="col-12">
         <hr/>

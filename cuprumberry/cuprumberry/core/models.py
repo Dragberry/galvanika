@@ -122,18 +122,30 @@ class Product(SeoPage):
         return f'Product({self.id}, {self.name}{", DELETED" if self.deleted else ""})'
 
 
-class ProductOrder(models.Model):
+class OrderItem(models.Model):
     id: int = models.AutoField(primary_key=True)
     product: Product = models.ForeignKey(Product, on_delete=models.PROTECT)
-    mobile: str = models.CharField(max_length=36, blank=True, null=True)
-    email: str = models.CharField(max_length=36, blank=True, null=True)
-    address: str = models.CharField(max_length=256, blank=True, null=True)
-    comment: str = models.CharField(max_length=128, blank=True, null=True)
     created_datetime: datetime = models.DateTimeField(default=now)
     created_by_id: int = models.IntegerField(default=-1)
 
     def __str__(self):
-        return f'ProductOrder(id={self.pk}, product_id={self.product.name}, product_id={self.product.name})'
+        return f'OrderItem(id={self.pk}, product_id={self.product.id}, product_name={self.product.name})'
+
+
+class Order(models.Model):
+    id: int = models.AutoField(primary_key=True)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    name: str = models.CharField(max_length=36, blank=True, null=True)
+    mobile: str = models.CharField(max_length=36, blank=True, null=True)
+    email: str = models.CharField(max_length=36, blank=True, null=True)
+    address: str = models.CharField(max_length=256, blank=True, null=True)
+    comment: str = models.CharField(max_length=128, blank=True, null=True)
+    items: [OrderItem] = models.ManyToManyField(OrderItem)
+    created_datetime: datetime = models.DateTimeField(default=now)
+    created_by_id: int = models.IntegerField(default=-1)
+
+    def __str__(self):
+        return f'Order(id={self.pk}, total_amount={self.total_amount})'
 
 
 class QuickReferenceCard(models.Model):

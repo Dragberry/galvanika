@@ -154,3 +154,31 @@ function submitQuickOrder() {
         }
     });
 }
+
+function submitCartOrder() {
+    var form = $('#cartOrderForm');
+    var url = form.attr('action');
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: form.serialize(),
+        success: function(data)  {
+        },
+        error: function(event) {
+            var data = event.responseJSON;
+            for (var fieldName in data.fields) {
+                console.log(field, data.fields[fieldName]);
+                var field = $(`[name=${fieldName}]`)
+                if (data.fields[fieldName]) {
+                    field.addClass('is-invalid');
+                    field.removeClass('is-valid');
+                    field.siblings('.invalid-feedback').text(data.fields[fieldName]);
+                } else {
+                    field.addClass('is-valid');
+                    field.removeClass('is-invalid');
+                    field.siblings('.invalid-feedback').text();
+                }
+            }
+        }
+    });
+}

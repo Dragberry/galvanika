@@ -1,8 +1,9 @@
+{% load i18n %}
 <div id="cartProductList" class="row">
     <div id="cartIsEmpty" class="col-12 text-center {% if not products %}{% else %}d-none{% endif %}">
-        <p class="mt-4 fw-bold">Корзина пуста</p>
+        <p class="mt-4 fw-bold">{% translate 'Cart empty' %}</p>
         <p class="mt-4">
-            <a class="btn btn-success" href="{% url 'core:catalog' %}">Перейти в каталог</a>
+            <a class="btn btn-success" href="{% url 'core:catalog' %}">{% translate 'Cart go to catalog' %}</a>
         </p>
     </div>
 
@@ -12,9 +13,9 @@
             <table id="cartItems" class="table">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Название</th>
-                    <th scope="col">Цена</th>
-                    <th scope="col" class="text-center">Удалить</th>
+                    <th scope="col">{% translate 'Cart product title' %}</th>
+                    <th scope="col">{% translate 'Cart product price' %}</th>
+                    <th scope="col" class="text-center">{% translate 'Delete' %}</th>
                 </tr>
                 {% for product in products %}
                 <tr data-product-id="{{ product.id }}">
@@ -29,7 +30,7 @@
                         <a href="{{ product.url }}">
                             <span class="d-block">{{ product.name }}</span>
                         </a>
-                        <span class="fw-bold small mr-4">Код продукта: {{ product.id }}</span>
+                        <span class="fw-bold small mr-4">{% translate 'Cart: Product code' %}: {{ product.id }}</span>
                     </td>
                     <td class="align-middle text-nowrap">
                         {% if product.actual_price %}
@@ -49,7 +50,7 @@
                         <button onclick="removeItemFromCart({{ product.id }})"
                                 type="button"
                                 class="btn btn-danger"
-                                title="Удалить">
+                                title="{% translate 'Delete' %}">
                             <span class="fa fa-times fa-lg"></span>
                         </button>
                     </td>
@@ -70,7 +71,7 @@
     </div>
     <div class="col-12 d-flex justify-content-end">
         <a class='btn btn-primary {% if not products %}disabled{% endif %}' href="{% url 'core:cart_go_next' %}">
-            Перейти к оформлению заказа
+             {% translate 'Cart go to info' %}
         </a>
     </div>
     {% endif %}

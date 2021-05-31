@@ -1,7 +1,7 @@
 {% extends "common/template.html" %}
 {% load i18n %}
 
-{% block title %} Корзина | Оформление заказа | {{ request.app_name }} {% endblock %}
+{% block title %} {% translate 'Cart title' %} | {% translate 'Cart order info' %} | {{ request.app_name }} {% endblock %}
 
 {% block meta_description  %}{% endblock %}
 
@@ -11,7 +11,7 @@
 
 <div class="row bg-light rounded p-2">
      <div class="col-12">
-        <h1>Информация о заказе</h1>
+        <h1>{% translate 'Cart order info' %}</h1>
     </div>
     <div class="col-12">
         <hr/>
@@ -22,6 +22,11 @@
                 <form id="cartOrderForm" method="post" action="{% url 'core:cart_submit_order' %}">
                     {% csrf_token %}
                     <div class="row justify-content-center">
+                        <div class="col-12 mb-2">
+                            <label for="cartOrderName" class="form-label">{% translate 'YourName' %}:</label>
+                            <input type="text" class="form-control" id="cartOrderName" name="mobile">
+                            <div class="invalid-feedback"></div>
+                        </div>
                         <div class="col-12 mb-2">
                             <label for="cartOrderMobile" class="form-label">{% translate 'Mobile' %}:</label>
                             <input type="text" class="form-control" id="cartOrderMobile" name="mobile" placeholder="+375(29)123-45-67">
@@ -42,7 +47,6 @@
                             <textarea class="form-control" id="cartOrderComment" name="comment" rows="3"></textarea>
                             <div class="invalid-feedback"></div>
                         </div>
-                        <input type="hidden" name="productId">
                     </div>
                 </form>
             </div>
@@ -50,10 +54,10 @@
     </div>
     <div class="col-12 d-flex justify-content-end">
         <a class='btn btn-primary me-2' href="{% url 'core:cart_go_back' %}">
-            Редактировать заказ
+            {% translate 'Edit order' %}
         </a>
         <button class='btn btn-primary' onclick="submitCartOrder();">
-            Оформить заказ
+            {% translate 'Submit order' %}
         </button>
     </div>
 </div>

@@ -78,9 +78,21 @@ msgstr "Следующая страница"
 msgid "Last page"
 msgstr "Последняя страница"
 
-# Quick order
+# Quick order and cart
+msgid "Cart title"
+msgstr "Корзина"
+
+msgid "Cart order info"
+msgstr "Оформление заказа"
+
+msgid "Cart details"
+msgstr "Детали заказа"
+
 msgid "Quick order title"
 msgstr "Заказать изделие"
+
+msgid "YourName"
+msgstr "Ваше имя"
 
 msgid "Mobile"
 msgstr "Телефон"
@@ -97,8 +109,29 @@ msgstr "Комментарий"
 msgid "Cancel"
 msgstr "Отмена"
 
-msgid "Confirm"
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Cart product title"
+msgstr "Название"
+
+msgid "Cart product price"
+msgstr "Цена"
+
+msgid "Cart empty"
+msgstr "Корзина пуста"
+
+msgid "Edit order"
+msgstr "Редактировать заказ"
+
+msgid "Submit order"
 msgstr "Подтвердить заказ"
+
+msgid "Cart go to catalog"
+msgstr "Перейти в каталог"
+
+msgid "Cart go to info"
+msgstr "Перейти к оформлению"
 
 msgid "Quick order thanks"
 msgstr "Спасибо за заказ!"

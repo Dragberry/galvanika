@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Optional, Set
 
+from django.db import transaction
 from django.db.models import Case, When, Q
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseNotFound
 from django.shortcuts import get_object_or_404
@@ -11,7 +12,7 @@ from django.urls import reverse
 from django.utils.translation import gettext
 from django.views.generic import ListView, DetailView
 
-from .models import Product, ProductOrder, Category, BlogPost, QuickReferenceCard
+from .models import Order, OrderItem, Product, Category, BlogPost, QuickReferenceCard
 
 
 class DisplayEnum(Enum):
@@ -228,14 +229,14 @@ def catalog_quick_order(request):
         if status == 200:
             try:
                 product: Product = Product.objects.get(id=int(product_id))
-                product_order: ProductOrder = ProductOrder(
-                    product=product,
+                order: Order = Order(
+                    total_amount=product.actual_price if product.actual_price else product.price,
                     mobile=mobile,
                     email=email,
                     address=address,
-                    comment=comment
+                    comment=comment,
                 )
-                product_order.save()
+                save_order(order, [OrderItem(product=product)])
             except Product.DoesNotExist:
                 status = 404
                 fields['productId'] = gettext('Quick order error: no product')
@@ -245,6 +246,14 @@ def catalog_quick_order(request):
 
         return JsonResponse(data={'fields': fields}, status=status)
     return HttpResponseBadRequest()
+
+
+@transaction.atomic
+def save_order(order: Order, items: [OrderItem]):
+    order.save()
+    for item in items:
+        item.save()
+    order.items.set(items)
 
 
 def information(request):
@@ -366,4 +375,40 @@ class Cart:
 
     @staticmethod
     def submit_order(request):
-        pass
+        context: dict = {}
+        errors: dict = {}
+        mobile: str = request.POST.get('mobile')
+        email: str = request.POST.get('email')
+        if not mobile and not email:
+            errors['mobile'] = gettext('Cart error: either mobile or email must be provided')
+            errors['email'] = gettext('Cart error: either mobile or email must be provided')
+        address: str = request.POST.get('address')
+        if not address:
+            errors['address'] = gettext('Cart error: no address')
+        comment: str = request.POST.get('comment')
+        if not errors:
+            try:
+                products_in_cart: [int] = request.session.setdefault('cart', [])
+                if not products_in_cart:
+                    errors['common'] = 'Cart error: no product in the cart'
+                products: [Product] = [Product.objects.get(id=pid) for pid in products_in_cart]
+                order: Order = Order(
+                    total_amount=sum([
+                        product.actual_price if product.actual_price else product.price for product in products
+                    ]),
+                    mobile=mobile,
+                    email=email,
+                    address=address,
+                    comment=comment,
+                )
+                save_order(order, [OrderItem(product=p) for p in products])
+                request.session['cart'] = []
+                request.session['cart_product_count'] = 0
+                request.session['cart_stage'] = CartStage.SUCCESS.value
+                template = loader.get_template('common/cart/cart-order-success.html')
+                return HttpResponse(template.render(context, request))
+            except Exception:
+                errors['common'] = 'Error: Internal server error'
+        request.session['cart_stage'] = CartStage.ORDER.value
+        template = loader.get_template('common/cart/cart-order-details.html')
+        return HttpResponse(template.render(context, request))
