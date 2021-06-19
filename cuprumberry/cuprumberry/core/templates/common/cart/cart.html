@@ -1,0 +1,30 @@
+{% extends "common/template.html" %}
+{% load i18n %}
+
+{% block title %} {% translate 'Cart title' %} | {{ request.app_name }} {% endblock %}
+
+{% block meta_description  %}{% endblock %}
+
+{% block meta_keywords %}{% endblock %}
+
+{% block content %}
+
+<div class="row bg-light rounded p-2">
+     <div class="col-12">
+        <h1> {% translate 'Cart title' %}</h1>
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12">
+        {% if request.session.cart_stage == 'ORDER' %}
+            {% include "common/cart/cart-order-details.html" %}
+        {% elif request.session.cart_stage == 'SUCCESS' %}
+            {% include "common/cart/cart-order-success.html" %}
+        {% else %}
+            {% include "common/cart/cart-edit-items.html" %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

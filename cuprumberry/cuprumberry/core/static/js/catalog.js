@@ -103,7 +103,7 @@ function removeItemFromCart(productId) {
         data: `productId=${productId}`,
         success: function(data)  {
             processCartChange(data);
-            $('#cartProductList').fadeOut('normal', function() {
+            $('#cartContent').fadeOut('normal', function() {
                 $(this).replaceWith(data['cartProductList']);
             });
         }
@@ -163,6 +163,7 @@ function submitCartOrder() {
         url: url,
         data: form.serialize(),
         success: function(data)  {
+
         },
         error: function(event) {
             var data = event.responseJSON;

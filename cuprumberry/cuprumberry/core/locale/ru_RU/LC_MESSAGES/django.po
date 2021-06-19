@@ -85,6 +85,12 @@ msgstr "Корзина"
 msgid "Cart order info"
 msgstr "Оформление заказа"
 
+msgid "Cart order success"
+msgstr "Заказ принят"
+
+msgid "Cart order success text"
+msgstr "Спасибо за заказ! В ближайшее время мы с Вами свяжемся для подтверждения."
+
 msgid "Cart details"
 msgstr "Детали заказа"
 
@@ -152,6 +158,9 @@ msgid "Quick order error: no product"
 msgstr "Ой, кажется прооизошла ошибка. У нас нет такого продукта."
 
 # Cart
+msgid "Cart error: no product in the cart"
+msgstr "Корзина пуста"
+
 msgid "Cart: Product has been added to cart"
 msgstr "Товар добавлен в корзину"
 

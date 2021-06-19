@@ -269,28 +269,35 @@ class CartStage(Enum):
 
 class Cart:
     @staticmethod
-    def index(request):
+    def _get_context(request) -> dict:
         try:
             cart_stage: CartStage = CartStage[request.session['cart_stage']]
         except KeyError:
             cart_stage: CartStage = CartStage.CART
             request.session['cart_stage'] = cart_stage.value
-
+        context: dict = {}
         if cart_stage == CartStage.ORDER:
-            template_name: str = 'common/cart/cart-order-details.html'
+            context['order_details_name'] = request.session.get('order_details_name')
+            context['order_details_mobile'] = request.session.get('order_details_mobile')
+            context['order_details_email'] = request.session.get('order_details_email')
+            context['order_details_address'] = request.session.get('order_details_address')
+            context['order_details_comment'] = request.session.get('order_details_comment')
         elif cart_stage == CartStage.SUCCESS:
-            template_name: str = 'common/cart/cart-order-success.html'
+            pass
         else:
-            template_name: str = 'common/cart/cart-edit-items.html'
+            products_in_cart: [str] = request.session.setdefault('cart', [])
+            products: [Product] = [Product.objects.get(id=product_id) for product_id in products_in_cart]
+            context['products'] = products
+            context['total_order_amount'] = sum([p.price if p.price else p.actual_price for p in products])
+        return context
 
-        products_in_cart: [str] = request.session.setdefault('cart', [])
-        products: [Product] = [Product.objects.get(id=product_id) for product_id in products_in_cart]
-        template = loader.get_template(template_name)
-        context = {
-            'products': products,
-            'total_order_amount': sum([p.price if p.price else p.actual_price for p in products])
-        }
-        return HttpResponse(template.render(context, request))
+    @staticmethod
+    def index(request):
+        return HttpResponse(
+            loader.get_template('common/cart/cart.html').render(
+                Cart._get_context(request), request
+            )
+        )
 
     @staticmethod
     def add_item(request):
@@ -334,16 +341,12 @@ class Cart:
                 if product_id not in products_in_cart:
                     return HttpResponseNotFound()
                 products_in_cart.remove(product_id)
-                products: [Product] = [Product.objects.get(id=product_id) for product_id in products_in_cart]
                 request.session['cart'] = products_in_cart
                 request.session['cart_product_count'] = len(products_in_cart)
                 data: dict = {
                     'cartProductList': render_to_string(
-                        template_name='common/cart/cart-product-list.html',
-                        context={
-                            'products': products,
-                            'total_order_amount': sum([p.price if p.price else p.actual_price for p in products])
-                        }
+                        template_name='common/cart/cart-edit-items.html',
+                        context=Cart._get_context(request)
                     ),
                     'cartProductCount': len(products_in_cart)
                 }
@@ -355,42 +358,38 @@ class Cart:
     @staticmethod
     def next(request):
         request.session['cart_stage'] = CartStage.ORDER.value
-        template = loader.get_template('common/cart/cart-order-details.html')
-        context = {
-
-        }
-        return HttpResponse(template.render(context, request))
+        template = loader.get_template('common/cart/cart.html')
+        return HttpResponse(template.render(Cart._get_context(request), request))
 
     @staticmethod
     def back(request):
         request.session['cart_stage'] = CartStage.CART.value
-        products_in_cart: [str] = request.session.setdefault('cart', [])
-        products: [Product] = [Product.objects.get(id=product_id) for product_id in products_in_cart]
-        template = loader.get_template('common/cart/cart-edit-items.html')
-        context = {
-            'products': products,
-            'total_order_amount': sum([p.price if p.price else p.actual_price for p in products])
-        }
-        return HttpResponse(template.render(context, request))
+        template = loader.get_template('common/cart/cart.html')
+        return HttpResponse(template.render(Cart._get_context(request), request))
 
     @staticmethod
     def submit_order(request):
-        context: dict = {}
         errors: dict = {}
+        name: str = request.POST.get('name')
+        request.session['order_details_name'] = name
         mobile: str = request.POST.get('mobile')
+        request.session['order_details_mobile'] = mobile
         email: str = request.POST.get('email')
+        request.session['order_details_email'] = email
         if not mobile and not email:
             errors['mobile'] = gettext('Cart error: either mobile or email must be provided')
             errors['email'] = gettext('Cart error: either mobile or email must be provided')
         address: str = request.POST.get('address')
+        request.session['order_details_address'] = address
         if not address:
             errors['address'] = gettext('Cart error: no address')
         comment: str = request.POST.get('comment')
+        request.session['order_details_comment'] = comment
         if not errors:
             try:
                 products_in_cart: [int] = request.session.setdefault('cart', [])
                 if not products_in_cart:
-                    errors['common'] = 'Cart error: no product in the cart'
+                    errors['common'] = gettext('Cart error: no product in the cart')
                 products: [Product] = [Product.objects.get(id=pid) for pid in products_in_cart]
                 order: Order = Order(
                     total_amount=sum([
@@ -405,10 +404,16 @@ class Cart:
                 request.session['cart'] = []
                 request.session['cart_product_count'] = 0
                 request.session['cart_stage'] = CartStage.SUCCESS.value
-                template = loader.get_template('common/cart/cart-order-success.html')
-                return HttpResponse(template.render(context, request))
+                data: dict = {
+                    'data': render_to_string(template_name='common/cart/cart-order-success.html'),
+                    'cartProductCount': 0
+                }
+                return JsonResponse(data=data, status=200)
             except Exception:
-                errors['common'] = 'Error: Internal server error'
+                errors['common'] = gettext('Error: Internal server error')
+
         request.session['cart_stage'] = CartStage.ORDER.value
-        template = loader.get_template('common/cart/cart-order-details.html')
+        template = loader.get_template('common/cart/cart.html')
+        context: dict = Cart._get_context(request)
+        context['errors'] = errors
         return HttpResponse(template.render(context, request))

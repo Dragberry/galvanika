@@ -1,24 +1,78 @@
-{% extends "common/template.html" %}
 {% load i18n %}
+<div id="cartContent" class="row">
+    <div id="cartIsEmpty" class="col-12 text-center {% if not products %}{% else %}d-none{% endif %}">
+        <p class="mt-4 fw-bold">{% translate 'Cart empty' %}</p>
+        <p class="mt-4">
+            <a class="btn btn-success" href="{% url 'core:catalog' %}">{% translate 'Cart go to catalog' %}</a>
+        </p>
+    </div>
 
-{% block title %} {% translate 'Cart title' %} | {% translate 'Cart details' %} | {{ request.app_name }} {% endblock %}
-
-{% block meta_description  %}{% endblock %}
-
-{% block meta_keywords %}{% endblock %}
-
-{% block content %}
-
-<div class="row bg-light rounded p-2">
-     <div class="col-12">
-        <h1> {% translate 'Cart details' %}</h1>
+    {% if products %}
+    <div class="col-12">
+        <form id="cartItemsForm" action="{% url 'core:cart_remove_item' %}" method="GET">
+            <table id="cartItems" class="table">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{% translate 'Cart product title' %}</th>
+                    <th scope="col">{% translate 'Cart product price' %}</th>
+                    <th scope="col" class="text-center">{% translate 'Delete' %}</th>
+                </tr>
+                {% for product in products %}
+                <tr data-product-id="{{ product.id }}">
+                    <th scope="row" data-index="{{ forloop.counter }}">{{ forloop.counter }}</th>
+                    <td class="align-middle">
+                        <a href="{{ product.url }}">
+                            <img class="cart-image img-fluid img-thumbnail float-start"
+                                 title="{{ product.name }}"
+                                 alt="{{ product.name }}"
+                                 src="{{ product.main_image.thumbnail.url }}">
+                        </a>
+                        <a href="{{ product.url }}">
+                            <span class="d-block">{{ product.name }}</span>
+                        </a>
+                        <span class="fw-bold small mr-4">{% translate 'Cart: Product code' %}: {{ product.id }}</span>
+                    </td>
+                    <td class="align-middle text-nowrap">
+                        {% if product.actual_price %}
+                        <div>
+                            <strong>{{ product.actual_price }} BYN</strong>
+                        </div>
+                        <div>
+                            <del class="small">{{ product.price }} BYN</del>
+                        </div>
+                        {% else %}
+                        <div>
+                            <strong>{{ product.price }} BYN</strong>
+                        </div>
+                        {% endif %}
+                    </td>
+                    <td class="text-center align-middle">
+                        <button onclick="removeItemFromCart({{ product.id }})"
+                                type="button"
+                                class="btn btn-danger"
+                                title="{% translate 'Delete' %}">
+                            <span class="fa fa-times fa-lg"></span>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
     </div>
     <div class="col-12">
-        <hr/>
+        <hr>
     </div>
-    <div class="col-12">
-        {% include "common/cart/cart-product-list.html" %}
+    <div class="col-12 text-end mb-2">
+        <span class="h5">
+            <strong>
+                Всего: <span id="cart-product-total-amount">{{ total_order_amount }}</span> BYN
+            </strong>
+        </span>
     </div>
+    <div class="col-12 d-flex justify-content-end">
+        <a class='btn btn-primary {% if not products %}disabled{% endif %}' href="{% url 'core:cart_go_next' %}">
+             {% translate 'Cart go to info' %}
+        </a>
+    </div>
+    {% endif %}
 </div>
-
-{% endblock %}
