@@ -10,49 +10,61 @@
 
 {% block content %}
 
-<div id="cartContent" class="row justify-content-center">
-    <div class="col-md-6 col-sm-12">
+<div id="cartContent" class="row">
+    <div class="col-12">
         <form id="cartOrderForm" method="post" action="{% url 'core:cart_submit_order' %}">
             {% csrf_token %}
             <div class="row justify-content-center">
-                <div class="col-12 mb-2">
-                    <label for="cartOrderName" class="form-label">{% translate 'YourName' %}:</label>
-                    <input type="text" class="form-control {% if errors|has:'name' %}is-invalid{% else %}is-valid{% endif %}" id="cartOrderName" name="name" value="{{ order_details_name }}">
-                    <div class="invalid-feedback">{{ errors|hash:'name' }}</div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="row justify-content-center">
+                        <div class="col-12 mb-2">
+                            <label for="cartOrderName" class="form-label">{% translate 'YourName' %}:</label>
+                            <input type="text"
+                                   class="form-control {% if errors|has:'name' %}is-invalid{% else %}is-valid{% endif %}"
+                                   id="cartOrderName" name="name" value="{{ order_details_name }}">
+                            <div class="invalid-feedback">{{ errors|hash:'name' }}</div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="cartOrderMobile" class="form-label">{% translate 'Mobile' %}:</label>
+                            <input type="text"
+                                   class="form-control {% if errors|has:'mobile'  %}is-invalid{% else %}is-valid{% endif %}"
+                                   id="cartOrderMobile" name="mobile" value="{{ order_details_mobile }}"
+                                   placeholder="+375(29)123-45-67">
+                            <div class="invalid-feedback">{{ errors|hash:'mobile' }}</div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="cartOrderEmail" class="form-label">{% translate 'Email' %}:</label>
+                            <input type="email"
+                                   class="form-control {% if errors|has:'email' %}is-invalid{% else %}is-valid{% endif %}"
+                                   id="cartOrderEmail" name="email" value="{{ order_details_email }}"
+                                   placeholder="name@example.com">
+                            <div class="invalid-feedback">{{ errors|hash:'email' }}</div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="cartOrderAddress" class="form-label">{% translate 'Address' %}:</label>
+                            <textarea class="form-control {% if errors|has:'address' %}is-invalid{% else %}is-valid{% endif %}"
+                                      id="cartOrderAddress" name="address" rows="3">{{ order_details_address }}</textarea>
+                            <div class="invalid-feedback">{{ errors|hash:'address' }}</div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="cartOrderComment" class="form-label">{% translate 'Comment' %}:</label>
+                            <textarea class="form-control {% if errors|has:'comment' %}is-invalid{% else %}is-valid{% endif %}"
+                                      id="cartOrderComment" name="comment" rows="3">{{ order_details_comment }}</textarea>
+                            <div class="invalid-feedback">{{ errors|hash:'comment' }}</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-12 mb-2">
-                    <label for="cartOrderMobile" class="form-label">{% translate 'Mobile' %}:</label>
-                    <input type="text" class="form-control {% if errors|has:'mobile'  %}is-invalid{% else %}is-valid{% endif %}" id="cartOrderMobile" name="mobile" value="{{ order_details_mobile }}" placeholder="+375(29)123-45-67">
-                    <div class="invalid-feedback">{{ errors|hash:'mobile' }}</div>
+                <div class="col-12">
+                    <hr>
                 </div>
-                <div class="col-12 mb-2">
-                    <label for="cartOrderEmail" class="form-label">{% translate 'Email' %}:</label>
-                    <input type="email" class="form-control {% if errors|has:'email' %}is-invalid{% else %}is-valid{% endif %}" id="cartOrderEmail" name="email" value="{{ order_details_email }}"placeholder="name@example.com">
-                    <div class="invalid-feedback">{{ errors|hash:'email' }}</div>
-                </div>
-                <div class="col-12 mb-2">
-                    <label for="cartOrderAddress" class="form-label">{% translate 'Address' %}:</label>
-                    <textarea class="form-control {% if errors|has:'address' %}is-invalid{% else %}is-valid{% endif %}" id="cartOrderAddress" name="address" rows="3">{{ order_details_address }}</textarea>
-                    <div class="invalid-feedback">{{ errors|hash:'address' }}</div>
-                </div>
-                <div class="col-12 mb-2">
-                    <label for="cartOrderComment" class="form-label">{% translate 'Comment' %}:</label>
-                    <textarea class="form-control {% if errors|has:'comment' %}is-invalid{% else %}is-valid{% endif %}" id="cartOrderComment" name="comment" rows="3">{{ order_details_comment }}</textarea>
-                    <div class="invalid-feedback">{{ errors|hash:'comment' }}</div>
+                <div class="col-12 d-flex justify-content-end">
+                    <a class='btn btn-primary me-2' href="{% url 'core:cart_go_back' %}">
+                        {% translate 'Edit order' %}
+                    </a>
+                    <input type="submit" class="btn btn-primary" value="{% translate 'Submit order' %}"/>
                 </div>
             </div>
         </form>
-    </div>
-     <div class="col-12">
-        <hr>
-    </div>
-    <div class="col-12 d-flex justify-content-end">
-        <a class='btn btn-primary me-2' href="{% url 'core:cart_go_back' %}">
-            {% translate 'Edit order' %}
-        </a>
-        <a class='btn btn-primary' href="{% url 'core:cart_submit_order' %}">
-            {% translate 'Submit order' %}
-        </a>
     </div>
 </div>
 

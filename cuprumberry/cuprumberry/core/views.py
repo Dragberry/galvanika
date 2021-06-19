@@ -277,11 +277,11 @@ class Cart:
             request.session['cart_stage'] = cart_stage.value
         context: dict = {}
         if cart_stage == CartStage.ORDER:
-            context['order_details_name'] = request.session.get('order_details_name', '')
-            context['order_details_mobile'] = request.session.get('order_details_mobile', '')
-            context['order_details_email'] = request.session.get('order_details_email', '')
-            context['order_details_address'] = request.session.get('order_details_address', '')
-            context['order_details_comment'] = request.session.get('order_details_comment', '')
+            context['order_details_name'] = request.session.get('order_details_name') or ''
+            context['order_details_mobile'] = request.session.get('order_details_mobile') or ''
+            context['order_details_email'] = request.session.get('order_details_email') or ''
+            context['order_details_address'] = request.session.get('order_details_address') or ''
+            context['order_details_comment'] = request.session.get('order_details_comment') or ''
         elif cart_stage == CartStage.SUCCESS:
             pass
         else:
@@ -293,6 +293,8 @@ class Cart:
 
     @staticmethod
     def index(request):
+        if request.session.get('cart_stage') == CartStage.SUCCESS.value:
+            request.session['cart_stage'] = CartStage.CART.value
         return HttpResponse(
             loader.get_template('common/cart/cart.html').render(
                 Cart._get_context(request), request
@@ -385,6 +387,7 @@ class Cart:
             errors['address'] = gettext('Cart error: no address')
         comment: str = request.POST.get('comment')
         request.session['order_details_comment'] = comment
+        template = loader.get_template('common/cart/cart.html')
         if not errors:
             try:
                 products_in_cart: [int] = request.session.setdefault('cart', [])
@@ -404,14 +407,9 @@ class Cart:
                 request.session['cart'] = []
                 request.session['cart_product_count'] = 0
                 request.session['cart_stage'] = CartStage.SUCCESS.value
-                data: dict = {
-                    'data': render_to_string(template_name='common/cart/cart-order-success.html'),
-                    'cartProductCount': 0
-                }
-                return JsonResponse(data=data, status=200)
+                return HttpResponse(template.render(Cart._get_context(request), request))
             except Exception:
                 errors['common'] = gettext('Error: Internal server error')
-
         request.session['cart_stage'] = CartStage.ORDER.value
         template = loader.get_template('common/cart/cart.html')
         context: dict = Cart._get_context(request)

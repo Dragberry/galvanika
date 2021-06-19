@@ -1155,6 +1155,253 @@
     }
   },
   {
+    "model": "core.image",
+    "pk": 88,
+    "fields": {
+      "title": "Кулон из цветочного листика со вставками",
+      "folder": "1028",
+      "original": "images/1028/kulon-iz-tsvetochnogo-listika-so-vstavkami-96202F03-original.jpg",
+      "preview": "images/1028/kulon-iz-tsvetochnogo-listika-so-vstavkami-96202F03-preview.jpg",
+      "thumbnail": "images/1028/kulon-iz-tsvetochnogo-listika-so-vstavkami-96202F03-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:33:32Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 89,
+    "fields": {
+      "title": "Кулон из цветочного листика со вставками",
+      "folder": "1028",
+      "original": "images/1028/kulon-iz-tsvetochnogo-listika-so-vstavkami-97E3554D-original.jpg",
+      "preview": "images/1028/kulon-iz-tsvetochnogo-listika-so-vstavkami-97E3554D-preview.jpg",
+      "thumbnail": "images/1028/kulon-iz-tsvetochnogo-listika-so-vstavkami-97E3554D-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:34:17Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 90,
+    "fields": {
+      "title": "Кулон из цветочного листика со вставками",
+      "folder": "1028",
+      "original": "images/1028/kulon-iz-tsvetochnogo-listika-so-vstavkami-66C194BA-original.jpg",
+      "preview": "images/1028/kulon-iz-tsvetochnogo-listika-so-vstavkami-66C194BA-preview.jpg",
+      "thumbnail": "images/1028/kulon-iz-tsvetochnogo-listika-so-vstavkami-66C194BA-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:34:32Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 91,
+    "fields": {
+      "title": "Медный кулон из листика клёна золотистого цвета",
+      "folder": "1029",
+      "original": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-535690B1-original.jpg",
+      "preview": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-535690B1-preview.jpg",
+      "thumbnail": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-535690B1-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:35:37Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 92,
+    "fields": {
+      "title": "Медный кулон из листика клёна золотистого цвета",
+      "folder": "1029",
+      "original": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-2E05AA50-original.jpg",
+      "preview": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-2E05AA50-preview.jpg",
+      "thumbnail": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-2E05AA50-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:35:53Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 93,
+    "fields": {
+      "title": "Медный кулон из листика клёна золотистого цвета",
+      "folder": "1029",
+      "original": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-BED8A2D2-original.jpg",
+      "preview": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-BED8A2D2-preview.jpg",
+      "thumbnail": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-BED8A2D2-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:36:05Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 94,
+    "fields": {
+      "title": "Медный кулон из листика клёна золотистого цвета",
+      "folder": "1029",
+      "original": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-BFFE1C88-original.jpg",
+      "preview": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-BFFE1C88-preview.jpg",
+      "thumbnail": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-BFFE1C88-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:36:17Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 95,
+    "fields": {
+      "title": "Медный кулон из листика клёна золотистого цвета",
+      "folder": "1029",
+      "original": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-68055A97-original.jpg",
+      "preview": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-68055A97-preview.jpg",
+      "thumbnail": "images/1029/mednyj-kulon-iz-listika-klena-zolotistogo-tsveta-68055A97-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:36:30Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 96,
+    "fields": {
+      "title": "Купить медный кулон из грецкого ореха в Минске",
+      "folder": "1030",
+      "original": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-BB49E3C5-original.jpg",
+      "preview": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-BB49E3C5-preview.jpg",
+      "thumbnail": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-BB49E3C5-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:39:35Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 97,
+    "fields": {
+      "title": "Купить медный кулон из грецкого ореха в Минске",
+      "folder": "1030",
+      "original": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-19F5C36F-original.jpg",
+      "preview": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-19F5C36F-preview.jpg",
+      "thumbnail": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-19F5C36F-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:39:55Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 98,
+    "fields": {
+      "title": "Купить медный кулон из грецкого ореха в Минске",
+      "folder": "1030",
+      "original": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-EBA78416-original.jpg",
+      "preview": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-EBA78416-preview.jpg",
+      "thumbnail": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-EBA78416-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:40:12Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 99,
+    "fields": {
+      "title": "Купить медный кулон из грецкого ореха в Минске",
+      "folder": "1030",
+      "original": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-41C39176-original.jpg",
+      "preview": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-41C39176-preview.jpg",
+      "thumbnail": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-41C39176-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:40:28Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 100,
+    "fields": {
+      "title": "Купить медный кулон из грецкого ореха в Минске",
+      "folder": "1030",
+      "original": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-6D7BFD85-original.jpg",
+      "preview": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-6D7BFD85-preview.jpg",
+      "thumbnail": "images/1030/kupit-mednyj-kulon-iz-gretskogo-oreha-v-minske-6D7BFD85-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:40:41Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 101,
+    "fields": {
+      "title": "Кулон из меди в форме листа боярышника",
+      "folder": "1031",
+      "original": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-D8C2D726-original.jpg",
+      "preview": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-D8C2D726-preview.jpg",
+      "thumbnail": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-D8C2D726-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:41:48Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 102,
+    "fields": {
+      "title": "Кулон из меди в форме листа боярышника",
+      "folder": "1031",
+      "original": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-4A7F89D8-original.jpg",
+      "preview": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-4A7F89D8-preview.jpg",
+      "thumbnail": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-4A7F89D8-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:42:03Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 103,
+    "fields": {
+      "title": "Кулон из меди в форме листа боярышника",
+      "folder": "1031",
+      "original": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-9DE80D1D-original.jpg",
+      "preview": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-9DE80D1D-preview.jpg",
+      "thumbnail": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-9DE80D1D-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:42:18Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 104,
+    "fields": {
+      "title": "Кулон из меди в форме листа боярышника",
+      "folder": "1031",
+      "original": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-3657B608-original.jpg",
+      "preview": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-3657B608-preview.jpg",
+      "thumbnail": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-3657B608-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:42:32Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 105,
+    "fields": {
+      "title": "Кулон из меди в форме листа боярышника",
+      "folder": "1031",
+      "original": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-DF7D0F6B-original.jpg",
+      "preview": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-DF7D0F6B-preview.jpg",
+      "thumbnail": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-DF7D0F6B-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:42:44Z",
+      "created_by_id": -1
+    }
+  },
+  {
+    "model": "core.image",
+    "pk": 106,
+    "fields": {
+      "title": "Кулон из меди в форме листа боярышника",
+      "folder": "1031",
+      "original": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-F36BB706-original.jpg",
+      "preview": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-F36BB706-preview.jpg",
+      "thumbnail": "images/1031/kulon-iz-medi-v-forme-lista-bojaryshnika-F36BB706-thumbnail.jpg",
+      "created_datetime": "2021-06-19T21:42:57Z",
+      "created_by_id": -1
+    }
+  },
+  {
     "model": "core.category",
     "pk": "all",
     "fields": {
@@ -1258,6 +1505,23 @@
   },
   {
     "model": "core.category",
+    "pk": "izdeliya-iz-boyaryshnika",
+    "fields": {
+      "url": null,
+      "page_title": null,
+      "page_description": null,
+      "page_keywords": null,
+      "page_h1": null,
+      "no_index": true,
+      "deleted": false,
+      "name": "Боярышник",
+      "parent": "osnova",
+      "description": null,
+      "image": null
+    }
+  },
+  {
+    "model": "core.category",
     "pk": "izdeliya-iz-duba",
     "fields": {
       "url": null,
@@ -1336,6 +1600,23 @@
       "no_index": true,
       "deleted": false,
       "name": "Гортензия",
+      "parent": "osnova",
+      "description": null,
+      "image": null
+    }
+  },
+  {
+    "model": "core.category",
+    "pk": "izdeliya-iz-greckogo-oreha",
+    "fields": {
+      "url": null,
+      "page_title": null,
+      "page_description": null,
+      "page_keywords": null,
+      "page_h1": null,
+      "no_index": true,
+      "deleted": false,
+      "name": "Грецкий орех",
       "parent": "osnova",
       "description": null,
       "image": null
@@ -1746,7 +2027,7 @@
       "name": "Кулон из осины",
       "short_description": "Осиновый лист, покрытый слоем меди и выполненный в виде кулона.",
       "long_description": "Украшение сделано из настоящего листа осины, покрытого медью. Я очень люблю эти листья, они такие нарядные и можно часами рассматривать сеть их мелких прожилок.",
-      "price": "40.00",
+      "price": "35.00",
       "actual_price": null,
       "sold": false,
       "main_image": 1,
@@ -1779,7 +2060,7 @@
       "name": "Брошь из листа дуба",
       "short_description": "Брошь из меди, выолненная методом гальванопластики в форме добвого листа.",
       "long_description": "Держа эту брошь в руках, я чувствую умиротворение и спокойствие. Возможно, потому, что само дерево дуба такое сильное и могучее, и его энергия ощущается даже в маленьком листике.",
-      "price": "38.40",
+      "price": "40.00",
       "actual_price": null,
       "sold": false,
       "main_image": 3,
@@ -1812,8 +2093,8 @@
       "name": "Кулон из физалиса",
       "short_description": "Часть оболочки физалиса в виде медного кулона.",
       "long_description": "Физалисы похожи на маленькие солнышки. У меня их целая коробочка сушеных, что мне особенно нравится, так то, что они сохраняют свой яркий цвет. Открываешь такую коробочку зимой и настроение поднимается от этих оранжевых сказочных фонариков.",
-      "price": "65.00",
-      "actual_price": "49.00",
+      "price": "40.00",
+      "actual_price": null,
       "sold": false,
       "main_image": 5,
       "created_datetime": "2021-03-12T18:00:00Z",
@@ -1845,7 +2126,7 @@
       "name": "Серьги из осины",
       "short_description": "Особенностью этих медных серёжек является тот факт, что над их дизайном поработала сама природаю",
       "long_description": "Эти осиновые листья летом я привезла с Ольманских болот, что находятся на границе Беларуси и Украины. Их там было на любой вкус, как и местных комаров. Пока меня съедали заживо, я выбирала эти листья, представляя, какие они получатся, если я выживу, конечно:) Поэтому если соберетесь поехать, обязательно берите репеллент. Мы, к сожалению, не подготовились, и я очень рада, что нам повстречались местные жители, которые щедро поделились этой спасительной жидкостью. Они говорят, что их комары почти не кусают, хотя на нас уже не было свободных мест. Наверное, комарам тоже интересно пробовать что-то новое, либо мы очень вкусные просто.А на последнем фото как раз я. Иду по экотропе.",
-      "price": "45.00",
+      "price": "30.00",
       "actual_price": null,
       "sold": false,
       "main_image": 7,
@@ -1879,7 +2160,7 @@
       "name": "Кулон из ольхи",
       "short_description": "Кулон из листика осины с с украшением в виде росинки.",
       "long_description": "Вы видели, каким волшебным становится лес после дождя? Сейчас, работая с природными материалами, я обращаю внимание на такие вещи гораздо больше и мне жаль, что я не замечала этого великолепия раньше. В сверкающих каплях растения выглядят ещё более красочно и живо. Примерно таким я и встретила этот листик, да так и решила меднить - с капелькой дождя.А вот то, что это лист ольхи, я узнала только сегодня:)",
-      "price": "54.00",
+      "price": "30.00",
       "actual_price": null,
       "sold": false,
       "main_image": 10,
@@ -1912,7 +2193,7 @@
       "name": "Кулон из подорожника",
       "short_description": "Медный кулон в форме листьев водорожника.",
       "long_description": "Подорожник должен быть в аптечке у каждого человека, заботящегося о своем здоровье. Если у вас ещё нет, советую обзавестись как можно быстрее. Это лучшее средство при всех видах порезов и ссадин. В крайнем случае можно и при переломе приложить. Но к врачу лучше обратиться, конечно, вдруг приложили неправильно, пусть проверит.Срок годности не ограничен.",
-      "price": "49.00",
+      "price": "35.00",
       "actual_price": null,
       "sold": false,
       "main_image": 12,
@@ -1945,7 +2226,7 @@
       "name": "Брошь из остролистного дуба",
       "short_description": "Лист остролистного дуба, покрытый медью и выполненный в форме кулона.",
       "long_description": "Как ни странно, но это тоже дуб, только остролистный. Он растет недалеко от моего дома. В первый раз я обратила на него внимание, когда заметила жёлуди на земле. Я тогда ещё подумала, откуда они взялись тут, а потом присмотрелась: так их много, оказывается, а деревьев подходящих не видно. Всезнающий Google выручил и рассказал мне, что количество видов дуба исчисляется сотнями. Теперь на вопрос \"какие из деревьев я могу без труда отличить?\", дуб, наверное, мне отвечать не стоит",
-      "price": "48.00",
+      "price": "40.00",
       "actual_price": null,
       "sold": false,
       "main_image": 14,
@@ -1978,7 +2259,7 @@
       "name": "Кулон из крылаток ясеневидного клёна",
       "short_description": "Оригинальный кулончик и пары крылаток ясеневидного клёна, гальванизированных медью.",
       "long_description": "С детства я люблю природу и считала, что чем больше всякой зелени вокруг, тем лучше, особенно деревьев: они же вырабатывают так много полезного нам кислорода! На самом деле не всегда так. Вот, например, клён ясенелистный, из крылатки которого сделано это украшение, у нас в Беларуси даже запрещен к переселению и акклиматизации, потому что он слишком быстро распространяется и вытесняет другие растения. Такое дерево-сорняк. Но что ещё хуже, клён этот окисляет вещества, содержащиеся в выхлопах автомобилей, до более ядовитых. А у нас как раз на стоянке машин растёт. Припаркуешься, выйдешь и, ничего не подозревая, сразу наполнишь лёгкие ядовитым газом. Эх... Зато крылатки красивые, в следующий раз за ними в маске пойду что-ли...",
-      "price": "48.00",
+      "price": "30.00",
       "actual_price": null,
       "sold": false,
       "main_image": 16,
@@ -2013,7 +2294,7 @@
       "name": "Кулон из крапивы",
       "short_description": "Медный кулон из крапивы в темно-синей патине.",
       "long_description": "Как красиво подают блюда в некоторых ресторанах, иногда даже есть жалко: как же можно испортить такой шедевр? Целый вид искусства в этом. А потом мы дотрагиваемся вилкой - и красота исчезает, превращаясь во вкус. С гусеницами всё наоборот: сначала был обычный лист, а после еды он превращается в шедевр. И попробуй повтори такой. Наверное, у гусениц тоже есть своё особое искусство обгрызания листьев.",
-      "price": "48.00",
+      "price": "35.00",
       "actual_price": null,
       "sold": false,
       "main_image": 18,
@@ -2047,7 +2328,7 @@
       "name": "Медная брошь-игла",
       "short_description": "Брошь-игла из меди, покрытой золотистой патиной",
       "long_description": "У нас сегодня наконец-то появилось солнце после снежных дней. Очень надеюсь, что настоящая весна с птичками и зеленой травой всё-таки придет. А если у вас всё ещё пасмурно, то я как раз сохранила немого солнечного настроения в этом листике.",
-      "price": "48.00",
+      "price": "40.00",
       "actual_price": null,
       "sold": false,
       "main_image": 21,
@@ -2080,7 +2361,7 @@
       "name": "Медный кулон в шоколадной патине",
       "short_description": "Сказочный кулон из меди, покрытой патиной шоколадного цвета.",
       "long_description": "Есть в этом кулоне что-то сказочное. Может, фото не так хорошо это передаёт, но оно точно есть, я проверяла. Для настоящих фей.",
-      "price": "48.00",
+      "price": "35.00",
       "actual_price": null,
       "sold": false,
       "main_image": 23,
@@ -2113,9 +2394,9 @@
       "name": "Медные серьги из крылаток клёна",
       "short_description": "Серьги из крылаток ясеневидного клёна из меди, покрытой патиной черного цвета.",
       "long_description": "Серьги с идеально чёрной патиной, такой, как шерсть у чёрной кошки. Почему-то именно это сравнение пришло в голову, когда у меня впервые получился такой цвет. Даже \"погладить\" хочется. А сердолик и гранат добавляют ещё больше очарования.",
-      "price": "48.00",
+      "price": "30.00",
       "actual_price": null,
-      "sold": false,
+      "sold": true,
       "main_image": 25,
       "created_datetime": "2021-03-26T18:00:00Z",
       "created_by_id": -1,
@@ -2148,9 +2429,9 @@
       "name": "Медный кулон с серебрением",
       "short_description": "Кулон из посеребрянной меди в форме листа.",
       "long_description": "Такой вот освежающий листик-льдинка получился. Он тоже из меди, как и все мои изделия, но сверху покрыт тонким слоем серебра, поэтому и цвет такой совсем не медный. Украшен агатовой бусиной.",
-      "price": "48.00",
+      "price": "30.00",
       "actual_price": null,
-      "sold": false,
+      "sold": true,
       "main_image": 27,
       "created_datetime": "2021-03-27T18:00:00Z",
       "created_by_id": -1,
@@ -2181,7 +2462,7 @@
       "name": "Брошь-игла из листика березы",
       "short_description": "Брошь-игла из березового листа, покрытый медью радужного цвета.",
       "long_description": "Я долго думала, какую патину сделать для этого листа березы, но никак не получалось определиться. Решила окрасить с помощью электрохимии(так можно получить различные цвета, в зависимости от времени воздействия) и смотреть, что больше понравится. В итоге лист получился таким разноцветным. Вот что значит, когда желание четко не сформулировано, но в данном случае мне это ничуть не помешало. Брошь-радуга:)",
-      "price": "48.00",
+      "price": "40.00",
       "actual_price": null,
       "sold": false,
       "main_image": 29,
@@ -2215,9 +2496,9 @@
       "name": "Кулон из папоротника",
       "short_description": "Миниатюрный кулон из папоротника, покртыого медью, украшенный агатом.",
       "long_description": "Миниатюрный папоротник для романтического настроения.",
-      "price": "48.00",
+      "price": "25.00",
       "actual_price": null,
-      "sold": false,
+      "sold": true,
       "main_image": 32,
       "created_datetime": "2021-03-31T18:00:00Z",
       "created_by_id": -1,
@@ -2248,9 +2529,9 @@
       "name": "Кулон из клена",
       "short_description": "Ярко-оранжевый медный кулон из листа клёна, украшенного ямшой.",
       "long_description": "Вы любите кленовый сироп? Я вообще сладкоежка, поэтому всё сладкое мне по душе. Считается, что самые \"вкусные\" клёны растут в Канаде, но на самом деле такой сироп можно сделать и из тех видов клёна, что есть у нас, правда, говорят, что будет не такой сладкий. Собирают сначала кленовый сок, почти как у берёзы, а затем его вываривают до состояния сиропа. Процесс долгий и сока нужно много, а сиропа получается мало: на 40 литров жидкости всего 1 литр сладости. Наверное, поэтому сироп такой дорогой и непопулярный у местных хозяек. Но и кленовый сок в Беларуси я никогда не встречала и не пробовала. Интересно, какой он на вкус? Если кто-то хочет попробовать, сейчас, между прочим, лучшее время для его сбора. Ну а если все эти сложности не для вас, то можете просто насладиться красотой этого кленового листика.",
-      "price": "48.00",
+      "price": "30.00",
       "actual_price": null,
-      "sold": false,
+      "sold": true,
       "main_image": 34,
       "created_datetime": "2021-04-01T18:00:00Z",
       "created_by_id": -1,
@@ -2283,7 +2564,7 @@
       "name": "Кулон из шиповника",
       "short_description": "Зеленоватый кулон-медуза из плода шиповника, покрытого медью.",
       "long_description": "Что вам напоминает это украшение? Если говорить обо мне, то я вижу маленькую медузу. Надеюсь, это не галлюцинации от нехватки моря в моём организме, особенно после такой долгой холодной зимы. Жаль, конечно, что коронавирус вносит коррективы в нашу жизнь, вот и приходится заменять медуз шиповником",
-      "price": "48.00",
+      "price": "40.00",
       "actual_price": null,
       "sold": false,
       "main_image": 38,
@@ -2318,7 +2599,7 @@
       "name": "Кулон из лебеды",
       "short_description": "Кулон из листа лебеды, покрытого медью зеленоватого цвета и украшенного сердоликом.",
       "long_description": "Обычно это растение не любят на своих участках и пытаются от него избавиться всеми возможными способами. Я же, наоборот, была рада встретить его и оценила красоту по достоинству. Да, это обычная лебеда) Для одного сорняк, для другого - любимое украшение.",
-      "price": "48.00",
+      "price": "30.00",
       "actual_price": null,
       "sold": false,
       "main_image": 42,
@@ -2353,7 +2634,7 @@
       "name": "Кулон из сирени",
       "short_description": "Медный кулон из листа сирени в шоколадной патине, украшенный агатом.",
       "long_description": "Любите сирень? Она вас точно любит! Листик - сердечко от сирени и меня.",
-      "price": "48.00",
+      "price": "35.00",
       "actual_price": null,
       "sold": false,
       "main_image": 46,
@@ -2386,7 +2667,7 @@
       "name": "Кулон из берёзового листа",
       "short_description": "Медный кулон из листа берёзы, покрытого патиной глубокого голубого цвета, украшенный агатом.",
       "long_description": "Однажды мне приснилось, что меня похитили инопланетяне. Очутившись в их мире, я с удивлением заметила, как необычны их растения: листья у берёз синие, а вместо сережек растут на деревьях инопланетные ягоды. Когда я проснулась, я поняла, что мне нужно сделать...",
-      "price": "48.00",
+      "price": "40.00",
       "actual_price": null,
       "sold": false,
       "main_image": 48,
@@ -2421,7 +2702,7 @@
       "name": "Кулон из папоротника",
       "short_description": "Медный кулон из папоротника в желто-оранжевой патине, украшенный гранатом.",
       "long_description": "В прошлом году я побывала в Налибокской пуще. В тот день шёл дождь, но мы всё равно поехали, потому что было лето и не хотелось оставаться дома в выходной. И я не пожалела: людей сосем не было, да и дождь прошёл к моменту приезда. Лес встретил нас свежестью и буйством зелени, а огромные заросли папоротника создавали ощущение первобытности. Конечно же, я взяла пару листочков с собой.",
-      "price": "48.00",
+      "price": "30.00",
       "actual_price": null,
       "sold": false,
       "main_image": 52,
@@ -2456,7 +2737,7 @@
       "name": "Брошь из черенка помидора",
       "short_description": "Оригинальная брошь ручной работы из меди в форме звезды из черенка помидора.",
       "long_description": "Все знают, что существует поверье: если загадать желание, когда падает звезда, то оно обязательно исполнится. Но что делать, если желание уже появилось, а падающей звезды всё никак нет? Может, стоит завести свою собственную?Брошка-звёздочка для исполнения всех ваших желаний.",
-      "price": "48.00",
+      "price": "30.00",
       "actual_price": null,
       "sold": false,
       "main_image": 56,
@@ -2490,7 +2771,7 @@
       "name": "Кулон из берёзового листа",
       "short_description": "Медный кулон из листа берёзы осенних цветов, украшенный ямшой и агатом.",
       "long_description": "Этот берёзовый листочек выглядит так, как будто я только сорвала его с дерева прошлой осенью и ничего с ним не делала, очень реалистичная патина получилась. Что интересно, эта патина сначала получается коричнево-желтой, а потом на солнышке листик расцветает и набирает свой зелёный цвет, таким и остаётся.Я желаю и вам встретиться с солнышком на предстоящих выходных, и пусть оно тоже украсит ваш день",
-      "price": "48.00",
+      "price": "35.00",
       "actual_price": null,
       "sold": false,
       "main_image": 59,
@@ -2525,7 +2806,7 @@
       "name": "Кулон из загадочного листика",
       "short_description": "Медный кулон из листа неизвестного растения мягкого синего цвета.",
       "long_description": "Кулон из загадочного листика в синей, как бархат, патине. К сожалению, я не знаю, что это за растение, он у меня такой один. Если кто-то разбирается и подскажет мне, буду рада:)",
-      "price": "48.00",
+      "price": "35.00",
       "actual_price": null,
       "sold": false,
       "main_image": 63,
@@ -2560,7 +2841,7 @@
       "name": "Брошь из листа берёзы",
       "short_description": "Медная брошка шоколоадного цвета из листа берёзы.",
       "long_description": "Берёза считается символом женственности, олицетворением чистоты и нежности. А ещё её использовали в качестве оберега для семьи, также считалось, что она может помочь девушке выйти замуж. Не знаю, насколько это правда, но незамеченной с такой берёзовой брошкой вы точно не останетесь!",
-      "price": "48.00",
+      "price": "40.00",
       "actual_price": null,
       "sold": false,
       "main_image": 67,
@@ -2594,7 +2875,7 @@
       "name": "Кулон из листьев одуванчика",
       "short_description": "Медный кулон из листа одуванчика, украшенный агатом и покрытый патиной мягкого синего цвета.",
       "long_description": "Читаю сейчас книгу \"Вино из одуванчиков\". Сначала я подумала, что это авторская выдумка, но оказывается, и правда есть такое одуванчиковое вино. Мне очень интересно, какое оно. Яркое, солнечное и со вкусом лета... Как-то так я себе его представляю. Иначе и быть не может, потому что одно только название уже поднимает настроение. А вы пробовали?Возможно, когда-нибудь я его приготовлю, а пока из одуванчика я приготовила вот такое украшение.",
-      "price": "48.00",
+      "price": "35.00",
       "actual_price": null,
       "sold": false,
       "main_image": 70,
@@ -2630,9 +2911,9 @@
       "name": "Серьги из листьев крыжовника",
       "short_description": "Миниатюрные медные серьги из листьев крыжовника в темной патине, украшенные серыми бусинами.",
       "long_description": "Серёжки, в которых лето...",
-      "price": "48.00",
+      "price": "30.00",
       "actual_price": null,
-      "sold": false,
+      "sold": true,
       "main_image": 75,
       "created_datetime": "2021-04-30T18:00:00Z",
       "created_by_id": -1,
@@ -2684,6 +2965,149 @@
         81,
         82,
         83
+      ]
+    }
+  },
+  {
+    "model": "core.product",
+    "pk": 1028,
+    "fields": {
+      "url": "/catalog/bizhuteriya/kulony/kulon-iz-cvetochnogo-lista-1028",
+      "page_title": "Купить медный кулон из цветосного листика в Минске",
+      "page_description": null,
+      "page_keywords": null,
+      "page_h1": "Медный кулон из цветочного листика",
+      "no_index": true,
+      "deleted": false,
+      "name": "Медный кулон из цветочного листика",
+      "short_description": "Кулон из меди в форме цветочного листа с декоративными вставками бирюзового цвета.",
+      "long_description": "Этот листик я взяла на городской клумбе. У меня тогда была с собой старая бутылка для питья, туда я его и положила. Если со стороны кто-то обратил внимание, это выглядело довольно странно, конечно. Как будто я решила сделать себе \"коктейль\" из цветочных листьев вместо мяты, розмарина или чего-то там ещё более привычного. Что же, у всех свои причуды)",
+      "price": "40.00",
+      "actual_price": null,
+      "sold": false,
+      "main_image": 88,
+      "created_datetime": "2021-05-26T18:00:00Z",
+      "created_by_id": -1,
+      "categories": [
+        "bizhuteriya",
+        "izdeliya-iz-medi",
+        "izdeliya-iz-metalla",
+        "izdeliya-raznye",
+        "kulony"
+      ],
+      "images": [
+        88,
+        89,
+        90
+      ]
+    }
+  },
+  {
+    "model": "core.product",
+    "pk": 1029,
+    "fields": {
+      "url": "/catalog/bizhuteriya/kulony/kulon-iz-klenovogo-lista-1029",
+      "page_title": "Купить медный кулон из кленового листа в Минске",
+      "page_description": null,
+      "page_keywords": null,
+      "page_h1": "Медный кулон из листика клёна золотистого цвета",
+      "no_index": true,
+      "deleted": false,
+      "name": "Медный кулон из кленового листа",
+      "short_description": "Кулон из меди в форме кленового листика в золотистой патине, украшенный агатом.",
+      "long_description": "С первым днём лета! На самом деле я как-то даже не заметила, когда оно наступило. Утром достаю из холодильника йогурт, смотрю срок годности и вспоминаю, какое сегодня число... 1-е июня. Новый месяц. Оу, так это же лето пришло! И где мои любимые шерстяные носочки? А, уже на моих ножках. Пойду тогда байку потеплее возьму что-ли..А у вас тепло?Посвящаю это украшение всем мерзлякам, потому что если его перевернуть вверх ногами, то кажется, будто это такое жаркое пламя согревающего костра. Тепла вам!",
+      "price": "35.00",
+      "actual_price": null,
+      "sold": false,
+      "main_image": 91,
+      "created_datetime": "2021-06-01T18:00:00Z",
+      "created_by_id": -1,
+      "categories": [
+        "bizhuteriya",
+        "izdeliya-iz-klena",
+        "izdeliya-iz-medi",
+        "izdeliya-iz-metalla",
+        "kulony"
+      ],
+      "images": [
+        91,
+        92,
+        93,
+        94,
+        95
+      ]
+    }
+  },
+  {
+    "model": "core.product",
+    "pk": 1030,
+    "fields": {
+      "url": "/catalog/bizhuteriya/kulony/kulon-iz-greckogo-oreha-1030",
+      "page_title": "Купить медный кулон из грецкого ореха в Минске",
+      "page_description": null,
+      "page_keywords": null,
+      "page_h1": "Кулон из меди в форме ядра грецкого ореха",
+      "no_index": true,
+      "deleted": false,
+      "name": "Кулон из меди в форме ядра грецкого",
+      "short_description": "Медный кулон в форме половинки ядра грецкого орешка в золотистой патине.",
+      "long_description": "Эти грецкие орешки растут дома у моих родителей. Они посадили дерево, ухаживали за ним и через несколько лет дождались урожая. Собрали орехи, высушили, а потом уже я покрыла один медью и сделала такое украшение. Поэтому можно сказать, что тут не только тепло моих рук, но и всей моей семьи. От ядра до патины сделано с любовью",
+      "price": "35.00",
+      "actual_price": null,
+      "sold": false,
+      "main_image": 96,
+      "created_datetime": "2021-06-08T18:00:00Z",
+      "created_by_id": -1,
+      "categories": [
+        "bizhuteriya",
+        "izdeliya-iz-greckogo-oreha",
+        "izdeliya-iz-medi",
+        "izdeliya-iz-metalla",
+        "kulony"
+      ],
+      "images": [
+        96,
+        97,
+        98,
+        99,
+        100
+      ]
+    }
+  },
+  {
+    "model": "core.product",
+    "pk": 1031,
+    "fields": {
+      "url": "/catalog/bizhuteriya/kulony/kulon-iz-boyaryshnika-1031",
+      "page_title": "Купить медный кулон из листа боярышника в Беларуси",
+      "page_description": null,
+      "page_keywords": null,
+      "page_h1": "Кулон из меди в форме листа боярышника",
+      "no_index": true,
+      "deleted": false,
+      "name": "Кулон из меди в форме листика боярыш",
+      "short_description": "Медный кулон из листика боярышника, украшенный агатом.",
+      "long_description": "Считается, что сушёные листья и ягоды боярышника надёжно защищают от порчи и сглаза. А в этом украшении как раз и спрятан внутри настоящий листик, поэтому оно не только красивое, но ещё может послужить вам амулетом.",
+      "price": "30.00",
+      "actual_price": null,
+      "sold": false,
+      "main_image": 101,
+      "created_datetime": "2021-06-16T18:00:00Z",
+      "created_by_id": -1,
+      "categories": [
+        "bizhuteriya",
+        "izdeliya-iz-boyaryshnika",
+        "izdeliya-iz-medi",
+        "izdeliya-iz-metalla",
+        "kulony"
+      ],
+      "images": [
+        101,
+        102,
+        103,
+        104,
+        105,
+        106
       ]
     }
   },
