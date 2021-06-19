@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-12 mb-2">
                     <label for="cartOrderMobile" class="form-label">{% translate 'Mobile' %}:</label>
-                    <input type="text" class="form-control {% if errors|has:'mobile' %}is-invalid{% else %}is-valid{% endif %}" id="cartOrderMobile" name="mobile" value="{{ order_details_mobile }}" placeholder="+375(29)123-45-67">
+                    <input type="text" class="form-control {% if errors|has:'mobile'  %}is-invalid{% else %}is-valid{% endif %}" id="cartOrderMobile" name="mobile" value="{{ order_details_mobile }}" placeholder="+375(29)123-45-67">
                     <div class="invalid-feedback">{{ errors|hash:'mobile' }}</div>
                 </div>
                 <div class="col-12 mb-2">
@@ -50,9 +50,9 @@
         <a class='btn btn-primary me-2' href="{% url 'core:cart_go_back' %}">
             {% translate 'Edit order' %}
         </a>
-        <button class='btn btn-primary' onclick="submitCartOrder();">
+        <a class='btn btn-primary' href="{% url 'core:cart_submit_order' %}">
             {% translate 'Submit order' %}
-        </button>
+        </a>
     </div>
 </div>
 

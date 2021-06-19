@@ -277,11 +277,11 @@ class Cart:
             request.session['cart_stage'] = cart_stage.value
         context: dict = {}
         if cart_stage == CartStage.ORDER:
-            context['order_details_name'] = request.session.get('order_details_name')
-            context['order_details_mobile'] = request.session.get('order_details_mobile')
-            context['order_details_email'] = request.session.get('order_details_email')
-            context['order_details_address'] = request.session.get('order_details_address')
-            context['order_details_comment'] = request.session.get('order_details_comment')
+            context['order_details_name'] = request.session.get('order_details_name', '')
+            context['order_details_mobile'] = request.session.get('order_details_mobile', '')
+            context['order_details_email'] = request.session.get('order_details_email', '')
+            context['order_details_address'] = request.session.get('order_details_address', '')
+            context['order_details_comment'] = request.session.get('order_details_comment', '')
         elif cart_stage == CartStage.SUCCESS:
             pass
         else:

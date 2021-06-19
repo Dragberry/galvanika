@@ -9,7 +9,7 @@ def format_date(value):
 
 @register.filter
 def hash(h, key):
-    return h.get(key) if isinstance(h, dict) else None
+    return h.get(key) if isinstance(h, dict) else ''
 
 
 @register.filter
