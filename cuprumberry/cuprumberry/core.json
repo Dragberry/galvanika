@@ -3138,5 +3138,19 @@
       "created_datetime": "2021-05-06T23:42:25Z",
       "created_by_id": -1
     }
+  },
+  {
+    "model": "core.quickreferencecard",
+    "pk": 3,
+    "fields": {
+      "title": "Серьги",
+      "content": "Оригмнальные серьги из меди ручной работы",
+      "order": 1,
+      "deleted": false,
+      "product": null,
+      "category": "sergi",
+      "created_datetime": "2021-06-19T23:42:25Z",
+      "created_by_id": -1
+    }
   }
 ]

@@ -6,7 +6,7 @@ from django.db import transaction
 from django.db.models import Case, When, Q
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseNotFound
 from django.shortcuts import get_object_or_404
-from django.template import loader
+from django.template import loader, RequestContext
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.translation import gettext
@@ -415,3 +415,13 @@ class Cart:
         context: dict = Cart._get_context(request)
         context['errors'] = errors
         return HttpResponse(template.render(context, request))
+
+
+# def error_404(request, exception):
+#     response = HttpResponse(loader.get_template('common/errors/error-404.html'), request)
+#     response.status_code = 404
+#     return response
+#
+#
+# def error_500(request, exception):
+#     return 'common/errors/error-500.html'

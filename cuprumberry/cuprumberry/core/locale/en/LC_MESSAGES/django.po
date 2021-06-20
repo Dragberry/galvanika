@@ -78,6 +78,10 @@ msgstr "Следующая страница"
 msgid "Last page"
 msgstr "Последняя страница"
 
+# Catalog
+msgid "Catalog: no products in category"
+msgstr "Увы, на данный момент в данной категории ничего нет:( Но Вы всегда можете заглянуть в общий каталог!"
+
 # Quick order and cart
 msgid "Cart title"
 msgstr "Корзина"
@@ -161,9 +165,6 @@ msgid "Quick order error: no product"
 msgstr "Ой, кажется прооизошла ошибка. У нас нет такого продукта."
 
 # Cart
-msgid "Cart error: no product in the cart"
-msgstr "Корзина пуста"
-
 msgid "Cart: Product has been added to cart"
 msgstr "Товар добавлен в корзину"
 
@@ -178,6 +179,15 @@ msgstr "Товар уже в корзине"
 
 msgid "Cart error: Product not found"
 msgstr "Товар не найден"
+
+msgid "Cart error: no product in the cart"
+msgstr "Кажется, Вы удалили все товары из корзины7"
+
+msgid "Cart error: either mobile or email must be provided"
+msgstr "Необходимо указать телефон и/или e-mail"
+
+msgid "Cart error: no address"
+msgstr "Необходимо указать адрес"
 
 msgid "Error: Bad request"
 msgstr "Ошибка запроса"

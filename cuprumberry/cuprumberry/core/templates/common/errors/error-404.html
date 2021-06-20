@@ -1,0 +1,10 @@
+{% extends "common/template.html" %}
+{% load i18n %}
+<div class="row bg-light rounded p-2">
+    <div class="col-12 text-center">
+        <p class="mt-4 fw-bold">{% translate 'Catalog: no products in category' %}</p>
+        <p class="mt-4">
+            <a class="btn btn-success" href="{% url 'core:catalog' %}">{% translate 'Cart go to catalog' %}</a>
+        </p>
+    </div>
+</div>
